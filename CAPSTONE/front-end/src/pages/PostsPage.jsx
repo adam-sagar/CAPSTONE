@@ -1,9 +1,13 @@
 import React from "react";
+import NavBar from "../components/NavBar";
 
 function PostsPage() {
 
     return (
-        <div>Posts Page</div>
+        <div className="PostsPage">
+            <NavBar />
+            Posts Page
+        </div>
     )
 }
 

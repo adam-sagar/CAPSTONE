@@ -6,7 +6,6 @@ function PostsPage() {
     return (
         <div className="PostsPage">
             <NavBar />
-            Posts Page
         </div>
     )
 }

@@ -7,7 +7,6 @@ function DashboardPage() {
         
         <div className="DashboardPage">
             <NavBar />
-            Dashboard Page
         </div>
     )
 }

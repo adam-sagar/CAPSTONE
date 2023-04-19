@@ -11,6 +11,9 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@iconify-icons/dashicons": "^1.2.4",
+    "@iconify-icons/game-icons": "^1.2.1",
+    "@iconify/icons-ion": "^1.2.8",
     "@iconify/react": "^4.1.0",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.1",

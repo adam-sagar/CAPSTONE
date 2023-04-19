@@ -6,6 +6,9 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
+import { Icon } from '@iconify/react';
+import arrowRightAlt2 from '@iconify-icons/dashicons/arrow-right-alt2';
+import discGolfBasket from '@iconify-icons/game-icons/disc-golf-basket';
 
 function NavBar() {
 
@@ -20,8 +23,10 @@ function NavBar() {
                         <Typography
                             variant="h5"
                             component="div"
-                            sx={{ color: '#fff', fontFamily: 'Roboto Condensed', fontWeight: 'bold', marginRight: '1rem' }}
+                            sx={{ display: 'flex', alignItems: 'center', color: '#fff', fontFamily: 'Roboto Condensed', fontWeight: 'bold', marginRight: '2rem' }}
                         >
+                            <Icon icon={discGolfBasket} width="1.5em" height="1.5em" />
+                            <Box sx={{ width: '0.5rem' }} />
                             DISC DETECTIVE
                         </Typography>
                         {navItems.map((item) => (

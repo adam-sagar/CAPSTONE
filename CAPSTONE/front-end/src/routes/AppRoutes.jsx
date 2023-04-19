@@ -1,21 +1,21 @@
-import { Routes, Route } from "react-router-dom"
-import CardPage from "../pages/CardPage"
-import HomePage from "../pages/HomePage"
-import CardList from "../components/CardList"
-import CardDetails from "../components/CardDetails"
+import { Routes, Route } from "react-router-dom";
+import LandingPage from "../pages/LandingPage";
+import LoginPage from "../pages/LoginPage";
+import SignUpPage from "../pages/SignUpPage";
+import DashboardPage from "../pages/DashboardPage";
+import PostsPage from "../pages/PostsPage";
 
 function AppRoutes() {
 
     return (
-
         <Routes>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/login' element={<HomePage />} />
-            <Route path='/signup' element={<HomePage />} />
-            <Route path='/dashboard' element={<HomePage />} />
-            <Route path='/viewposts' element={<HomePage />} />
+            <Route path='/' element={<LandingPage />} />
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/signup' element={<SignUpPage />} />
+            <Route path='/dashboard' element={<DashboardPage />} />
+            <Route path='/posts' element={<PostsPage />} />
         </Routes>
     )
 }
 
-export default AppRoutes
+export default AppRoutes;

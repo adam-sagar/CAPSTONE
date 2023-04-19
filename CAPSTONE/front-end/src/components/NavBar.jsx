@@ -7,7 +7,6 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import { Icon } from '@iconify/react';
-import arrowRightAlt2 from '@iconify-icons/dashicons/arrow-right-alt2';
 import discGolfBasket from '@iconify-icons/game-icons/disc-golf-basket';
 
 function NavBar() {
@@ -17,7 +16,7 @@ function NavBar() {
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            <AppBar component="nav" sx={{ backgroundColor: 'midnightblue' }} >
+                <AppBar component="nav" sx={{ backgroundColor: 'midnightblue', pt: '0.5rem', pb: '0.5rem' }}> {/* added top and bottom padding to make navbar bigger */}
                 <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <Typography
@@ -25,7 +24,7 @@ function NavBar() {
                             component="div"
                             sx={{ display: 'flex', alignItems: 'center', color: '#fff', fontFamily: 'Roboto Condensed', fontWeight: 'bold', marginRight: '2rem' }}
                         >
-                            <Icon icon={discGolfBasket} width="1.5em" height="1.5em" />
+                            <Icon icon={discGolfBasket} width="1.5em" height="1.5em" /> {/* installed npm iconify package to add icon to navbar */}
                             <Box sx={{ width: '0.5rem' }} />
                             DISC DETECTIVE
                         </Typography>

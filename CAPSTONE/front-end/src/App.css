@@ -7,3 +7,15 @@
   padding: 2rem;
   text-align: center;
 } */
+
+.DashboardPage {
+  background-image: url('images/day_background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.LandingPage, .LoginPage, .SignUpPage {
+  background-image: url('images/night_background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}

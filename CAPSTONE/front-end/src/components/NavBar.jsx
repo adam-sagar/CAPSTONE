@@ -14,15 +14,16 @@ function NavBar() {
     const navItems = [{ label: 'Dashboard', path: '/dashboard' }, { label: 'Posts', path: '/posts' }];
 
     return (
+        
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-                <AppBar component="nav" sx={{ backgroundColor: 'midnightblue', pt: '0.5rem', pb: '0.5rem' }}> {/* added top and bottom padding to make navbar bigger */}
+                <AppBar component="nav" sx={{ backgroundColor: 'midnightblue' }}>
                 <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <Typography
-                            variant="h5"
+                            variant="h4"
                             component="div"
-                            sx={{ display: 'flex', alignItems: 'center', color: '#fff', fontFamily: 'Roboto Condensed', fontWeight: 'bold', marginRight: '2rem' }}
+                            sx={{ display: 'flex', alignItems: 'center', color: '#fff', fontFamily: 'Bangers', marginRight: '2rem' }}
                         >
                             <Icon icon={discGolfBasket} width="1.5em" height="1.5em" /> {/* installed npm iconify package to add icon to navbar */}
                             <Box sx={{ width: '0.5rem' }} />
@@ -33,7 +34,14 @@ function NavBar() {
                                 key={item.path}
                                 component={Link}
                                 to={item.path}
-                                sx={{ color: '#fff', fontFamily: 'Roboto Condensed', fontWeight: '300', fontSize: '1.5rem', marginRight: '1rem' }}
+                                sx={{
+                                    color: '#fff',
+                                    fontFamily: 'Roboto Condensed',
+                                    fontWeight: '300',
+                                    fontSize: '1.5rem',
+                                    marginRight: '1rem',
+                                    '&:hover': { color: '#535bf2' }
+                                }}
                             >
                                 {item.label}
                             </Button>
@@ -43,7 +51,7 @@ function NavBar() {
                         <Button
                             component={Link}
                             to="/"
-                            sx={{ color: '#fff', fontFamily: 'Roboto Condensed', fontWeight: '300', fontSize: '1.5rem' }}
+                            sx={{ color: '#fff', fontFamily: 'Roboto Condensed', fontWeight: '300', fontSize: '1.5rem', '&:hover': { color: '#535bf2' } }}
                         >
                             Logout
                         </Button>

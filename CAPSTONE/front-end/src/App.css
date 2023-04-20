@@ -13,6 +13,8 @@
   background-image: url('images/day_background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: 50%;
+  height: 100vh;
 }
 
 /* adding background image */
@@ -21,4 +23,5 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 70% 50%;
+  height: 100vh;
 }

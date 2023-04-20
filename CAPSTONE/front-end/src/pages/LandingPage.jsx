@@ -4,7 +4,7 @@ function LandingPage() {
 
     return (
         
-        <div className="LandingPage">Landing Page</div>
+        <div className="LandingPage"></div>
     )
 }
 

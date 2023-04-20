@@ -56,7 +56,7 @@ function Login() {
                 value={username}
                 onChange={handleUsernameChange}
                 sx={{
-                    input: { color: "white", borderBottom: '1px solid white' },
+                    input: { color: "white", borderBottom: '1px solid white' }, // changed labels and border to white
                     label: { color: "white" }
                 }}
             />
@@ -68,7 +68,7 @@ function Login() {
                 value={password}
                 onChange={handlePasswordChange}
                 sx={{
-                    input: { color: "white", borderBottom: '1px solid white' },
+                    input: { color: "white", borderBottom: '1px solid white' }, // changed labels and border to white
                     label: { color: "white" }
                 }}
             />

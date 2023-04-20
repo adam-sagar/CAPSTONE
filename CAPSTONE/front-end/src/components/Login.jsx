@@ -23,6 +23,8 @@ function Login() {
 
     return (
 
+        // form before adding MUI
+
         // <form onSubmit={handleSubmit}>
         //     <label>
         //         Username
@@ -68,7 +70,7 @@ function Login() {
                 value={password}
                 onChange={handlePasswordChange}
                 sx={{
-                    input: { color: "white", borderBottom: '1px solid white' }, // changed labels and border to white
+                    input: { color: "white", borderBottom: '1px solid white' },
                     label: { color: "white" }
                 }}
             />

@@ -2,13 +2,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 
 /* adding background images to dashboard and posts page */
-.DashboardPage, .PostsPage {
+.PostsPage {
   background-image: url('images/day_background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50%;
   background-attachment: fixed;
   height: 100vh;
+}
+
+.DashboardPage {
+    background-image: url('images/discgolfcrowd.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    background-attachment: fixed;
+    height: 100vh;
 }
 
 /* adding background images to landing, login and sign up pages */

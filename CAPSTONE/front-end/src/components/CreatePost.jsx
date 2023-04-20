@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, TextField, Box } from "@mui/material";
+import { Modal, Button, TextField, Box, Typography } from "@mui/material";
 
 function CreatePost() {
     const [showModal, setShowModal] = useState(false);

@@ -3,7 +3,7 @@
 
 /* adding background images to dashboard and posts page */
 .PostsPage {
-  background-image: url('images/day_background.jpg');
+  background-image: url('images/discgolfday.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50%;
@@ -12,7 +12,7 @@
 }
 
 .DashboardPage {
-    background-image: url('images/discgolfcrowd.jpg');
+    background-image: url('images/discgolfaction.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50%;
@@ -22,7 +22,7 @@
 
 /* adding background images to landing, login and sign up pages */
 .LandingPage, .LoginPage, .SignUpPage {
-  background-image: url('images/night_background.jpg');
+  background-image: url('images/discgolfnight.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50%;

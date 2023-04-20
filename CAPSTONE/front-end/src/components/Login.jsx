@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 function Login() {
 
@@ -59,7 +60,7 @@ function Login() {
                 onChange={handleUsernameChange}
                 sx={{
                     input: { color: "white", borderBottom: '1px solid white' }, // changed labels and border to white
-                    label: { color: "white" }
+                    label: { color: "white", fontFamily: 'Roboto Condensed, sans-serif' } // changed to custom font with available fallback option
                 }}
             />
             <TextField
@@ -71,10 +72,12 @@ function Login() {
                 onChange={handlePasswordChange}
                 sx={{
                     input: { color: "white", borderBottom: '1px solid white' },
-                    label: { color: "white" }
+                    label: { color: "white", fontFamily: 'Roboto Condensed, sans-serif' }
                 }}
             />
-            <Button type="submit" variant="outlined" sx={{ color: 'white', borderColor: 'white' }}>Login</Button>
+            <Button type="submit" variant="outlined" sx={{ color: 'white', borderColor: 'white' }}>
+                <Typography variant="subtitle1" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Login</Typography> {/*changed button font*/}
+            </Button>
         </Box>
     );
 }

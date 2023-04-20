@@ -17,13 +17,13 @@ function NavBar() {
         
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-                <AppBar component="nav" sx={{ backgroundColor: 'midnightblue' }}>
+                <AppBar component="nav" sx={{ backgroundColor: '#484848' }}>
                 <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <Typography
                             variant="h4"
                             component="div"
-                            sx={{ display: 'flex', alignItems: 'center', color: '#fff', fontFamily: 'Bangers', marginRight: '2rem' }}
+                            sx={{ display: 'flex', alignItems: 'center', color: '#fff', fontFamily: 'Bangers, Roboto Condensed, sans-serif', marginRight: '2rem' }}
                         >
                             <Icon icon={discGolfBasket} width="1.5em" height="1.5em" /> {/* installed npm iconify package to add icon to navbar */}
                             <Box sx={{ width: '0.5rem' }} />
@@ -36,7 +36,7 @@ function NavBar() {
                                 to={item.path}
                                 sx={{
                                     color: '#fff',
-                                    fontFamily: 'Roboto Condensed',
+                                    fontFamily: 'Roboto Condensed, sans-serif',
                                     fontWeight: '300',
                                     fontSize: '1.5rem',
                                     marginRight: '1rem',
@@ -51,7 +51,12 @@ function NavBar() {
                         <Button
                             component={Link}
                             to="/"
-                            sx={{ color: '#fff', fontFamily: 'Roboto Condensed', fontWeight: '300', fontSize: '1.5rem', '&:hover': { color: '#535bf2' } }}
+                            sx={{ 
+                                color: '#fff',
+                                fontFamily: 'Roboto Condensed, sans-serif',
+                                fontWeight: '300', fontSize: '1.5rem',
+                                '&:hover': { color: '#535bf2' }
+                            }}
                         >
                             Logout
                         </Button>

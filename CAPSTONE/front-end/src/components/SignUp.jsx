@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 function SignUp() {
 
@@ -23,7 +24,7 @@ function SignUp() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // need to add logic for checking against database and navigating to dashboard 
+        // need to add logic for checking against database and navigating back to login page
     }
 
     return (
@@ -67,8 +68,8 @@ function SignUp() {
                 value={username}
                 onChange={handleUsernameChange}
                 sx={{
-                    input: { color: "white", borderBottom: '1px solid white' }, // changed labels and border to white
-                    label: { color: "white" }
+                    input: { color: "white", borderBottom: '1px solid white' },
+                    label: { color: "white", fontFamily: 'Roboto Condensed, sans-serif' }
                 }}
             />
             <TextField
@@ -79,7 +80,7 @@ function SignUp() {
                 onChange={handleEmailChange}
                 sx={{
                     input: { color: "white", borderBottom: '1px solid white' },
-                    label: { color: "white" }
+                    label: { color: "white", fontFamily: 'Roboto Condensed, sans-serif' }
                 }}
             />
             <TextField
@@ -91,10 +92,12 @@ function SignUp() {
                 onChange={handlePasswordChange}
                 sx={{
                     input: { color: "white", borderBottom: '1px solid white' },
-                    label: { color: "white" }
+                    label: { color: "white", fontFamily: 'Roboto Condensed, sans-serif' }
                 }}
             />
-            <Button type="submit" variant="outlined" sx={{ color: 'white', borderColor: 'white' }}>Login</Button>
+            <Button type="submit" variant="outlined" sx={{ color: 'white', borderColor: 'white' }}>
+                <Typography variant="subtitle1" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Sign up</Typography>
+            </Button>
         </Box>
     );
 }

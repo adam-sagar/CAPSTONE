@@ -1,11 +1,11 @@
-import * as React from 'react'
-import { Link } from 'react-router-dom'
-import AppBar from '@mui/material/AppBar'
-import Box from '@mui/material/Box'
-import CssBaseline from '@mui/material/CssBaseline'
-import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import { Icon } from '@iconify/react';
 import discGolfBasket from '@iconify-icons/game-icons/disc-golf-basket';
 
@@ -63,6 +63,7 @@ function NavBar() {
                     </Box>
                 </Toolbar>
             </AppBar>
+            <Toolbar /> {/*rendered a second Toolbar to prevent other components from going behind navbar. Can also use position="sticky" instead*/}
         </Box>
     );
 }

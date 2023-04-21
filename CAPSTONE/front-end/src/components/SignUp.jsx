@@ -23,12 +23,13 @@ function SignUp() {
     }
 
     const handleSubmit = (event) => {
+        
         event.preventDefault();
         const formData = new FormData();
-        const username = formData.get("username");
-        const password = formData.get("password");
-        const email = formData.get("email");
-        console.log(username, password, email);
+        formData.append('username', username);
+        formData.append('email', email);
+        formData.append('password', password);
+        console.log({ username, email, password });
     }
 
     return (

@@ -20,9 +20,9 @@ function Login() {
     const handleSubmit = (event) => {
         event.preventDefault();
         const formData = new FormData();
-        const username = formData.get("username");
-        const password = formData.get("password");
-        console.log(username, password)
+        formData.append('username', username);
+        formData.append ('password', password);
+        console.log({username, password});
     }
 
     return (

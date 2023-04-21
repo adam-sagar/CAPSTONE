@@ -28,30 +28,30 @@ function CreatePost() {
     return (
 
         <div className="CreatePost">
-            <Button variant="contained" sx={{ backgroundColor: '#6EA15E', margin: '10px', ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed' }} onClick={handleShowModal}>
+            <Button variant="contained" sx={{ backgroundColor: '#6EA15E', margin: 3, ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed, sans-serif' }} onClick={handleShowModal}>
                 Create Post
             </Button>
             <Modal open={showModal} onClose={handleCloseModal} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Box sx={{ p: 2, bgcolor: "background.paper", width: 400, borderRadius: 5, border: '3px solid #484848', fontFamily: 'Roboto Condensed' }}>
+                <Box sx={{ p: 2, bgcolor: "background.paper", width: 400, borderRadius: 5, border: '3px solid #484848', fontFamily: 'Roboto Condensed, sans-serif' }}>
                     <form onSubmit={handleSubmit}>
-                        <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed'>
+                        <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                             Have you lost or found a disc?
                         </Typography>
                         <RadioGroup name="foundOrLost">
                             <Box sx={{ display: 'flex', alignItems: 'center' }}>
                                 <Radio required value="found" />
-                                <Typography variant="body1" gutterBottom fontFamily='Roboto Condensed'>
+                                <Typography variant="body1" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                                     Found
                                 </Typography>
                             </Box>
                             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                                 <Radio value="lost" />
-                                <Typography variant="body1" gutterBottom fontFamily='Roboto Condensed'>
+                                <Typography variant="body1" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                                     Lost
                                 </Typography>
                             </Box>
                         </RadioGroup>
-                        <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed'>
+                        <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                             On what course?
                         </Typography>
                         <FormControl fullWidth required sx={{ mb: 2 }}>
@@ -70,7 +70,7 @@ function CreatePost() {
                                 <MenuItem value="ascot">Ascot</MenuItem>
                             </Select>
                         </FormControl>
-                        <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed'>
+                        <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                             On what hole?
                         </Typography>
                         <FormControl fullWidth required sx={{ mb: 2 }}>
@@ -102,7 +102,7 @@ function CreatePost() {
                                 <MenuItem value="18">18</MenuItem>
                             </Select>
                         </FormControl>
-                        <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed'>
+                        <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                             What type of disc is it?
                         </Typography>
                         <FormControl fullWidth required sx={{ mb: 2 }}>
@@ -120,10 +120,10 @@ function CreatePost() {
                                 <MenuItem value="unsure">Unsure</MenuItem>
                             </Select>
                         </FormControl>
-                        <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed'>
+                        <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                             Upload photo
                         </Typography>
-                        <Button variant="contained" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed' }} type="submit">
+                        <Button variant="contained" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed, sans-serif' }} type="submit">
                             Create
                         </Button>
                     </form>

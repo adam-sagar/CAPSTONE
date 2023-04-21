@@ -24,7 +24,11 @@ function SignUp() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // need to add logic for checking against database and navigating back to login page
+        const formData = new FormData();
+        const username = formData.get("username");
+        const password = formData.get("password");
+        const email = formData.get("email");
+        console.log(username, password, email);
     }
 
     return (

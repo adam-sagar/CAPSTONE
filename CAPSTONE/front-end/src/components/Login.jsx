@@ -19,7 +19,10 @@ function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // need to add logic for checking against database and navigating to dashboard 
+        const formData = new FormData();
+        const username = formData.get("username");
+        const password = formData.get("password");
+        console.log(username, password)
     }
 
     return (
@@ -53,7 +56,8 @@ function Login() {
             onSubmit={handleSubmit}
         >
             <TextField
-                id="Username"
+                id="username"
+                name="username"
                 label="Username"
                 variant="standard"
                 value={username}
@@ -65,6 +69,7 @@ function Login() {
             />
             <TextField
                 id="password"
+                name="password"                
                 label="Password"
                 variant="standard"
                 type="password"

@@ -60,6 +60,7 @@ function Login() {
                 name="username"
                 label="Username"
                 variant="standard"
+                required
                 value={username}
                 onChange={handleUsernameChange}
                 sx={{
@@ -73,6 +74,7 @@ function Login() {
                 label="Password"
                 variant="standard"
                 type="password"
+                required
                 value={password}
                 onChange={handlePasswordChange}
                 sx={{

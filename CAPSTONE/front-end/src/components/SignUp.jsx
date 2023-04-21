@@ -70,6 +70,7 @@ function SignUp() {
                 id="Username"
                 label="Username"
                 variant="standard"
+                required
                 value={username}
                 onChange={handleUsernameChange}
                 sx={{
@@ -81,6 +82,7 @@ function SignUp() {
                 id="Email"
                 label="Email"
                 variant="standard"
+                required
                 value={email}
                 onChange={handleEmailChange}
                 sx={{
@@ -92,6 +94,7 @@ function SignUp() {
                 id="password"
                 label="Password"
                 variant="standard"
+                required
                 type="password"
                 value={password}
                 onChange={handlePasswordChange}

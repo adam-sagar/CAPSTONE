@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button, Select, MenuItem, RadioGroup, Radio, Box, Typography, FormControl, InputLabel } from "@mui/material";
 
 
-function CreatePost() {
+function CreatePost(props) {
 
     const [showModal, setShowModal] = useState(false);
 
@@ -62,6 +62,7 @@ function CreatePost() {
                                 defaultValue=""
                                 sx={{ mb: 2 }}
                                 labelId="course-label"
+                                onChange={event => setC(event.target.value)}
                             >
                                 <MenuItem value="jellie-park">Jellie Park</MenuItem>
                                 <MenuItem value="queenspark">Queenspark</MenuItem>
@@ -81,6 +82,7 @@ function CreatePost() {
                                 defaultValue=""
                                 sx={{ mb: 2 }}
                                 labelId="course-label"
+                                onChange={event => setH(event.target.value)}
                             >
                                 <MenuItem value="1">1</MenuItem>
                                 <MenuItem value="2">2</MenuItem>
@@ -113,6 +115,7 @@ function CreatePost() {
                                 defaultValue=""
                                 sx={{ mb: 2 }}
                                 labelId="type-label"
+                                onChange={event => setT(event.target.value)}
                             >
                                 <MenuItem value="driver">Driver</MenuItem>
                                 <MenuItem value="mid-range">Mid-range</MenuItem>

@@ -7,31 +7,31 @@ class Post extends Model { }
 
 //Sequelize will create this table if it doesn't exist on startup
 Post.init({
-    id: {
+    postId: {
         type: DataTypes.INTEGER, allowNull: false, autoIncrement: true, primaryKey: true
     },
-    // UserID: {
+    // commentId: {
     //     type: DataTypes.INTEGER, allowNull: true, required: true,
     //     references: {
-    //         model: User, //reference to another model
-    //         key: 'id' //column name of the referenced model
+    //         model: Comment, // reference to another model
+    //         key: 'commentId' // column name of the referenced model
     //     }
     // },
-    Course: {
+    isFound: {
+        type: DataTypes.BOOLEAN, allowNull: false, required: true
+    },
+    course: {
         type: DataTypes.STRING, allowNull: false, required: true
     },
-    Hole: {
-        type: DataTypes.STRING, allowNull: false, required: true, unique: true
-    },
-    Type: {
+    hole: {
         type: DataTypes.STRING, allowNull: false, required: true
     },
-    Comments: {
+    type: {
         type: DataTypes.STRING, allowNull: false, required: true
     }
 },
     {
-        sequelize: sequelizeInstance, modelName: 'posts', //use lowercase plural format
+        sequelize: sequelizeInstance, modelName: 'posts', // use lowercase plural format
         timestamps: true, freezeTableName: true
     }
 )

@@ -4,38 +4,25 @@ const sequelizeInstance = dbConnect.Sequelize;
 
 class User extends Model { }
 
-//Sequelize will create this table if it doesn't exist on startup
+// Sequelize will create this table if it doesn't exist on startup
 User.init({
-    id: {
+    userId: {
         type: DataTypes.INTEGER, allowNull: false, autoIncrement: true, primaryKey: true
     },
-    Username: {
+    username: {
         type: DataTypes.STRING, allowNull: false, required: true, unique: true
     },
-    First_Name: {
-        type: DataTypes.STRING, allowNull: false, required: true
-    },
-    Last_Name: {
-        type: DataTypes.STRING, allowNull: false, required: true
-    },
-    Email: {
+    email: {
         type: DataTypes.STRING, allowNull: false, required: true, unique: true
     },
-    Password: {
+    password: {
         type: DataTypes.STRING, allowNull: false, required: true
     }
 },
     {
-        sequelize: sequelizeInstance, modelName: 'users', //use lowercase plural format
+        sequelize: sequelizeInstance, modelName: 'users', // use lowercase plural format
         timestamps: true, freezeTableName: true
     }
 )
 
 module.exports = User;
-
-
-
-// references: {
-//     model: User, //reference to another model
-//     key: 'id', //column name of the referenced model
-// }

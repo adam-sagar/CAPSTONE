@@ -17,11 +17,11 @@ function CreatePost(props) {
     const handleSubmit = (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
-        const foundOrLost = formData.get("foundOrLost");
+        const isFound = formData.get("isFound");
         const course = formData.get("course");
         const hole = formData.get("hole");
         const type = formData.get("type");
-        console.log({ foundOrLost, course, hole, type });
+        console.log({ isFound, course, hole, type });
         handleCloseModal();
     };
 
@@ -37,15 +37,15 @@ function CreatePost(props) {
                         <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                             Have you lost or found a disc?
                         </Typography>
-                        <RadioGroup name="foundOrLost">
+                        <RadioGroup name="isFound">
                             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                <Radio required value="found" />
+                                <Radio required value="true" />
                                 <Typography variant="body1" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                                     Found
                                 </Typography>
                             </Box>
                             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                                <Radio value="lost" />
+                                <Radio value="false" />
                                 <Typography variant="body1" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                                     Lost
                                 </Typography>

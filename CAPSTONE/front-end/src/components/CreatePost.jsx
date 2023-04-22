@@ -28,11 +28,11 @@ function CreatePost(props) {
     return (
 
         <div className="CreatePost">
-            <Button variant="contained" sx={{ backgroundColor: '#6EA15E', margin: 3, ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed, sans-serif' }} onClick={handleShowModal}>
+            <Button variant="contained" sx={{ backgroundColor: '#6EA15E', m: 3, ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed, sans-serif' }} onClick={handleShowModal}>
                 Create Post
             </Button>
             <Modal open={showModal} onClose={handleCloseModal} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Box sx={{ p: 2, bgcolor: "background.paper", width: 400, borderRadius: 5, border: '3px solid #484848', fontFamily: 'Roboto Condensed, sans-serif' }}>
+                <Box sx={{ p: 2, bgcolor: "background.paper", width: 400, borderRadius: 2, fontFamily: 'Roboto Condensed, sans-serif' }}>
                     <form onSubmit={handleSubmit}>
                         <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                             Have you lost or found a disc?
@@ -55,14 +55,14 @@ function CreatePost(props) {
                             On what course?
                         </Typography>
                         <FormControl fullWidth required sx={{ mb: 2 }}>
-                            <InputLabel id="course-label">Course</InputLabel>
+                            <InputLabel id="course-label" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Course</InputLabel>
                             <Select
                                 name="course"
                                 label="Course"
                                 defaultValue=""
                                 sx={{ mb: 2 }}
                                 labelId="course-label"
-                                onChange={event => setC(event.target.value)}
+                                // onChange={event => setC(event.target.value)}
                             >
                                 <MenuItem value="jellie-park">Jellie Park</MenuItem>
                                 <MenuItem value="queenspark">Queenspark</MenuItem>
@@ -75,14 +75,14 @@ function CreatePost(props) {
                             On what hole?
                         </Typography>
                         <FormControl fullWidth required sx={{ mb: 2 }}>
-                            <InputLabel id="hole-label">Hole</InputLabel>
+                            <InputLabel id="hole-label" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Hole</InputLabel>
                             <Select
                                 name="hole"
                                 label="Hole"
                                 defaultValue=""
                                 sx={{ mb: 2 }}
                                 labelId="course-label"
-                                onChange={event => setH(event.target.value)}
+                                // onChange={event => setH(event.target.value)}
                             >
                                 <MenuItem value="1">1</MenuItem>
                                 <MenuItem value="2">2</MenuItem>
@@ -108,14 +108,14 @@ function CreatePost(props) {
                             What type of disc is it?
                         </Typography>
                         <FormControl fullWidth required sx={{ mb: 2 }}>
-                            <InputLabel id="type-label">Type</InputLabel>
+                            <InputLabel id="type-label" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Type</InputLabel>
                             <Select
                                 name="type"
                                 label="Type"
                                 defaultValue=""
                                 sx={{ mb: 2 }}
                                 labelId="type-label"
-                                onChange={event => setT(event.target.value)}
+                                // onChange={event => setT(event.target.value)}
                             >
                                 <MenuItem value="driver">Driver</MenuItem>
                                 <MenuItem value="mid-range">Mid-range</MenuItem>
@@ -129,6 +129,7 @@ function CreatePost(props) {
                         <Button variant="contained" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed, sans-serif' }} type="submit">
                             Create
                         </Button>
+                        <Button onClick={handleCloseModal} variant="contained" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed, sans-serif', m: 2 }} >Cancel</Button>
                     </form>
                 </Box>
             </Modal>

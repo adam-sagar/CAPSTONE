@@ -25,6 +25,9 @@ Post.init({
     },
     Type: {
         type: DataTypes.STRING, allowNull: false, required: true
+    },
+    Comments: {
+        type: DataTypes.STRING, allowNull: false, required: true
     }
 },
     {

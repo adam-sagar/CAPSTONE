@@ -21,11 +21,7 @@ function CreatePost(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const formData = new FormData(event.target);
-        const isFound = formData.get("isFound");
-        const course = formData.get("course");
-        const hole = formData.get("hole");
-        const type = formData.get("type");
+        // logic for sending to back-end
         console.log({ isFound, course, hole, type });
         handleCloseModal();
     };

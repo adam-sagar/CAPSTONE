@@ -25,32 +25,11 @@ function SignUp() {
     const handleSubmit = (event) => {
         
         event.preventDefault();
-        const formData = new FormData();
-        formData.append('username', username);
-        formData.append('email', email);
-        formData.append('password', password);
+        // logic for sending to back-end
         console.log({ username, email, password });
     }
 
     return (
-
-        // form before adding MUI
-
-        // <form onSubmit={handleSubmit}>
-        //     <label>
-        //         Username
-        //         <input type="text" value={username} onChange={handleUsernameChange} />
-        //     </label>
-        //     <label>
-        //         Email
-        //         <input type="text" value={email} onChange={handleEmailChange} />
-        //     </label>
-        //     <label>
-        //         Password
-        //         <input type="password" value={password} onChange={handlePasswordChange} />
-        //     </label>
-        //     <button type="submit">Login</button>
-        // </form>
 
         <Box
             component="form"

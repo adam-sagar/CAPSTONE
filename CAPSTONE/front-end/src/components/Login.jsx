@@ -20,27 +20,21 @@ function Login() {
     const handleSubmit = (event) => {
         
         event.preventDefault();
-        const formData = new FormData();
-        formData.append('username', username);
-        formData.append ('password', password);
+        // logic for sending to back-end
         console.log({username, password});
     }
 
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     const loginData = {
+    //         username: username,
+    //         password: password
+    //     };
+    //     console.log(loginData);
+    //     // send loginData to backend API using fetch or axios
+    // };
+
     return (
-
-        // form before adding MUI
-
-        // <form onSubmit={handleSubmit}>
-        //     <label>
-        //         Username
-        //         <input type="text" value={username} onChange={handleUsernameChange} />
-        //     </label>
-        //     <label>
-        //         Password
-        //         <input type="password" value={password} onChange={handlePasswordChange} />
-        //     </label>
-        //     <button type="submit">Login</button>
-        // </form>
 
         <Box
             component="form"

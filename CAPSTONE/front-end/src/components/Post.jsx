@@ -46,25 +46,25 @@ function Post() {
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div" sx={{ mb: 1, fontFamily: 'Roboto Condensed, sans-serif' }}>
-                        {/* {post.lostOrFound} */}
+                        {/* { post.isFound ? "Found" : "Lost" } */}
                     </Typography>
                     <Typography variant="body2" color="text.secondary" sx={{ mb: 1, fontFamily: 'Roboto Condensed, sans-serif' }}>
                         Course:
                     </Typography>
                     <Typography variant="body2" color="text.secondary" sx={{ mb: 1, fontFamily: 'Roboto Condensed, sans-serif' }}>
-                        {/* {post.Course} */}
+                        {/* {post.course} */}
                     </Typography>
                     <Typography variant="body2" color="text.secondary" sx={{ mb: 1, fontFamily: 'Roboto Condensed, sans-serif' }}>
                         Hole:
                     </Typography>
                     <Typography variant="body2" color="text.secondary" sx={{ mb: 1, fontFamily: 'Roboto Condensed, sans-serif' }}>
-                        {/* {post.Hole} */}
+                        {/* {post.hole} */}
                     </Typography>
                     <Typography variant="body2" color="text.secondary" sx={{ mb: 1, fontFamily: 'Roboto Condensed, sans-serif' }}>
                         Type:
                     </Typography>
                     <Typography variant="body2" color="text.secondary" sx={{ mb: 1, fontFamily: 'Roboto Condensed, sans-serif' }}>
-                        {/* {post.Type} */}
+                        {/* {post.type} */}
                     </Typography>
                 </CardContent>
                 <CardActions>
@@ -74,7 +74,7 @@ function Post() {
                     <DialogTitle sx={{ fontFamily: 'Roboto Condensed, sans-serif'}} >Comments</DialogTitle>
                     <DialogContent>
                         <DialogContentText sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>
-                                {/* {post.Comments} */}
+                                {/* {post.commentId} */}
                         </DialogContentText>
                         <TextField
                                 autoFocus

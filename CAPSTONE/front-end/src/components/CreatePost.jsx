@@ -5,6 +5,11 @@ import { Modal, Button, Select, MenuItem, RadioGroup, Radio, Box, Typography, Fo
 function CreatePost(props) {
 
     const [showModal, setShowModal] = useState(false);
+    const [isFound, setIsFound] = useState('');
+    const [course, setCourse] = useState('');
+    const [hole, setHole] = useState('');
+    const [type, setType] = useState('');
+    const [image, setImage] = useState('');
 
     const handleShowModal = () => {
         setShowModal(true);
@@ -25,19 +30,41 @@ function CreatePost(props) {
         handleCloseModal();
     };
 
+    // using a for loop to generate MenuItem components instead of having to write them all out individually
+    const menuItemsLong = [];
+
+    for(let i = 1; i <= 18; i++) {
+        menuItemsLong.push(
+            <MenuItem key={i} value={i}>
+                {i}
+            </MenuItem>
+        );
+    }
+
+    const menuItemsShort = [];
+
+    for (let i = 1; i <= 9; i++) {
+        menuItemsShort.push(
+            <MenuItem key={i} value={i}>
+                {i}
+            </MenuItem>
+        );
+    }
+
     return (
 
         <div className="CreatePost">
-            <Button variant="contained" sx={{ backgroundColor: '#6EA15E', m: 3, ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed, sans-serif' }} onClick={handleShowModal}>
+            <Button variant="contained" sx={{ backgroundColor: '#6EA15E', marginLeft: 3, ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed, sans-serif' }} onClick={handleShowModal}>
                 Create Post
             </Button>
             <Modal open={showModal} onClose={handleCloseModal} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Box sx={{ p: 2, bgcolor: "background.paper", width: 400, borderRadius: 2, fontFamily: 'Roboto Condensed, sans-serif' }}>
                     <form onSubmit={handleSubmit}>
+
                         <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                             Have you lost or found a disc?
                         </Typography>
-                        <RadioGroup name="isFound">
+                        <RadioGroup name="isFound" value={isFound} onChange={event => setIsFound(event.target.value)}>
                             <Box sx={{ display: 'flex', alignItems: 'center' }}>
                                 <Radio required value="true" />
                                 <Typography variant="body1" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
@@ -51,6 +78,7 @@ function CreatePost(props) {
                                 </Typography>
                             </Box>
                         </RadioGroup>
+
                         <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                             On what course?
                         </Typography>
@@ -62,7 +90,8 @@ function CreatePost(props) {
                                 defaultValue=""
                                 sx={{ mb: 2 }}
                                 labelId="course-label"
-                                // onChange={event => setC(event.target.value)}
+                                onChange={event => setCourse(event.target.value)}
+                                value={course}
                             >
                                 <MenuItem value="jellie-park">Jellie Park</MenuItem>
                                 <MenuItem value="queenspark">Queenspark</MenuItem>
@@ -71,9 +100,11 @@ function CreatePost(props) {
                                 <MenuItem value="ascot">Ascot</MenuItem>
                             </Select>
                         </FormControl>
+
                         <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                             On what hole?
                         </Typography>
+                        { course === "brooker-ave" || course === "queenspark" ? // brooker-ave and queenspark only have 9 holes. Added a conditional that changes the select range to 1-9 if they are selected. 
                         <FormControl fullWidth required sx={{ mb: 2 }}>
                             <InputLabel id="hole-label" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Hole</InputLabel>
                             <Select
@@ -82,28 +113,27 @@ function CreatePost(props) {
                                 defaultValue=""
                                 sx={{ mb: 2 }}
                                 labelId="course-label"
-                                // onChange={event => setH(event.target.value)}
+                                onChange={event => setHole(event.target.value)}
+                                value={hole}
                             >
-                                <MenuItem value="1">1</MenuItem>
-                                <MenuItem value="2">2</MenuItem>
-                                <MenuItem value="3">3</MenuItem>
-                                <MenuItem value="4">4</MenuItem>
-                                <MenuItem value="5">5</MenuItem>
-                                <MenuItem value="6">6</MenuItem>
-                                <MenuItem value="7">7</MenuItem>
-                                <MenuItem value="8">8</MenuItem>
-                                <MenuItem value="9">9</MenuItem>
-                                <MenuItem value="10">10</MenuItem>
-                                <MenuItem value="11">11</MenuItem>
-                                <MenuItem value="12">12</MenuItem>
-                                <MenuItem value="13">13</MenuItem>
-                                <MenuItem value="14">14</MenuItem>
-                                <MenuItem value="15">15</MenuItem>
-                                <MenuItem value="16">16</MenuItem>
-                                <MenuItem value="17">17</MenuItem>
-                                <MenuItem value="18">18</MenuItem>
+                                {menuItemsShort}
+                            </Select>
+                        </FormControl> :
+                        <FormControl fullWidth required sx={{ mb: 2 }}>
+                            <InputLabel id="hole-label" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Hole</InputLabel>
+                            <Select
+                                name="hole"
+                                label="Hole"
+                                defaultValue=""
+                                sx={{ mb: 2 }}
+                                labelId="course-label"
+                                onChange={event => setHole(event.target.value)}
+                                value={hole}
+                            >
+                                {menuItemsLong}
                             </Select>
                         </FormControl>
+                        }
                         <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                             What type of disc is it?
                         </Typography>
@@ -115,7 +145,8 @@ function CreatePost(props) {
                                 defaultValue=""
                                 sx={{ mb: 2 }}
                                 labelId="type-label"
-                                // onChange={event => setT(event.target.value)}
+                                onChange={event => setType(event.target.value)}
+                                value={type}
                             >
                                 <MenuItem value="driver">Driver</MenuItem>
                                 <MenuItem value="mid-range">Mid-range</MenuItem>
@@ -123,9 +154,11 @@ function CreatePost(props) {
                                 <MenuItem value="unsure">Unsure</MenuItem>
                             </Select>
                         </FormControl>
+
                         <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                             Upload photo
                         </Typography>
+
                         <Button variant="contained" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed, sans-serif' }} type="submit">
                             Create
                         </Button>

@@ -6,7 +6,8 @@ class User extends Model { }
 
 // Sequelize will create this table if it doesn't exist on startup
 User.init({
-    userId: {
+    
+    id: {
         type: DataTypes.INTEGER, allowNull: false, autoIncrement: true, primaryKey: true
     },
     username: {

@@ -29,6 +29,7 @@ function CreatePost(props) {
             type: type,
             image: image
         };
+        
         axios.post(`http://localhost:8001/api/posts/create`, data)
             .then(response => {
                 console.log(response.data);
@@ -102,11 +103,11 @@ function CreatePost(props) {
                                 onChange={event => setCourse(event.target.value)}
                                 value={course}
                             >
-                                <MenuItem value="jellie-park">Jellie Park</MenuItem>
-                                <MenuItem value="queenspark">Queenspark</MenuItem>
-                                <MenuItem value="warren-park">Warren Park</MenuItem>
-                                <MenuItem value="brooker-ave">Brooker Ave</MenuItem>
-                                <MenuItem value="ascot">Ascot</MenuItem>
+                                <MenuItem value="Jellie Park">Jellie Park</MenuItem>
+                                <MenuItem value="Queenspark">Queenspark</MenuItem>
+                                <MenuItem value="Warren Park">Warren Park</MenuItem>
+                                <MenuItem value="Brooker Ave">Brooker Ave</MenuItem>
+                                <MenuItem value="Ascot">Ascot</MenuItem>
                             </Select>
                         </FormControl>
 
@@ -157,10 +158,10 @@ function CreatePost(props) {
                                 onChange={event => setType(event.target.value)}
                                 value={type}
                             >
-                                <MenuItem value="driver">Driver</MenuItem>
-                                <MenuItem value="mid-range">Mid-range</MenuItem>
-                                <MenuItem value="putter">Putter</MenuItem>
-                                <MenuItem value="unsure">Unsure</MenuItem>
+                                <MenuItem value="Driver">Driver</MenuItem>
+                                <MenuItem value="Mid-range">Mid-range</MenuItem>
+                                <MenuItem value="Putter">Putter</MenuItem>
+                                <MenuItem value="Unsure">Unsure</MenuItem>
                             </Select>
                         </FormControl>
 

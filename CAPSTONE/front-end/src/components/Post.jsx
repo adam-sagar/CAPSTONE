@@ -38,8 +38,8 @@ function Post() {
         
         <Container maxWidth="xl">
             <Grid container spacing={4} sx={{ paddingBottom: 3 }}>
-                {posts.map((post, index) => (
-                    <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+                {posts.map((post) => (
+                    <Grid item xs={12} sm={6} md={4} lg={3} key={post.id}>
                         <Card sx={{ maxWidth: 300, borderRadius: 2, margin: '0 auto' }}>
                             <CardMedia
                                 sx={{ height: 200 }}
@@ -63,7 +63,16 @@ function Post() {
                             <CardActions>
                                 <Button onClick={handleOpen} size="small" sx={{ fontFamily: 'Roboto Condensed, sans-serif', color: '#6EA15E' }}>Comments</Button>
                             </CardActions>
-                            <Dialog open={open} onClose={handleClose} sx={{ "& .MuiPaper-root": { borderRadius: 2 } }}>
+                            <Dialog
+                                open={open}
+                                onClose={handleClose}
+                                sx={{
+                                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                                    "& .MuiPaper-root": {
+                                        borderRadius: 2
+                                    }
+                                }} 
+                            >
                                 <DialogTitle sx={{ fontFamily: 'Roboto Condensed, sans-serif'}} >Comments</DialogTitle>
                                 <DialogContent>
                                     <DialogContentText sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>
@@ -88,7 +97,7 @@ function Post() {
                         </Card>
                     </Grid>))}
                 </Grid>
-        </Container>
+            </Container>
         )
 }
 

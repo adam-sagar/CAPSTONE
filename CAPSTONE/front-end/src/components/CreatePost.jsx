@@ -50,7 +50,7 @@ function CreatePost(props) {
     return (
 
         <div className="CreatePost">
-            <Button variant="contained" sx={{ backgroundColor: '#6EA15E', marginLeft: 3, ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed, sans-serif' }} onClick={handleShowModal}>
+            <Button variant="contained" sx={{ backgroundColor: '#6EA15E', margin: 3, ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed, sans-serif' }} onClick={handleShowModal}>
                 Create Post
             </Button>
             <Modal open={showModal} onClose={handleCloseModal} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

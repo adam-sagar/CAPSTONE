@@ -2,6 +2,7 @@
 const Models = require("../models");
 
 const getPosts = (res) => {
+
     Models.Post.findAll({}).then(function (data) {
         res.send({ result: 200, data: data })
     }).catch(err => {
@@ -10,6 +11,7 @@ const getPosts = (res) => {
 }
 
 const createPosts = (data, res) => {
+
     Models.Post.create(data).then(function (data) {
         res.send({ result: 200, data: data })
     }).catch(err => {
@@ -18,6 +20,7 @@ const createPosts = (data, res) => {
 }
 
 const updatePost = (req, res) => {
+
     Models.Post.update(req.body, {
         where: { id: req.params.id }
     }).then(function (data) {
@@ -28,6 +31,7 @@ const updatePost = (req, res) => {
 }
 
 const deletePost = (req, res) => {
+    
     Models.Post.destroy({
         where: { id: req.params.id }
     }).then(function (data) {

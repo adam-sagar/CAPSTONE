@@ -9,8 +9,8 @@ function PostsPage() {
 
         <div className="PostsPage">
             <NavBar />
-            <Post />
             <CreatePost />
+            <Post />
         </div>
     );
 }

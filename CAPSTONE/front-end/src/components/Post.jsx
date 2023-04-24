@@ -37,7 +37,7 @@ function Post() {
     return (
         
         <Container maxWidth="xl">
-            <Grid container spacing={4} sx={{ mt: 3 }}>
+            <Grid container spacing={4} sx={{ paddingBottom: 3 }}>
                 {posts.map((post, index) => (
                     <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
                         <Card sx={{ maxWidth: 300, borderRadius: 2, margin: '0 auto' }}>

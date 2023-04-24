@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 
 /* adding background images to dashboard and posts page */
-.PostsPage {
+body {
   background-image: url('images/discgolfday.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -11,15 +11,15 @@
   height: 100vh;
 }
 
-.DashboardPage {
+/* .DashboardPage {
     background-image: url('images/discgolfaction.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50%;
     background-attachment: fixed;
     height: 100vh;
-}
-
+} */
+ 
 /* adding background images to landing, login and sign up pages */
 .LandingPage, .LoginPage, .SignUpPage {
   background-image: url('images/discgolfnight.jpg');
@@ -27,7 +27,7 @@
   background-size: cover;
   background-position: 50%;
   height: 100vh;
-}
+}  
 
 /* centering welcome text on landing page */
 .LandingPage {

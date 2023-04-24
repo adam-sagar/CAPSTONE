@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button, Select, MenuItem, RadioGroup, Radio, Box, Typography, FormControl, InputLabel } from "@mui/material";
+import axios from "axios";
 
 
 function CreatePost(props) {
@@ -20,16 +21,28 @@ function CreatePost(props) {
     };
 
     const handleSubmit = (event) => {
-        event.preventDefault();
-        // logic for sending to back-end
-        console.log({ isFound, course, hole, type });
-        handleCloseModal();
+        // event.preventDefault();
+        const data = {
+            isFound: isFound,
+            course: course,
+            hole: hole,
+            type: type,
+            image: image
+        };
+        axios.post(`http://localhost:8001/api/posts/create`, data)
+            .then(response => {
+                console.log(response.data);
+                handleCloseModal();
+            })
+            .catch(error => {
+                console.error(error);
+            });
     };
 
     // using a for loop to generate MenuItem components instead of having to write them all out individually
     const menuItemsLong = [];
 
-    for(let i = 1; i <= 18; i++) {
+    for (let i = 1; i <= 18; i++) {
         menuItemsLong.push(
             <MenuItem key={i} value={i}>
                 {i}
@@ -100,35 +113,35 @@ function CreatePost(props) {
                         <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                             On what hole?
                         </Typography>
-                        { course === "brooker-ave" || course === "queenspark" ? // brooker-ave and queenspark only have 9 holes. Added a conditional that changes the select range to 1-9 if they are selected. 
-                        <FormControl fullWidth required sx={{ mb: 2 }}>
-                            <InputLabel id="hole-label" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Hole</InputLabel>
-                            <Select
-                                name="hole"
-                                label="Hole"
-                                defaultValue=""
-                                sx={{ mb: 2 }}
-                                labelId="course-label"
-                                onChange={event => setHole(event.target.value)}
-                                value={hole}
-                            >
-                                {menuItemsShort}
-                            </Select>
-                        </FormControl> :
-                        <FormControl fullWidth required sx={{ mb: 2 }}>
-                            <InputLabel id="hole-label" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Hole</InputLabel>
-                            <Select
-                                name="hole"
-                                label="Hole"
-                                defaultValue=""
-                                sx={{ mb: 2 }}
-                                labelId="course-label"
-                                onChange={event => setHole(event.target.value)}
-                                value={hole}
-                            >
-                                {menuItemsLong}
-                            </Select>
-                        </FormControl>
+                        {course === "brooker-ave" || course === "queenspark" ? // brooker-ave and queenspark only have 9 holes. Added a conditional that changes the select range to 1-9 if they are selected. 
+                            <FormControl fullWidth required sx={{ mb: 2 }}>
+                                <InputLabel id="hole-label" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Hole</InputLabel>
+                                <Select
+                                    name="hole"
+                                    label="Hole"
+                                    defaultValue=""
+                                    sx={{ mb: 2 }}
+                                    labelId="course-label"
+                                    onChange={event => setHole(event.target.value)}
+                                    value={hole}
+                                >
+                                    {menuItemsShort}
+                                </Select>
+                            </FormControl> :
+                            <FormControl fullWidth required sx={{ mb: 2 }}>
+                                <InputLabel id="hole-label" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Hole</InputLabel>
+                                <Select
+                                    name="hole"
+                                    label="Hole"
+                                    defaultValue=""
+                                    sx={{ mb: 2 }}
+                                    labelId="course-label"
+                                    onChange={event => setHole(event.target.value)}
+                                    value={hole}
+                                >
+                                    {menuItemsLong}
+                                </Select>
+                            </FormControl>
                         }
                         <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                             What type of disc is it?

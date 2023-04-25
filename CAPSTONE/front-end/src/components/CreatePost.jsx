@@ -3,7 +3,7 @@ import { Modal, Button, Select, MenuItem, RadioGroup, Radio, Box, Typography, Fo
 import axios from "axios";
 
 
-function CreatePost(props) {
+function CreatePost() {
 
     const [showModal, setShowModal] = useState(false);
     const [isFound, setIsFound] = useState('');
@@ -20,8 +20,7 @@ function CreatePost(props) {
         setShowModal(false);
     };
 
-    const handleSubmit = (event) => {
-        // event.preventDefault();
+    const handleSubmit = () => {
         const data = {
             isFound: isFound,
             course: course,
@@ -45,7 +44,7 @@ function CreatePost(props) {
 
     for (let i = 1; i <= 18; i++) {
         menuItemsLong.push(
-            <MenuItem key={i} value={i}>
+            <MenuItem id="menu-item" key={i} value={i}>
                 {i}
             </MenuItem>
         );
@@ -55,7 +54,7 @@ function CreatePost(props) {
 
     for (let i = 1; i <= 9; i++) {
         menuItemsShort.push(
-            <MenuItem key={i} value={i}>
+            <MenuItem id="menu-item" key={i} value={i}>
                 {i}
             </MenuItem>
         );
@@ -64,7 +63,7 @@ function CreatePost(props) {
     return (
 
         <div className="CreatePost">
-            <Button variant="contained" sx={{ backgroundColor: '#6EA15E', margin: 3, ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed, sans-serif' }} onClick={handleShowModal}>
+            <Button variant="contained" sx={{ backgroundColor: '#6EA15E', mb: 3, ml: 3, ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed, sans-serif' }} onClick={handleShowModal}>
                 Create Post
             </Button>
             <Modal open={showModal} onClose={handleCloseModal} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -103,11 +102,11 @@ function CreatePost(props) {
                                 onChange={event => setCourse(event.target.value)}
                                 value={course}
                             >
-                                <MenuItem value="Jellie Park">Jellie Park</MenuItem>
-                                <MenuItem value="Queenspark">Queenspark</MenuItem>
-                                <MenuItem value="Warren Park">Warren Park</MenuItem>
-                                <MenuItem value="Brooker Ave">Brooker Ave</MenuItem>
-                                <MenuItem value="Ascot">Ascot</MenuItem>
+                                <MenuItem value="Jellie Park" id="menu-item">Jellie Park</MenuItem>
+                                <MenuItem value="Queenspark" id="menu-item">Queenspark</MenuItem>
+                                <MenuItem value="Warren Park" id="menu-item">Warren Park</MenuItem>
+                                <MenuItem value="Brooker Ave" id="menu-item">Brooker Ave</MenuItem>
+                                <MenuItem value="Ascot" id="menu-item">Ascot</MenuItem>
                             </Select>
                         </FormControl>
 
@@ -158,10 +157,10 @@ function CreatePost(props) {
                                 onChange={event => setType(event.target.value)}
                                 value={type}
                             >
-                                <MenuItem value="Driver">Driver</MenuItem>
-                                <MenuItem value="Mid-range">Mid-range</MenuItem>
-                                <MenuItem value="Putter">Putter</MenuItem>
-                                <MenuItem value="Unsure">Unsure</MenuItem>
+                                <MenuItem value="Driver" id="menu-item">Driver</MenuItem>
+                                <MenuItem value="Mid-range" id="menu-item">Mid-range</MenuItem>
+                                <MenuItem value="Putter" id="menu-item">Putter</MenuItem>
+                                <MenuItem value="Unsure" id="menu-item">Unsure</MenuItem>
                             </Select>
                         </FormControl>
 

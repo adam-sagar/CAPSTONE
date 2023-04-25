@@ -2,6 +2,7 @@ import { useState } from "react";
 import React from "react";
 import NavBar from "../components/NavBar";
 import { Card,CardMedia, Typography, CardContent, CardActions, Button, Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText, TextField } from "@mui/material";
+import FilterPosts from "../components/FilterPosts";
 
 function DashboardPage() {
 

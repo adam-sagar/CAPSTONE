@@ -31,11 +31,13 @@ function Post() {
 
         axios.get(`http://localhost:8001/api/posts`)
             .then(response => { console.log(response); setPosts(response.data.data) })
-            .catch(error => { console.log(error); })
+            .catch(error => {
+                console.error(error);
+            });
     }, [])
 
     return (
-        
+
         <Container maxWidth="xl">
             <Grid container spacing={4} sx={{ paddingBottom: 3 }}>
                 {posts.map((post) => (
@@ -48,7 +50,7 @@ function Post() {
                             />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="div" sx={{ mb: 1, fontFamily: 'Roboto Condensed, sans-serif' }}>
-                                    { post.isFound ? "Found" : "Lost" }
+                                    {post.isFound ? "Found" : "Lost"}
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary" sx={{ mb: 1, fontFamily: 'Roboto Condensed, sans-serif' }}>
                                     <Typography component="span" sx={{ fontFamily: 'Roboto Condensed, sans-serif', fontWeight: 'bold' }}>Course:</Typography> {post.course}
@@ -71,22 +73,22 @@ function Post() {
                                     "& .MuiPaper-root": {
                                         borderRadius: 2
                                     }
-                                }} 
+                                }}
                             >
-                                <DialogTitle sx={{ fontFamily: 'Roboto Condensed, sans-serif'}} >Comments</DialogTitle>
+                                <DialogTitle sx={{ fontFamily: 'Roboto Condensed, sans-serif' }} >Comments</DialogTitle>
                                 <DialogContent>
                                     <DialogContentText sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>
                                         {/* {post.commentId} */}
                                     </DialogContentText>
                                     <TextField
-                                            autoFocus
-                                            margin="dense"
-                                            id="comment"
-                                            label="Comment"
-                                            type="text"
-                                            fullWidth
-                                            variant="standard"
-                                            InputLabelProps={{ style: { fontFamily: 'Roboto Condensed, sans-serif' } }}
+                                        autoFocus
+                                        margin="dense"
+                                        id="comment"
+                                        label="Comment"
+                                        type="text"
+                                        fullWidth
+                                        variant="standard"
+                                        InputLabelProps={{ style: { fontFamily: 'Roboto Condensed, sans-serif' } }}
                                     />
                                 </DialogContent>
                                 <DialogActions>
@@ -96,9 +98,9 @@ function Post() {
                             </Dialog>
                         </Card>
                     </Grid>))}
-                </Grid>
-            </Container>
-        )
+            </Grid>
+        </Container>
+    )
 }
 
 export default Post;

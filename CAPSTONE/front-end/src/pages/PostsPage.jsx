@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "../components/NavBar";
 import CreatePost from "../components/CreatePost";
 import Post from "../components/Post";
+import FilterPosts from "../components/FilterPosts";
 
 function PostsPage() {
 
@@ -9,8 +10,9 @@ function PostsPage() {
 
         <div className="PostsPage">
             <NavBar />
-            <CreatePost />
+            <FilterPosts />
             <Post />
+            <CreatePost />
         </div>
     );
 }

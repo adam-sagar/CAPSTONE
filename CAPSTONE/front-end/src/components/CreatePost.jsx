@@ -39,21 +39,21 @@ function CreatePost() {
             });
     };
 
-    // using a for loop to generate MenuItem components instead of having to write them all out individually
-    const menuItemsLong = [];
+    // using for loops to generate MenuItem components instead of having to write them all out individually
+    const longCourse = [];
 
     for (let i = 1; i <= 18; i++) {
-        menuItemsLong.push(
+        longCourse.push(
             <MenuItem id="menu-item" key={i} value={i}>
                 {i}
             </MenuItem>
         );
     }
 
-    const menuItemsShort = [];
+    const shortCourse = [];
 
     for (let i = 1; i <= 9; i++) {
-        menuItemsShort.push(
+        shortCourse.push(
             <MenuItem id="menu-item" key={i} value={i}>
                 {i}
             </MenuItem>
@@ -63,7 +63,7 @@ function CreatePost() {
     return (
 
         <div className="CreatePost">
-            <Button variant="contained" sx={{ backgroundColor: '#6EA15E', mb: 3, ml: 3, ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed, sans-serif' }} onClick={handleShowModal}>
+            <Button variant="contained" sx={{ backgroundColor: '#6EA15E', m: 3, ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed, sans-serif' }} onClick={handleShowModal}>
                 Create Post
             </Button>
             <Modal open={showModal} onClose={handleCloseModal} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -113,7 +113,7 @@ function CreatePost() {
                         <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                             On what hole?
                         </Typography>
-                        {course === "brooker-ave" || course === "queenspark" ? // brooker-ave and queenspark only have 9 holes. Added a conditional that changes the select range to 1-9 if they are selected. 
+                        {course === "Brooker Ave" || course === "Queenspark" ? // brooker-ave and queenspark only have 9 holes. Added a conditional that changes the select range to 1-9 if they are selected. 
                             <FormControl fullWidth required sx={{ mb: 2 }}>
                                 <InputLabel id="hole-label" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Hole</InputLabel>
                                 <Select
@@ -125,7 +125,7 @@ function CreatePost() {
                                     onChange={event => setHole(event.target.value)}
                                     value={hole}
                                 >
-                                    {menuItemsShort}
+                                    {shortCourse}
                                 </Select>
                             </FormControl> :
                             <FormControl fullWidth required sx={{ mb: 2 }}>
@@ -139,13 +139,14 @@ function CreatePost() {
                                     onChange={event => setHole(event.target.value)}
                                     value={hole}
                                 >
-                                    {menuItemsLong}
+                                    {longCourse}
                                 </Select>
-                            </FormControl>
-                        }
+                            </FormControl>}
+                        
                         <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                             What type of disc is it?
                         </Typography>
+                    
                         <FormControl fullWidth required sx={{ mb: 2 }}>
                             <InputLabel id="type-label" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Type</InputLabel>
                             <Select

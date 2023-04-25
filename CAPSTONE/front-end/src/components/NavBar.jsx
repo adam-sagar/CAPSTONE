@@ -11,7 +11,10 @@ import discGolfBasket from '@iconify-icons/game-icons/disc-golf-basket';
 
 function NavBar() {
 
-    const navItems = [{ label: 'Dashboard', path: '/dashboard' }, { label: 'Posts', path: '/posts' }];
+    const navItems = [
+        { label: 'Dashboard', path: '/dashboard' },
+        { label: 'Posts', path: '/posts' }
+    ];
 
     return (
         

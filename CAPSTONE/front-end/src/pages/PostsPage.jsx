@@ -10,9 +10,12 @@ function PostsPage() {
 
         <div className="PostsPage">
             <NavBar />
-            <FilterPosts />
+            <div className="posts-container">
+                <CreatePost />
+                <FilterPosts />
+            </div>
             <Post />
-            <CreatePost />
+            
         </div>
     );
 }

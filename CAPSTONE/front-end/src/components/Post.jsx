@@ -48,7 +48,7 @@ function Post() {
                                 image="/images/discgolfaction.jpg"
                                 title="disc"
                             />
-                            <CardContent>
+                            <CardContent sx={{ height: 150 }}>
                                 <Typography gutterBottom variant="h5" component="div" sx={{ mb: 1, fontFamily: 'Roboto Condensed, sans-serif' }}>
                                     {post.isFound ? "Found" : "Lost"}
                                 </Typography>
@@ -58,9 +58,12 @@ function Post() {
                                 <Typography variant="body2" color="text.secondary" sx={{ mb: 1, fontFamily: 'Roboto Condensed, sans-serif' }}>
                                     <Typography component="span" sx={{ fontFamily: 'Roboto Condensed, sans-serif', fontWeight: 'bold' }}>Hole:</Typography> {post.hole}
                                 </Typography>
+                                {/* added a conditional so type won't display if user selects "Unsure" */}
+                                {post.type !== "Unsure" ? (
                                 <Typography variant="body2" color="text.secondary" sx={{ mb: 1, fontFamily: 'Roboto Condensed, sans-serif' }}>
                                     <Typography component="span" sx={{ fontFamily: 'Roboto Condensed, sans-serif', fontWeight: 'bold' }}>Type:</Typography> {post.type}
                                 </Typography>
+                                ) : null}
                             </CardContent>
                             <CardActions>
                                 <Button onClick={handleOpen} size="small" sx={{ fontFamily: 'Roboto Condensed, sans-serif', color: '#6EA15E' }}>Comments</Button>

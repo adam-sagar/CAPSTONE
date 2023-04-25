@@ -55,3 +55,14 @@ body {
 #menu-item {
   font-family: 'Roboto Condensed', sans-serif;
 }
+
+/* displaying CreatePost and FilterPosts components next to each other */
+.posts-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* hide vertical scrollbar to prevent background image shifting when modal and dropdowns appear */
+::-webkit-scrollbar {
+  display: none;
+}

@@ -44,6 +44,7 @@ function CommentDialog() {
                         fullWidth
                         variant="standard"
                         InputLabelProps={{ style: { fontFamily: 'Roboto Condensed, sans-serif' } }}
+                        sx={{ input: { fontFamily: 'Roboto Condensed, sans-serif' }}}
                     />
                 </DialogContent>
                 <DialogActions>

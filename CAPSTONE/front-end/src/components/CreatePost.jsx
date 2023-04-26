@@ -102,6 +102,7 @@ function CreatePost(props) {
                                 labelId="course-label"
                                 onChange={event => setCourse(event.target.value)}
                                 value={course}
+                                className="roboto-font" 
                             >
                                 <MenuItem value="Jellie Park" className="roboto-font">Jellie Park</MenuItem>
                                 <MenuItem value="Queenspark" className="roboto-font">Queenspark</MenuItem>
@@ -125,6 +126,7 @@ function CreatePost(props) {
                                     labelId="course-label"
                                     onChange={event => setHole(event.target.value)}
                                     value={hole}
+                                    className="roboto-font" 
                                 >
                                     {shortCourse}
                                 </Select>
@@ -139,6 +141,7 @@ function CreatePost(props) {
                                     labelId="course-label"
                                     onChange={event => setHole(event.target.value)}
                                     value={hole}
+                                    className="roboto-font" 
                                 >
                                     {longCourse}
                                 </Select>
@@ -158,6 +161,7 @@ function CreatePost(props) {
                                 labelId="type-label"
                                 onChange={event => setType(event.target.value)}
                                 value={type}
+                                className="roboto-font" 
                             >
                                 <MenuItem value="Driver" className="roboto-font">Driver</MenuItem>
                                 <MenuItem value="Mid-range" className="roboto-font">Mid-range</MenuItem>

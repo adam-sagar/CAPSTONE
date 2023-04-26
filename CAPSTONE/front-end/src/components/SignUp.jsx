@@ -53,7 +53,7 @@ function SignUp() {
                 value={username}
                 onChange={handleUsernameChange}
                 sx={{
-                    input: { color: "white", borderBottom: '1px solid white' },
+                    input: { color: "white", borderBottom: '1px solid white', fontFamily: 'Roboto Condensed, sans-serif' },
                     label: { color: "white", fontFamily: 'Roboto Condensed, sans-serif' }
                 }}
             />
@@ -65,7 +65,7 @@ function SignUp() {
                 value={email}
                 onChange={handleEmailChange}
                 sx={{
-                    input: { color: "white", borderBottom: '1px solid white' },
+                    input: { color: "white", borderBottom: '1px solid white', fontFamily: 'Roboto Condensed, sans-serif' },
                     label: { color: "white", fontFamily: 'Roboto Condensed, sans-serif' }
                 }}
             />
@@ -78,7 +78,7 @@ function SignUp() {
                 value={password}
                 onChange={handlePasswordChange}
                 sx={{
-                    input: { color: "white", borderBottom: '1px solid white' },
+                    input: { color: "white", borderBottom: '1px solid white', fontFamily: 'Roboto Condensed, sans-serif' },
                     label: { color: "white", fontFamily: 'Roboto Condensed, sans-serif' }
                 }}
             />

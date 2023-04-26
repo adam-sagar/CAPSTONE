@@ -59,7 +59,7 @@ function Login() {
                 value={username}
                 onChange={handleUsernameChange}
                 sx={{
-                    input: { color: "white", borderBottom: '1px solid white' }, // changed labels and border to white
+                    input: { color: "white", borderBottom: '1px solid white', fontFamily: 'Roboto Condensed, sans-serif' }, // changed labels and border to white
                     label: { color: "white", fontFamily: 'Roboto Condensed, sans-serif' } // changed to custom font with available fallback option
                 }}
             />
@@ -73,7 +73,7 @@ function Login() {
                 value={password}
                 onChange={handlePasswordChange}
                 sx={{
-                    input: { color: "white", borderBottom: '1px solid white' },
+                    input: { color: "white", borderBottom: '1px solid white', fontFamily: 'Roboto Condensed, sans-serif' },
                     label: { color: "white", fontFamily: 'Roboto Condensed, sans-serif' }
                 }}
             />

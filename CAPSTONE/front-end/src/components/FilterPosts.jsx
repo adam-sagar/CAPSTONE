@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { FormControl, InputLabel, Select, MenuItem, Button } from '@mui/material';
 
 function FilterPosts(props) {
 
@@ -18,6 +18,15 @@ function FilterPosts(props) {
         );
     }
 
+    const resetFilters = () => {
+
+        setLostFoundFilter('');
+        setCourseFilter('');
+        setHoleFilter('');
+        setTypeFilter('');
+        props.setFilters({ isFound: '', course: '', hole: '', type: '' });
+    }
+
     return (
 
         <div>
@@ -28,7 +37,8 @@ function FilterPosts(props) {
                     id="course-filter"
                     label="course-filter"
                     value={lostFoundFilter}
-                    onChange={event => { setLostFoundFilter(event.target.value); props.setFilters({ ...props.filters, isFound: event.target.value })}}            
+                    onChange={event => { setLostFoundFilter(event.target.value); props.setFilters({ ...props.filters, isFound: event.target.value })}}
+                    className="roboto-font"         
                 >
                     <MenuItem value="" className="roboto-font">All Posts</MenuItem>
                     <MenuItem value={false} className="roboto-font">Lost</MenuItem>
@@ -43,7 +53,8 @@ function FilterPosts(props) {
                     id="course-filter"
                     label="course-filter"
                     value={courseFilter}
-                    onChange={event => { setCourseFilter(event.target.value); props.setFilters({ ...props.filters, course: event.target.value })}}            
+                    onChange={event => { setCourseFilter(event.target.value); props.setFilters({ ...props.filters, course: event.target.value })}}
+                    className="roboto-font"            
                 >
                     <MenuItem value="" className="roboto-font">All Courses</MenuItem>
                     <MenuItem value="Jellie Park" className="roboto-font">Jellie Park</MenuItem>
@@ -61,7 +72,8 @@ function FilterPosts(props) {
                     id="hole-filter"
                     label="hole-filter"
                     value={holeFilter}
-                    onChange={event => { setHoleFilter(event.target.value); props.setFilters({ ...props.filters, hole: event.target.value })}}            
+                    onChange={event => { setHoleFilter(event.target.value); props.setFilters({ ...props.filters, hole: event.target.value })}}
+                    className="roboto-font"             
                 >
                     <MenuItem value="" className="roboto-font">All Holes</MenuItem>
                     {longCourse}
@@ -75,13 +87,15 @@ function FilterPosts(props) {
                     id="type-filter"
                     label="type-filter"
                     value={typeFilter}
-                    onChange={event => { setTypeFilter(event.target.value); props.setFilters({ ...props.filters, type: event.target.value })}}           
+                    onChange={event => { setTypeFilter(event.target.value); props.setFilters({ ...props.filters, type: event.target.value })}}
+                    className="roboto-font"            
                 >
                     <MenuItem value="" className="roboto-font">All Types</MenuItem>
                     <MenuItem value="Driver" className="roboto-font">Driver</MenuItem>
                     <MenuItem value="Mid-range" className="roboto-font">Mid-range</MenuItem>
                     <MenuItem value="Putter" className="roboto-font">Putter</MenuItem>
                 </Select>
+                <Button onClick={resetFilters} className="roboto-font" sx={{ mt: 1, color: '#6EA15E' }}>Reset</Button>
             </FormControl>
         </div>
     )

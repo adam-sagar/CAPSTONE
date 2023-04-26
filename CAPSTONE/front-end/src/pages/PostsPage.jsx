@@ -49,7 +49,11 @@ function PostsPage() {
                 <CreatePost onAddPost={handleAddPost}/>
                 <FilterPosts filters={filters} setFilters={setFilters} />
             </div>
+            {filteredPosts.length === 0 ? (
+                <div className="no-posts">No posts found.</div>
+            ) : (
             <PostList filteredPosts={filteredPosts} />
+            )}
         </div>
     );
 }

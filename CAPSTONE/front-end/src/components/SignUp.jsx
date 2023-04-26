@@ -83,7 +83,7 @@ function SignUp() {
                 }}
             />
             <Button type="submit" variant="outlined" sx={{ color: 'white', borderColor: 'white' }}>
-                <Typography variant="subtitle1" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Sign up</Typography>
+                <Typography className="roboto-font" variant="subtitle1">Sign up</Typography>
             </Button>
         </Box>
     );

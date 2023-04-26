@@ -52,8 +52,8 @@ body {
 }
 
 /* overriding mui MenuItem font */
-#menu-item {
-  font-family: 'Roboto Condensed', sans-serif;
+.roboto-font {
+  font-family: 'Roboto Condensed', sans-serif !important;
 }
 
 /* displaying CreatePost and FilterPosts components next to each other */

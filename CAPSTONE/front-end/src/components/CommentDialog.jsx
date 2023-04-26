@@ -23,16 +23,17 @@ function CommentDialog() {
 
         <div>
             <CardActions>
-                <Button onClick={handleOpen} size="small" sx={{ fontFamily: 'Roboto Condensed, sans-serif', color: '#6EA15E' }}>Comments</Button>
+                <Button className="roboto-font" onClick={handleOpen} size="small" sx={{ color: '#6EA15E' }}>Comments</Button>
             </CardActions>
             <Dialog
                 open={open}
                 onClose={handleClose}
+                fullWidth={true}
             >
-                <DialogTitle sx={{ fontFamily: 'Roboto Condensed, sans-serif' }} >Comments</DialogTitle>
+                <DialogTitle className="roboto-font">Comments</DialogTitle>
                 <DialogContent>
-                    <DialogContentText sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>
-                        {/* {post.commentId} */}
+                    <DialogContentText className="roboto-font">
+                        {/* comment goes here */}
                     </DialogContentText>
                     <TextField
                         autoFocus
@@ -46,8 +47,8 @@ function CommentDialog() {
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} variant="contained" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed, sans-serif', m: 0.5 }} >Add comment</Button>
-                    <Button onClick={handleClose} variant="contained" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed, sans-serif', m: 0.5 }} >Cancel</Button>
+                    <Button className="roboto-font" onClick={handleClose} variant="contained" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }, m: 0.5 }} >Add comment</Button>
+                    <Button className="roboto-font" onClick={handleClose} variant="contained" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }, m: 0.5 }} >Cancel</Button>
                 </DialogActions>
             </Dialog>
         </div>

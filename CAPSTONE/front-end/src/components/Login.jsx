@@ -78,7 +78,7 @@ function Login() {
                 }}
             />
             <Button type="submit" variant="outlined" sx={{ color: 'white', borderColor: 'white' }}>
-                <Typography variant="subtitle1" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Login</Typography> {/*changed button font*/}
+                <Typography className="roboto-font" variant="subtitle1">Login</Typography> {/*changed button font*/}
             </Button>
         </Box>
     );

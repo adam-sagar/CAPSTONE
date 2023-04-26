@@ -45,7 +45,7 @@ function CreatePost(props) {
 
     for (let i = 1; i <= 18; i++) {
         longCourse.push(
-            <MenuItem id="menu-item" key={i} value={i}>
+            <MenuItem className="roboto-font" key={i} value={i}>
                 {i}
             </MenuItem>
         );
@@ -55,7 +55,7 @@ function CreatePost(props) {
 
     for (let i = 1; i <= 9; i++) {
         shortCourse.push(
-            <MenuItem id="menu-item" key={i} value={i}>
+            <MenuItem className="roboto-font" key={i} value={i}>
                 {i}
             </MenuItem>
         );
@@ -64,36 +64,36 @@ function CreatePost(props) {
     return (
 
         <div className="CreatePost">
-            <Button variant="contained" sx={{ backgroundColor: '#6EA15E', m: 3, ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed, sans-serif' }} onClick={handleShowModal}>
+            <Button className="roboto-font" variant="contained" sx={{ backgroundColor: '#6EA15E', m: 3, ':hover': { backgroundColor: '#4B784A' } }} onClick={handleShowModal}>
                 Create Post
             </Button>
             <Modal open={showModal} onClose={handleCloseModal} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Box sx={{ p: 2, bgcolor: "background.paper", width: 400, borderRadius: 2, fontFamily: 'Roboto Condensed, sans-serif' }}>
+                <Box className="roboto-font" sx={{ p: 2, bgcolor: "background.paper", width: 400, borderRadius: 2 }}>
                     <form onSubmit={handleSubmit}>
 
-                        <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
+                        <Typography className="roboto-font" variant="h5" gutterBottom>
                             Have you lost or found a disc?
                         </Typography>
                         <RadioGroup name="isFound" value={isFound} onChange={event => setIsFound(event.target.value)}>
                             <Box sx={{ display: 'flex', alignItems: 'center' }}>
                                 <Radio required value="true" />
-                                <Typography variant="body1" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
+                                <Typography className="roboto-font" variant="body1" gutterBottom>
                                     Found
                                 </Typography>
                             </Box>
                             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                                 <Radio value="false" />
-                                <Typography variant="body1" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
+                                <Typography className="roboto-font" variant="body1" gutterBottom>
                                     Lost
                                 </Typography>
                             </Box>
                         </RadioGroup>
 
-                        <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
+                        <Typography className="roboto-font" variant="h5" gutterBottom>
                             On what course?
                         </Typography>
                         <FormControl fullWidth required sx={{ mb: 2 }}>
-                            <InputLabel id="course-label" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Course</InputLabel>
+                            <InputLabel className="roboto-font" id="course-label">Course</InputLabel>
                             <Select
                                 name="course"
                                 label="Course"
@@ -103,20 +103,20 @@ function CreatePost(props) {
                                 onChange={event => setCourse(event.target.value)}
                                 value={course}
                             >
-                                <MenuItem value="Jellie Park" id="menu-item">Jellie Park</MenuItem>
-                                <MenuItem value="Queenspark" id="menu-item">Queenspark</MenuItem>
-                                <MenuItem value="Warren Park" id="menu-item">Warren Park</MenuItem>
-                                <MenuItem value="Brooker Ave" id="menu-item">Brooker Ave</MenuItem>
-                                <MenuItem value="Ascot" id="menu-item">Ascot</MenuItem>
+                                <MenuItem value="Jellie Park" className="roboto-font">Jellie Park</MenuItem>
+                                <MenuItem value="Queenspark" className="roboto-font">Queenspark</MenuItem>
+                                <MenuItem value="Warren Park" className="roboto-font">Warren Park</MenuItem>
+                                <MenuItem value="Brooker Ave" className="roboto-font">Brooker Ave</MenuItem>
+                                <MenuItem value="Ascot" className="roboto-font">Ascot</MenuItem>
                             </Select>
                         </FormControl>
 
-                        <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
+                        <Typography className="roboto-font" variant="h5" gutterBottom>
                             On what hole?
                         </Typography>
                         {course === "Brooker Ave" || course === "Queenspark" ? // brooker-ave and queenspark only have 9 holes. Added a conditional that changes the select range to 1-9 if they are selected. 
                             <FormControl fullWidth required sx={{ mb: 2 }}>
-                                <InputLabel id="hole-label" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Hole</InputLabel>
+                                <InputLabel className="roboto-font" id="hole-label">Hole</InputLabel>
                                 <Select
                                     name="hole"
                                     label="Hole"
@@ -130,7 +130,7 @@ function CreatePost(props) {
                                 </Select>
                             </FormControl> :
                             <FormControl fullWidth required sx={{ mb: 2 }}>
-                                <InputLabel id="hole-label" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Hole</InputLabel>
+                                <InputLabel className="roboto-font" id="hole-label">Hole</InputLabel>
                                 <Select
                                     name="hole"
                                     label="Hole"
@@ -144,12 +144,12 @@ function CreatePost(props) {
                                 </Select>
                             </FormControl>}
 
-                        <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
+                        <Typography className="roboto-font" variant="h5" gutterBottom>
                             What type of disc is it?
                         </Typography>
 
                         <FormControl fullWidth sx={{ mb: 2 }}>
-                            <InputLabel id="type-label" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Type</InputLabel>
+                            <InputLabel className="roboto-font" id="type-label">Type</InputLabel>
                             <Select
                                 name="type"
                                 label="Type"
@@ -159,20 +159,20 @@ function CreatePost(props) {
                                 onChange={event => setType(event.target.value)}
                                 value={type}
                             >
-                                <MenuItem value="Driver" id="menu-item">Driver</MenuItem>
-                                <MenuItem value="Mid-range" id="menu-item">Mid-range</MenuItem>
-                                <MenuItem value="Putter" id="menu-item">Putter</MenuItem>
+                                <MenuItem value="Driver" className="roboto-font">Driver</MenuItem>
+                                <MenuItem value="Mid-range" className="roboto-font">Mid-range</MenuItem>
+                                <MenuItem value="Putter" className="roboto-font">Putter</MenuItem>
                             </Select>
                         </FormControl>
 
-                        <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
+                        <Typography className="roboto-font" variant="h5" gutterBottom>
                             Upload photo
                         </Typography>
 
-                        <Button variant="contained" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed, sans-serif' }} type="submit">
+                        <Button className="roboto-font" variant="contained" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }}} type="submit">
                             Create
                         </Button>
-                        <Button onClick={handleCloseModal} variant="contained" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }, fontFamily: 'Roboto Condensed, sans-serif', m: 2 }} >Cancel</Button>
+                        <Button className="roboto-font" onClick={handleCloseModal} variant="contained" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }, m: 2 }} >Cancel</Button>
                     </form>
                 </Box>
             </Modal>

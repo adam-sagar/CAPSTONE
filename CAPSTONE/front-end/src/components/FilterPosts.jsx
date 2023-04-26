@@ -12,7 +12,7 @@ function FilterPosts(props) {
 
     for (let i = 1; i <= 18; i++) {
         longCourse.push(
-            <MenuItem id="menu-item" key={i} value={i}>
+            <MenuItem className="roboto-font" key={i} value={i}>
                 {i}
             </MenuItem>
         );
@@ -22,7 +22,7 @@ function FilterPosts(props) {
 
         <div>
             <FormControl sx={{ width: 120, mt: 3, mb: 3, mr: 3 }}>
-                <InputLabel id="course-filter-label" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Lost/found</InputLabel>
+                <InputLabel className="roboto-font" id="course-filter-label">Lost/found</InputLabel>
                 <Select
                     labelId="course-filter-label"
                     id="course-filter"
@@ -30,14 +30,14 @@ function FilterPosts(props) {
                     value={lostFoundFilter}
                     onChange={event => { setLostFoundFilter(event.target.value); props.setFilters({ ...props.filters, isFound: event.target.value })}}            
                 >
-                    <MenuItem value="" id="menu-item">All Posts</MenuItem>
-                    <MenuItem value={false} id="menu-item">Lost</MenuItem>
-                    <MenuItem value={true} id="menu-item">Found</MenuItem>
+                    <MenuItem value="" className="roboto-font">All Posts</MenuItem>
+                    <MenuItem value={false} className="roboto-font">Lost</MenuItem>
+                    <MenuItem value={true} className="roboto-font">Found</MenuItem>
                 </Select>
             </FormControl>
 
             <FormControl sx={{ width: 120, mt: 3, mb:3, mr: 3 }}>
-                <InputLabel id="course-filter-label" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Course</InputLabel>
+                <InputLabel className="roboto-font" id="course-filter-label">Course</InputLabel>
                 <Select
                     labelId="course-filter-label"
                     id="course-filter"
@@ -45,17 +45,17 @@ function FilterPosts(props) {
                     value={courseFilter}
                     onChange={event => { setCourseFilter(event.target.value); props.setFilters({ ...props.filters, course: event.target.value })}}            
                 >
-                    <MenuItem value="" id="menu-item">All Courses</MenuItem>
-                    <MenuItem value="Jellie Park" id="menu-item">Jellie Park</MenuItem>
-                    <MenuItem value="Queenspark" id="menu-item">Queenspark</MenuItem>
-                    <MenuItem value="Warren Park" id="menu-item">Warren Park</MenuItem>
-                    <MenuItem value="Brooker Ave" id="menu-item">Brooker Ave</MenuItem>
-                    <MenuItem value="Ascot" id="menu-item">Ascot</MenuItem>
+                    <MenuItem value="" className="roboto-font">All Courses</MenuItem>
+                    <MenuItem value="Jellie Park" className="roboto-font">Jellie Park</MenuItem>
+                    <MenuItem value="Queenspark" className="roboto-font">Queenspark</MenuItem>
+                    <MenuItem value="Warren Park" className="roboto-font">Warren Park</MenuItem>
+                    <MenuItem value="Brooker Ave" className="roboto-font">Brooker Ave</MenuItem>
+                    <MenuItem value="Ascot" className="roboto-font">Ascot</MenuItem>
                 </Select>
             </FormControl>
 
             <FormControl sx={{ width: 120, mt: 3, mb:3, mr: 3 }}>
-                <InputLabel id="hole-filter-label" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Hole</InputLabel>
+                <InputLabel className="roboto-font" id="hole-filter-label">Hole</InputLabel>
                 <Select
                     labelId="hole-filter-label"
                     id="hole-filter"
@@ -63,13 +63,13 @@ function FilterPosts(props) {
                     value={holeFilter}
                     onChange={event => { setHoleFilter(event.target.value); props.setFilters({ ...props.filters, hole: event.target.value })}}            
                 >
-                    <MenuItem value="" id="menu-item">All Holes</MenuItem>
+                    <MenuItem value="" className="roboto-font">All Holes</MenuItem>
                     {longCourse}
                 </Select>
             </FormControl>
 
             <FormControl sx={{ width: 120, mt: 3, mb: 3, mr: 3 }}>
-                <InputLabel id="type-filter-label" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Type</InputLabel>
+                <InputLabel className="roboto-font" id="type-filter-label">Type</InputLabel>
                 <Select
                     labelId="type-filter-label"
                     id="type-filter"
@@ -77,10 +77,10 @@ function FilterPosts(props) {
                     value={typeFilter}
                     onChange={event => { setTypeFilter(event.target.value); props.setFilters({ ...props.filters, type: event.target.value })}}           
                 >
-                    <MenuItem value="" id="menu-item">All Types</MenuItem>
-                    <MenuItem value="Driver" id="menu-item">Driver</MenuItem>
-                    <MenuItem value="Mid-range" id="menu-item">Mid-range</MenuItem>
-                    <MenuItem value="Putter" id="menu-item">Putter</MenuItem>
+                    <MenuItem value="" className="roboto-font">All Types</MenuItem>
+                    <MenuItem value="Driver" className="roboto-font">Driver</MenuItem>
+                    <MenuItem value="Mid-range" className="roboto-font">Mid-range</MenuItem>
+                    <MenuItem value="Putter" className="roboto-font">Putter</MenuItem>
                 </Select>
             </FormControl>
         </div>

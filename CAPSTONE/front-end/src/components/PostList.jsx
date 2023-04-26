@@ -21,19 +21,19 @@ function PostList(props) {
                                 title="disc"
                             />
                             <CardContent sx={{ height: 150 }}>
-                                <Typography gutterBottom variant="h5" component="div" sx={{ mb: 1, fontFamily: 'Roboto Condensed, sans-serif' }}>
+                                <Typography className="roboto-font" gutterBottom variant="h5" component="div" sx={{ mb: 1 }}>
                                     {post.isFound ? "Found" : "Lost"}
                                 </Typography>
-                                <Typography variant="body2" color="text.secondary" sx={{ mb: 1, fontFamily: 'Roboto Condensed, sans-serif' }}>
-                                    <Typography component="span" sx={{ fontFamily: 'Roboto Condensed, sans-serif', fontWeight: 'bold' }}>Course:</Typography> {post.course}
+                                <Typography className="roboto-font" variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                                    <Typography className="roboto-font" component="span" sx={{ fontWeight: 'bold' }}>Course:</Typography> {post.course}
                                 </Typography>
-                                <Typography variant="body2" color="text.secondary" sx={{ mb: 1, fontFamily: 'Roboto Condensed, sans-serif' }}>
-                                    <Typography component="span" sx={{ fontFamily: 'Roboto Condensed, sans-serif', fontWeight: 'bold' }}>Hole:</Typography> {post.hole}
+                                <Typography className="roboto-font" variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                                    <Typography className="roboto-font" component="span" sx={{ fontWeight: 'bold' }}>Hole:</Typography> {post.hole}
                                 </Typography>
                                 {/* added a conditional so type won't display if user selects "Unsure" */}
                                 {post.type === '' ? null :  
-                                <Typography variant="body2" color="text.secondary" sx={{ mb: 1, fontFamily: 'Roboto Condensed, sans-serif' }}>
-                                    <Typography component="span" sx={{ fontFamily: 'Roboto Condensed, sans-serif', fontWeight: 'bold' }}>Type:</Typography> {post.type}
+                                <Typography className = "roboto-font" variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                                    <Typography className="roboto-font" component="span" sx={{ fontWeight: 'bold' }}>Type:</Typography> {post.type}
                                 </Typography>}
                             </CardContent>
                             <CommentDialog />

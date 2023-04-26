@@ -1,18 +1,12 @@
 import React from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Container, Grid } from '@mui/material';
 import CommentDialog from './CommentDialog';
 
 function PostList(props) {
-
-    const handleOpen = () => {
-        setOpen(true);
-    };
 
     return (
 
@@ -42,9 +36,6 @@ function PostList(props) {
                                     <Typography component="span" sx={{ fontFamily: 'Roboto Condensed, sans-serif', fontWeight: 'bold' }}>Type:</Typography> {post.type}
                                 </Typography>}
                             </CardContent>
-                            <CardActions>
-                                <Button onClick={handleOpen} size="small" sx={{ fontFamily: 'Roboto Condensed, sans-serif', color: '#6EA15E' }}>Comments</Button>
-                            </CardActions>
                             <CommentDialog />
                         </Card>
                     </Grid>))}

@@ -30,6 +30,7 @@ function FilterPosts(props) {
                     value={lostFoundFilter}
                     onChange={event => { setLostFoundFilter(event.target.value); props.setFilters({ ...props.filters, isFound: event.target.value })}}            
                 >
+                    <MenuItem value="" id="menu-item">All Posts</MenuItem>
                     <MenuItem value={false} id="menu-item">Lost</MenuItem>
                     <MenuItem value={true} id="menu-item">Found</MenuItem>
                 </Select>
@@ -44,6 +45,7 @@ function FilterPosts(props) {
                     value={courseFilter}
                     onChange={event => { setCourseFilter(event.target.value); props.setFilters({ ...props.filters, course: event.target.value })}}            
                 >
+                    <MenuItem value="" id="menu-item">All Courses</MenuItem>
                     <MenuItem value="Jellie Park" id="menu-item">Jellie Park</MenuItem>
                     <MenuItem value="Queenspark" id="menu-item">Queenspark</MenuItem>
                     <MenuItem value="Warren Park" id="menu-item">Warren Park</MenuItem>
@@ -61,6 +63,7 @@ function FilterPosts(props) {
                     value={holeFilter}
                     onChange={event => { setHoleFilter(event.target.value); props.setFilters({ ...props.filters, hole: event.target.value })}}            
                 >
+                    <MenuItem value="" id="menu-item">All Holes</MenuItem>
                     {longCourse}
                 </Select>
             </FormControl>
@@ -74,6 +77,7 @@ function FilterPosts(props) {
                     value={typeFilter}
                     onChange={event => { setTypeFilter(event.target.value); props.setFilters({ ...props.filters, type: event.target.value })}}           
                 >
+                    <MenuItem value="" id="menu-item">All Types</MenuItem>
                     <MenuItem value="Driver" id="menu-item">Driver</MenuItem>
                     <MenuItem value="Mid-range" id="menu-item">Mid-range</MenuItem>
                     <MenuItem value="Putter" id="menu-item">Putter</MenuItem>

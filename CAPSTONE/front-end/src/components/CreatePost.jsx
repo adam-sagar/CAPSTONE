@@ -177,7 +177,7 @@ function CreatePost(props) {
                             </InputLabel>
                             <IconButton color="primary" aria-label="upload picture" component="label">
                                 <input hidden accept="image/*" type="file" />
-                                <PhotoCamera style={{ color: "#800020" }} />
+                                <PhotoCamera style={{ color: "#6EA15E" }} />
                             </IconButton>
                         </Box>
 

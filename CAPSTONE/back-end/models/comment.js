@@ -12,20 +12,20 @@ Comment.init({
     id: {
         type: DataTypes.INTEGER, allowNull: false, autoIncrement: true, primaryKey: true
     },
-    // userId: {
-    //     type: DataTypes.INTEGER, allowNull: false, required: true,
-    //     references: {
-    //         model: User, // reference to another model
-    //         key: 'id' // column name of the referenced model
-    //     }
-    // },
-    // postId: {
-    //     type: DataTypes.INTEGER, allowNull: false, required: true,
-    //     references: {
-    //         model: Post, // reference to another model
-    //         key: 'id' // column name of the referenced model
-    //     }
-    // },
+    userId: {
+        type: DataTypes.INTEGER, allowNull: false, required: true,
+        references: {
+            model: User, // reference to another model
+            key: 'id' // column name of the referenced model
+        }
+    },
+    postId: {
+        type: DataTypes.INTEGER, allowNull: false, required: true,
+        references: {
+            model: Post, // reference to another model
+            key: 'id' // column name of the referenced model
+        }
+    },
     content: {
         type: DataTypes.STRING, allowNull: false, required: true
     },

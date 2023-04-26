@@ -3,7 +3,7 @@ import { Modal, Button, Select, MenuItem, RadioGroup, Radio, Box, Typography, Fo
 import axios from "axios";
 
 
-function CreatePost() {
+function CreatePost(props) {
 
     const [showModal, setShowModal] = useState(false);
     const [isFound, setIsFound] = useState('');
@@ -32,6 +32,7 @@ function CreatePost() {
         axios.post(`http://localhost:8001/api/posts/create`, data)
             .then(response => {
                 console.log(response.data);
+                props.onAddPost(data)
                 handleCloseModal();
             })
             .catch(error => {

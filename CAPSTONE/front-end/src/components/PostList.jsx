@@ -14,10 +14,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import axios from 'axios';
 import { Container, Grid } from '@mui/material';
 
-function Post() {
+function PostList(props) {
 
     const [open, setOpen] = useState(false);
-    const [posts, setPosts] = useState([]);
 
     const handleOpen = () => {
         setOpen(true);
@@ -27,20 +26,11 @@ function Post() {
         setOpen(false);
     };
 
-    useEffect(() => {
-
-        axios.get(`http://localhost:8001/api/posts`)
-            .then(response => { console.log(response); setPosts(response.data.data) })
-            .catch(error => {
-                console.error(error);
-            });
-    }, [])
-
     return (
 
         <Container maxWidth="xl">
             <Grid container spacing={4} sx={{ paddingBottom: 3 }}>
-                {posts.map((post) => (
+                {props.filteredPosts.map((post) => (
                     <Grid item xs={12} sm={6} md={4} lg={3} key={post.id}>
                         <Card sx={{ maxWidth: 300, borderRadius: 2, margin: '0 auto' }}>
                             <CardMedia
@@ -71,13 +61,7 @@ function Post() {
                             <Dialog
                                 open={open}
                                 onClose={handleClose}
-                                sx={{
-                                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                                    "& .MuiPaper-root": {
-                                        borderRadius: 2
-                                    }
-                                }}
-                            >
+                            > 
                                 <DialogTitle sx={{ fontFamily: 'Roboto Condensed, sans-serif' }} >Comments</DialogTitle>
                                 <DialogContent>
                                     <DialogContentText sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>
@@ -106,4 +90,4 @@ function Post() {
     )
 }
 
-export default Post;
+export default PostList;

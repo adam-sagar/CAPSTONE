@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
-function FilterPosts() {
+function FilterPosts(props) {
+
+    const [lostFoundFilter, setLostFoundFilter] = useState('');
+    const [courseFilter, setCourseFilter] = useState('');
+    const [holeFilter, setHoleFilter] = useState('');
+    const [typeFilter, setTypeFilter] = useState('');
 
     const longCourse = [];
 
@@ -22,11 +27,11 @@ function FilterPosts() {
                     labelId="course-filter-label"
                     id="course-filter"
                     label="course-filter"
-                // value={}
-                // onChange={}            
+                    value={lostFoundFilter}
+                    onChange={event => { setLostFoundFilter(event.target.value); props.setFilters({ ...props.filters, isFound: event.target.value })}}            
                 >
-                    <MenuItem value="Jellie Park" id="menu-item">Lost</MenuItem>
-                    <MenuItem value="Queenspark" id="menu-item">Found</MenuItem>
+                    <MenuItem value={false} id="menu-item">Lost</MenuItem>
+                    <MenuItem value={true} id="menu-item">Found</MenuItem>
                 </Select>
             </FormControl>
 
@@ -36,8 +41,8 @@ function FilterPosts() {
                     labelId="course-filter-label"
                     id="course-filter"
                     label="course-filter"
-                    // value={}
-                    // onChange={}            
+                    value={courseFilter}
+                    onChange={event => { setCourseFilter(event.target.value); props.setFilters({ ...props.filters, course: event.target.value })}}            
                 >
                     <MenuItem value="Jellie Park" id="menu-item">Jellie Park</MenuItem>
                     <MenuItem value="Queenspark" id="menu-item">Queenspark</MenuItem>
@@ -53,8 +58,8 @@ function FilterPosts() {
                     labelId="hole-filter-label"
                     id="hole-filter"
                     label="hole-filter"
-                // value={}
-                // onChange={}            
+                    value={holeFilter}
+                    onChange={event => { setHoleFilter(event.target.value); props.setFilters({ ...props.filters, hole: event.target.value })}}            
                 >
                     {longCourse}
                 </Select>
@@ -66,13 +71,12 @@ function FilterPosts() {
                     labelId="type-filter-label"
                     id="type-filter"
                     label="type-filter"
-                // value={}
-                // onChange={}            
+                    value={typeFilter}
+                    onChange={event => { setTypeFilter(event.target.value); props.setFilters({ ...props.filters, type: event.target.value })}}           
                 >
-                    <MenuItem value="Jellie Park" id="menu-item">Driver</MenuItem>
-                    <MenuItem value="Queenspark" id="menu-item">Mid-range</MenuItem>
-                    <MenuItem value="Warren Park" id="menu-item">Putter</MenuItem>
-                    <MenuItem value="Brooker Ave" id="menu-item">Unsure</MenuItem>
+                    <MenuItem value="Driver" id="menu-item">Driver</MenuItem>
+                    <MenuItem value="Mid-range" id="menu-item">Mid-range</MenuItem>
+                    <MenuItem value="Putter" id="menu-item">Putter</MenuItem>
                 </Select>
             </FormControl>
         </div>

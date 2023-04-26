@@ -39,7 +39,7 @@ function CommentDialog() {
                         autoFocus
                         margin="dense"
                         id="comment"
-                        label="Comment"
+                        label="Add comment"
                         type="text"
                         fullWidth
                         variant="standard"

@@ -95,7 +95,7 @@ function FilterPosts(props) {
                     <MenuItem value="Mid-range" className="roboto-font">Mid-range</MenuItem>
                     <MenuItem value="Putter" className="roboto-font">Putter</MenuItem>
                 </Select>
-                <Button onClick={resetFilters} className="roboto-font" sx={{ mt: 1, color: '#6EA15E' }}>Reset</Button>
+                <Button onClick={resetFilters} className="roboto-font" sx={{ mt: 1, color: "#800020" }}>Reset</Button>
             </FormControl>
         </div>
     )

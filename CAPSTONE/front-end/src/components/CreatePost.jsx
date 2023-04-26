@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Button, Select, MenuItem, RadioGroup, Radio, Box, Typography, FormControl, InputLabel } from "@mui/material";
+import IconButton from '@mui/material/IconButton';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import axios from "axios";
 
 
@@ -169,14 +171,20 @@ function CreatePost(props) {
                             </Select>
                         </FormControl>
 
-                        <Typography className="roboto-font" variant="h5" gutterBottom>
-                            Upload photo
-                        </Typography>
+                        <Box sx={{ display: "flex", alignItems: "center" }}>
+                            <InputLabel className="roboto-font" htmlFor="upload-photo">
+                                Upload photo
+                            </InputLabel>
+                            <IconButton color="primary" aria-label="upload picture" component="label">
+                                <input hidden accept="image/*" type="file" />
+                                <PhotoCamera style={{ color: "#800020" }} />
+                            </IconButton>
+                        </Box>
 
-                        <Button className="roboto-font" variant="contained" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }}} type="submit">
+                        <Button className="roboto-font" variant="contained" sx={{ backgroundColor: "#6EA15E", ":hover": { backgroundColor: "#4B784A" }}} type="submit">
                             Create
                         </Button>
-                        <Button className="roboto-font" onClick={handleCloseModal} variant="contained" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }, m: 2 }} >Cancel</Button>
+                        <Button className="roboto-font" onClick={handleCloseModal} variant="contained" sx={{ backgroundColor: "#6EA15E", ":hover": { backgroundColor: "#4B784A" }, m: 2 }} >Cancel</Button>
                     </form>
                 </Box>
             </Modal>

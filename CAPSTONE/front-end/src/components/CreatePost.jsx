@@ -28,7 +28,7 @@ function CreatePost(props) {
             type: type,
             image: image
         };
-        
+
         axios.post(`http://localhost:8001/api/posts/create`, data)
             .then(response => {
                 console.log(response.data);
@@ -143,12 +143,12 @@ function CreatePost(props) {
                                     {longCourse}
                                 </Select>
                             </FormControl>}
-                        
+
                         <Typography variant="h5" gutterBottom fontFamily='Roboto Condensed, sans-serif'>
                             What type of disc is it?
                         </Typography>
-                    
-                        <FormControl fullWidth required sx={{ mb: 2 }}>
+
+                        <FormControl fullWidth sx={{ mb: 2 }}>
                             <InputLabel id="type-label" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>Type</InputLabel>
                             <Select
                                 name="type"
@@ -162,7 +162,6 @@ function CreatePost(props) {
                                 <MenuItem value="Driver" id="menu-item">Driver</MenuItem>
                                 <MenuItem value="Mid-range" id="menu-item">Mid-range</MenuItem>
                                 <MenuItem value="Putter" id="menu-item">Putter</MenuItem>
-                                <MenuItem value="Unsure" id="menu-item">Unsure</MenuItem>
                             </Select>
                         </FormControl>
 

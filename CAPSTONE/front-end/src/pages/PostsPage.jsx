@@ -17,11 +17,13 @@ function PostsPage() {
     });
 
     useEffect(() => {
+
         axios.get(`http://localhost:8001/api/posts`)
             .then(response => { setAllPosts(response.data.data); setFilteredPosts(response.data.data)})
     }, [])
 
     useEffect(() => {
+
         let updatedPosts =
         allPosts.filter(post => (filters.isFound === '' || post.isFound === filters.isFound)
         && (filters.course === '' || post.course === filters.course)
@@ -34,6 +36,7 @@ function PostsPage() {
     }, [filters])
 
     function handleAddPost(newPost) {
+
         setAllPosts([...allPosts, newPost]);
         setFilteredPosts([...filteredPosts, newPost]);
     }
@@ -47,7 +50,6 @@ function PostsPage() {
                 <FilterPosts filters={filters} setFilters={setFilters} />
             </div>
             <PostList filteredPosts={filteredPosts} />
-            
         </div>
     );
 }

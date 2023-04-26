@@ -37,11 +37,10 @@ function PostList(props) {
                                     <Typography component="span" sx={{ fontFamily: 'Roboto Condensed, sans-serif', fontWeight: 'bold' }}>Hole:</Typography> {post.hole}
                                 </Typography>
                                 {/* added a conditional so type won't display if user selects "Unsure" */}
-                                {post.type !== "Unsure" ? (
+                                {post.type === '' ? null :  
                                 <Typography variant="body2" color="text.secondary" sx={{ mb: 1, fontFamily: 'Roboto Condensed, sans-serif' }}>
                                     <Typography component="span" sx={{ fontFamily: 'Roboto Condensed, sans-serif', fontWeight: 'bold' }}>Type:</Typography> {post.type}
-                                </Typography>
-                                ) : null}
+                                </Typography>}
                             </CardContent>
                             <CardActions>
                                 <Button onClick={handleOpen} size="small" sx={{ fontFamily: 'Roboto Condensed, sans-serif', color: '#6EA15E' }}>Comments</Button>
@@ -50,7 +49,7 @@ function PostList(props) {
                         </Card>
                     </Grid>))}
             </Grid>
-        </Container>
+        </Container> 
     )
 }
 

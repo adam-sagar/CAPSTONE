@@ -1,7 +1,7 @@
 const { DataTypes, Model } = require("sequelize");
 let dbConnect = require("../dbConnect");
 const sequelizeInstance = dbConnect.Sequelize;
-const Comment = require("./user")
+const User = require("./user")
 
 class Post extends Model { }
 
@@ -11,10 +11,10 @@ Post.init({
     id: {
         type: DataTypes.INTEGER, allowNull: false, autoIncrement: true, primaryKey: true
     },
-    commentId: {
+    userId: {
         type: DataTypes.INTEGER, allowNull: true, required: true,
         references: {
-            model: Comment, // reference to another model
+            model: User, // reference to another model
             key: 'id' // column name of the referenced model
         }
     },

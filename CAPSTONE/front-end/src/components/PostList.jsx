@@ -30,7 +30,7 @@ function PostList(props) {
                                 <Typography className="roboto-font" variant="body2" color="text.secondary" sx={{ mb: 1 }}>
                                     <Typography className="roboto-font" component="span" sx={{ fontWeight: 'bold' }}>Hole:</Typography> {post.hole}
                                 </Typography>
-                                {/* added a conditional so type won't display if user selects "Unsure" */}
+                                {/* added a conditional so type won't display if not selected */}
                                 {post.type === '' ? null :  
                                 <Typography className = "roboto-font" variant="body2" color="text.secondary" sx={{ mb: 1 }}>
                                     <Typography className="roboto-font" component="span" sx={{ fontWeight: 'bold' }}>Type:</Typography> {post.type}

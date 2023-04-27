@@ -13,7 +13,6 @@ function CreatePost(props) {
     const [hole, setHole] = useState('');
     const [type, setType] = useState('');
     const [image, setImage] = useState({ preview: '', data: '' });
-    const [status, setStatus] = useState('');
 
     const handleShowModal = () => {
         setShowModal(true);
@@ -24,7 +23,7 @@ function CreatePost(props) {
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        // e.preventDefault()
 
         let formData = new FormData()
         let userId = 1; // fix up once login works
@@ -38,12 +37,13 @@ function CreatePost(props) {
         axios.post(`http://localhost:8001/api/posts/create/${userId}`, formData)
             .then(response => {
                 console.log(response.data);
-               props.onAddPost(formData)
+                props.onAddPost(formData)
                 handleCloseModal();
             })
             .catch(error => {
                 console.error(error);
             });
+            // setTimeout(window.location.reload(), 200)
     };
 
     const handleFileChange = e => {

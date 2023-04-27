@@ -123,7 +123,7 @@ function CreatePost(props) {
                                 labelId="course-label"
                                 onChange={e => setCourse(e.target.value)}
                                 value={course}
-                                className="roboto-font" 
+                                className="roboto-font"
                             >
                                 <MenuItem value="Jellie Park" className="roboto-font">Jellie Park</MenuItem>
                                 <MenuItem value="Queenspark" className="roboto-font">Queenspark</MenuItem>
@@ -147,7 +147,7 @@ function CreatePost(props) {
                                     labelId="course-label"
                                     onChange={e => setHole(e.target.value)}
                                     value={hole}
-                                    className="roboto-font" 
+                                    className="roboto-font"
                                 >
                                     {shortCourse}
                                 </Select>
@@ -162,7 +162,7 @@ function CreatePost(props) {
                                     labelId="course-label"
                                     onChange={e => setHole(e.target.value)}
                                     value={hole}
-                                    className="roboto-font" 
+                                    className="roboto-font"
                                 >
                                     {longCourse}
                                 </Select>
@@ -182,7 +182,7 @@ function CreatePost(props) {
                                 labelId="type-label"
                                 onChange={e => setType(e.target.value)}
                                 value={type}
-                                className="roboto-font" 
+                                className="roboto-font"
                             >
                                 <MenuItem value="Driver" className="roboto-font">Driver</MenuItem>
                                 <MenuItem value="Mid-range" className="roboto-font">Mid-range</MenuItem>
@@ -194,17 +194,33 @@ function CreatePost(props) {
                             <InputLabel className="roboto-font">
                                 Upload photo
                             </InputLabel>
-                            <IconButton color="primary" aria-label="upload picture" component="label">
-                                <input hidden accept="image/*" type="file" onChange={handleFileChange}/>
+                            <IconButton
+                                color="primary"
+                                aria-label="upload picture"
+                                component="label">
+                                <input hidden accept="image/*" type="file" onChange={handleFileChange} />
                                 <PhotoCamera style={{ color: "#6EA15E" }} />
                             </IconButton>
-                            {image.preview && <img src={image.preview} width='100' height='100' />}
                         </Box>
-
-                        <Button className="roboto-font" variant="contained" sx={{ backgroundColor: "#6EA15E", ":hover": { backgroundColor: "#4B784A" }}} type="submit">
+                        <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
+                            {image.preview && <img src={image.preview} width="75" height="75" />}
+                        </Box>
+                        <Button
+                            className="roboto-font"
+                            variant="contained"
+                            sx={{ backgroundColor: "#6EA15E", ":hover": { backgroundColor: "#4B784A" }, mt: 2 }}
+                            type="submit"
+                        >
                             Create
                         </Button>
-                        <Button className="roboto-font" onClick={handleCloseModal} variant="contained" sx={{ backgroundColor: "#6EA15E", ":hover": { backgroundColor: "#4B784A" }, m: 2 }} >Cancel</Button>
+                        <Button
+                            className="roboto-font"
+                            onClick={handleCloseModal}
+                            variant="contained"
+                            sx={{ backgroundColor: "#6EA15E", ":hover": { backgroundColor: "#4B784A" }, mt: 2, ml: 2 }}
+                        >
+                            Cancel
+                        </Button>
                     </form>
                 </Box>
             </Modal>

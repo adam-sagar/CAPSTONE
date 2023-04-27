@@ -1,5 +1,6 @@
 "use strict";
 const Models = require("../models");
+const multer = require("multer");
 
 const getPosts = (res) => {
 
@@ -12,7 +13,31 @@ const getPosts = (res) => {
     })
 }
 
-const createPosts = (data, res) => {
+const createPosts = (req, res) => {
+
+    const data = req.body
+
+    console.log(data)
+    console.log(req.file)
+    const storage = multer.diskStorage({
+        destination: '/public/images',
+        filename: (req, file, cb) => {
+            cb(null, data.userId+file.originalname)
+
+        }, 
+    })
+
+    const upload = multer({ storage: storage }).single('file')
+    if (data.image) {
+        upload(req, res, (err) => {
+            if (err) {
+                res.status(500).json({ result: err.message })
+            }
+            else {
+                data.image = '/images/'+data.userId+req.file.originalname
+            }
+        })
+    }
 
     Models.Post.create(data).then(function (data) {
         res.send({ result: 200, data: data })

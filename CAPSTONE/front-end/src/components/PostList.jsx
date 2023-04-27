@@ -17,7 +17,7 @@ function PostList(props) {
                         <Card sx={{ maxWidth: 300, borderRadius: 2, margin: '0 auto' }}>
                             <CardMedia
                                 sx={{ height: 200 }}
-                                image="/images/discgolfaction.jpg"
+                                image={post.image ? 'http://localhost:8001' + post.image : "/images/discgolfaction.jpg"}
                                 title="disc"
                             />
                             <CardContent sx={{ height: 150 }}>

@@ -31,7 +31,7 @@ Post.init({
         type: DataTypes.STRING, allowNull: false, required: true
     },
     image: { 
-        type: DataTypes.STRING, allowNull: false, required: true
+        type: DataTypes.STRING, allowNull: true
     }
 }, 
     { 

@@ -12,7 +12,8 @@ function CreatePost(props) {
     const [course, setCourse] = useState('');
     const [hole, setHole] = useState('');
     const [type, setType] = useState('');
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState({ preview: '', data: '' });
+    const [status, setStatus] = useState('');
 
     const handleShowModal = () => {
         setShowModal(true);
@@ -22,25 +23,39 @@ function CreatePost(props) {
         setShowModal(false);
     };
 
-    const handleSubmit = () => {
-        const data = {
-            isFound: isFound,
-            course: course,
-            hole: hole,
-            type: type,
-            image: image
-        };
+    const handleSubmit = (e) => {
+        e.preventDefault()
 
-        axios.post(`http://localhost:8001/api/posts/create`, data)
+        let formData = new FormData()
+
+        formData.append('userId', 1) // fix up once login works
+        formData.append('image', image.data)
+        formData.append('isFound', isFound)
+        formData.append('course', course)
+        formData.append('hole', hole)
+        formData.append('type', type)
+        console.log(formData.get('image'))
+        axios.post(`http://localhost:8001/api/posts/create`, formData, {
+            headers: { "Content-Type": "multipart/form-data" }
+        })
             .then(response => {
                 console.log(response.data);
-                props.onAddPost(data)
-                handleCloseModal();
+                // props.onAddPost(data)
+                // handleCloseModal();
             })
             .catch(error => {
                 console.error(error);
             });
     };
+
+    const handleFileChange = e => {
+
+        const img = {
+            preview: URL.createObjectURL(e.target.files[0]),
+            data: e.target.files[0],
+        }
+        setImage(img)
+    }
 
     // using for loops to generate MenuItem components instead of having to write them all out individually
     const longCourse = [];
@@ -76,18 +91,22 @@ function CreatePost(props) {
                         <Typography className="roboto-font" variant="h5" gutterBottom>
                             Have you lost or found a disc?
                         </Typography>
-                        <RadioGroup name="isFound" value={isFound} onChange={event => setIsFound(event.target.value)}>
+                        <RadioGroup name="isFound" value={isFound} onChange={e => setIsFound(e.target.value)}>
                             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                <Radio required value="true" />
-                                <Typography className="roboto-font" variant="body1" gutterBottom>
-                                    Found
-                                </Typography>
+                                <Radio required value="true" id="found" />
+                                <label htmlFor="found">
+                                    <Typography className="roboto-font" variant="body1" gutterBottom>
+                                        Found
+                                    </Typography>
+                                </label>
                             </Box>
                             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                                <Radio value="false" />
-                                <Typography className="roboto-font" variant="body1" gutterBottom>
-                                    Lost
-                                </Typography>
+                                <Radio value="false" id="lost" />
+                                <label htmlFor="lost">
+                                    <Typography className="roboto-font" variant="body1" gutterBottom>
+                                        Lost
+                                    </Typography>
+                                </label>
                             </Box>
                         </RadioGroup>
 
@@ -102,7 +121,7 @@ function CreatePost(props) {
                                 defaultValue=""
                                 sx={{ mb: 2 }}
                                 labelId="course-label"
-                                onChange={event => setCourse(event.target.value)}
+                                onChange={e => setCourse(e.target.value)}
                                 value={course}
                                 className="roboto-font" 
                             >
@@ -126,7 +145,7 @@ function CreatePost(props) {
                                     defaultValue=""
                                     sx={{ mb: 2 }}
                                     labelId="course-label"
-                                    onChange={event => setHole(event.target.value)}
+                                    onChange={e => setHole(e.target.value)}
                                     value={hole}
                                     className="roboto-font" 
                                 >
@@ -141,7 +160,7 @@ function CreatePost(props) {
                                     defaultValue=""
                                     sx={{ mb: 2 }}
                                     labelId="course-label"
-                                    onChange={event => setHole(event.target.value)}
+                                    onChange={e => setHole(e.target.value)}
                                     value={hole}
                                     className="roboto-font" 
                                 >
@@ -161,7 +180,7 @@ function CreatePost(props) {
                                 defaultValue=""
                                 sx={{ mb: 2 }}
                                 labelId="type-label"
-                                onChange={event => setType(event.target.value)}
+                                onChange={e => setType(e.target.value)}
                                 value={type}
                                 className="roboto-font" 
                             >
@@ -172,13 +191,14 @@ function CreatePost(props) {
                         </FormControl>
 
                         <Box sx={{ display: "flex", alignItems: "center" }}>
-                            <InputLabel className="roboto-font" htmlFor="upload-photo">
+                            <InputLabel className="roboto-font">
                                 Upload photo
                             </InputLabel>
                             <IconButton color="primary" aria-label="upload picture" component="label">
-                                <input hidden accept="image/*" type="file" />
+                                <input hidden accept="image/*" type="file" onChange={handleFileChange}/>
                                 <PhotoCamera style={{ color: "#6EA15E" }} />
                             </IconButton>
+                            {image.preview && <img src={image.preview} width='100' height='100' />}
                         </Box>
 
                         <Button className="roboto-font" variant="contained" sx={{ backgroundColor: "#6EA15E", ":hover": { backgroundColor: "#4B784A" }}} type="submit">

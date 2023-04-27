@@ -37,7 +37,7 @@ function FilterPosts(props) {
                     id="course-filter"
                     label="course-filter"
                     value={lostFoundFilter}
-                    onChange={event => { setLostFoundFilter(event.target.value); props.setFilters({ ...props.filters, isFound: event.target.value })}}
+                    onChange={e => { setLostFoundFilter(e.target.value); props.setFilters({ ...props.filters, isFound: e.target.value })}}
                     className="roboto-font"         
                 >
                     <MenuItem value="" className="roboto-font">All Posts</MenuItem>
@@ -53,7 +53,7 @@ function FilterPosts(props) {
                     id="course-filter"
                     label="course-filter"
                     value={courseFilter}
-                    onChange={event => { setCourseFilter(event.target.value); props.setFilters({ ...props.filters, course: event.target.value })}}
+                    onChange={e => { setCourseFilter(e.target.value); props.setFilters({ ...props.filters, course: e.target.value })}}
                     className="roboto-font"            
                 >
                     <MenuItem value="" className="roboto-font">All Courses</MenuItem>
@@ -72,7 +72,7 @@ function FilterPosts(props) {
                     id="hole-filter"
                     label="hole-filter"
                     value={holeFilter}
-                    onChange={event => { setHoleFilter(event.target.value); props.setFilters({ ...props.filters, hole: event.target.value })}}
+                    onChange={e => { setHoleFilter(e.target.value); props.setFilters({ ...props.filters, hole: e.target.value })}}
                     className="roboto-font"             
                 >
                     <MenuItem value="" className="roboto-font">All Holes</MenuItem>
@@ -87,7 +87,7 @@ function FilterPosts(props) {
                     id="type-filter"
                     label="type-filter"
                     value={typeFilter}
-                    onChange={event => { setTypeFilter(event.target.value); props.setFilters({ ...props.filters, type: event.target.value })}}
+                    onChange={e => { setTypeFilter(e.target.value); props.setFilters({ ...props.filters, type: e.target.value })}}
                     className="roboto-font"            
                 >
                     <MenuItem value="" className="roboto-font">All Types</MenuItem>

@@ -10,21 +10,21 @@ function SignUp() {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
 
-    const handleUsernameChange = (event) => {
-        setUsername(event.target.value);
+    const handleUsernameChange = (e) => {
+        setUsername(e.target.value);
     }
 
-    const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
     }
 
-    const handleEmailChange = (event) => {
-        setEmail(event.target.value);
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (e) => {
         
-        event.preventDefault();
+        e.preventDefault();
         // logic for sending to back-end
         console.log({ username, email, password });
     }

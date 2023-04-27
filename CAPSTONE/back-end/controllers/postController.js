@@ -13,38 +13,21 @@ const getPosts = (res) => {
     })
 }
 
-const createPosts = (req, res) => {
+const createPost = (req, res) => {
 
     const data = req.body
+    data.userId = req.params.userId // userId is sent in params so we can use it in the filename
 
-    console.log(data)
-    console.log(req.file)
-    const storage = multer.diskStorage({
-        destination: '/public/images',
-        filename: (req, file, cb) => {
-            cb(null, data.userId+file.originalname)
-
-        }, 
-    })
-
-    const upload = multer({ storage: storage }).single('file')
-    if (data.image) {
-        upload(req, res, (err) => {
-            if (err) {
-                res.status(500).json({ result: err.message })
-            }
-            else {
-                data.image = '/images/'+data.userId+req.file.originalname
-            }
-        })
+    if (req.file) {
+        data.image = '/images/' + data.userId + '-' + req.file.originalname // multer middleware saves uploaded file into req.file
     }
 
-    Models.Post.create(data).then(function (data) {
+    Models.Post.create(data).then(function (data) { // store post including image path and userId
         res.send({ result: 200, data: data })
     })
     .catch(err => {
         console.error(err);
-        res.status(500).send({ error: 'Unable to create post. Please try again later.' });
+        res.status(500).send({ error: 'Unable to create post ('+err.message+'). Please try again later.' });
     })
 }
 
@@ -75,5 +58,5 @@ const deletePost = (req, res) => {
 }
 
 module.exports = {
-    getPosts, createPosts, updatePost, deletePost
+    getPosts, createPost, updatePost, deletePost
 }

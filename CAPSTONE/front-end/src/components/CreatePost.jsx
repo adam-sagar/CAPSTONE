@@ -27,21 +27,19 @@ function CreatePost(props) {
         e.preventDefault()
 
         let formData = new FormData()
+        let userId = 1; // fix up once login works
 
-        formData.append('userId', 1) // fix up once login works
         formData.append('image', image.data)
         formData.append('isFound', isFound)
         formData.append('course', course)
         formData.append('hole', hole)
         formData.append('type', type)
-        console.log(formData.get('image'))
-        axios.post(`http://localhost:8001/api/posts/create`, formData, {
-            headers: { "Content-Type": "multipart/form-data" }
-        })
+
+        axios.post(`http://localhost:8001/api/posts/create/${userId}`, formData)
             .then(response => {
                 console.log(response.data);
-                // props.onAddPost(data)
-                // handleCloseModal();
+               props.onAddPost(formData)
+                handleCloseModal();
             })
             .catch(error => {
                 console.error(error);

@@ -18,7 +18,7 @@ Comment.init({
             model: User, // reference to another model
             key: 'id' // column name of the referenced model
         }
-    },
+    }, 
     postId: {
         type: DataTypes.INTEGER, allowNull: false, required: true,
         references: {

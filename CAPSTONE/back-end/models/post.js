@@ -1,7 +1,7 @@
 const { DataTypes, Model } = require("sequelize");
 let dbConnect = require("../dbConnect");
 const sequelizeInstance = dbConnect.Sequelize;
-const User = require("./user");
+const User = require("./user")
 
 class Post extends Model { }
 

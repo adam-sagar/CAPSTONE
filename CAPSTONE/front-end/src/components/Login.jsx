@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import axios from 'axios';
 
 function Login() {
 
@@ -18,21 +19,22 @@ function Login() {
     }
 
     const handleSubmit = (e) => {
-        
         e.preventDefault();
-        // logic for sending to back-end
-        console.log({username, password});
-    }
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     const loginData = {
-    //         username: username,
-    //         password: password
-    //     };
-    //     console.log(loginData);
-    //     // send loginData to back-end
-    // };
+        let loginDetails = {
+            username: username,
+            password: password
+        };
+        console.log(loginDetails);
+
+        axios.post('http://localhost:8001/api/login', loginDetails)
+            .then(response => {
+                // handle response - similar to SignUp component
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
 
     return (
 
@@ -46,7 +48,6 @@ function Login() {
                 justifyContent: "center",
                 height: "100vh"
             }}
-            noValidate
             autoComplete="off"
             onSubmit={handleSubmit}
         >
@@ -65,7 +66,7 @@ function Login() {
             />
             <TextField
                 id="password"
-                name="password"                
+                name="password"
                 label="Password"
                 variant="standard"
                 type="password"

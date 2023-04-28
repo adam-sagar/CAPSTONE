@@ -16,7 +16,7 @@ const getUsers = (res) => {
 const createUsers = (data, res) => {
 
     if (!data.username || !data.email || !data.password) {
-        return res.send({ status: 400, error: 'Please provide all required fields' }); // error message unused in front-end as fields are set to required, but will show in Postman testing
+        return res.send({ status: 400, error: 'Please provide all required fields' }); // error message unused in front-end as changed form fields to required, but will keep for potential future use
     } else {
         // hash password with bcrypt
         bcrypt.hash(data.password, 10, function (err, hash) {

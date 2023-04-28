@@ -35,7 +35,8 @@ function SignUp() {
             username: username,
             email: email,
             password: password
-        }
+        };
+        console.log(signUpDetails);
 
         axios.post('http://localhost:8001/api/users/create', signUpDetails)
             .then(response => {
@@ -43,9 +44,9 @@ function SignUp() {
                 if (response.data.status === 200) {
                     setSuccessMsg(
                         <Typography variant="body1" sx={{ fontFamily: "Roboto Condensed, sans-serif", fontWeight: 300 }}>
-                            Successfully created account. Return to login page{" "}
+                            Successfully created account. You can now{" "}
                             <Link className='link' to="/login" onClick={() => navigate("/login")}>
-                                here
+                                login
                             </Link>
                             .
                         </Typography>

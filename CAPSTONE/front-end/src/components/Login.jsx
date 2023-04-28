@@ -31,7 +31,7 @@ function Login() {
     //         password: password
     //     };
     //     console.log(loginData);
-    //     // send loginData to backend API using fetch or axios
+    //     // send loginData to back-end
     // };
 
     return (
@@ -59,7 +59,7 @@ function Login() {
                 value={username}
                 onChange={handleUsernameChange}
                 sx={{
-                    input: { color: "white", borderBottom: '1px solid white', fontFamily: 'Roboto Condensed, sans-serif' }, // changed labels and border to white
+                    input: { color: "white", borderBottom: '1px solid white', fontFamily: 'Roboto Condensed, sans-serif' },
                     label: { color: "white", fontFamily: 'Roboto Condensed, sans-serif' } // changed to custom font with available fallback option
                 }}
             />
@@ -78,7 +78,7 @@ function Login() {
                 }}
             />
             <Button type="submit" variant="outlined" sx={{ color: 'white', borderColor: 'white' }}>
-                <Typography className="roboto-font" variant="subtitle1">Login</Typography> {/*changed button font*/}
+                <Typography className="roboto-font" variant="subtitle1">Login</Typography>
             </Button>
         </Box>
     );

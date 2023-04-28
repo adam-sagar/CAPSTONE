@@ -66,7 +66,7 @@ function NavBar() {
                     </Box>
                 </Toolbar>
             </AppBar>
-            <Toolbar /> {/*rendered a second Toolbar to prevent other components from going behind navbar. Can also use position="sticky" instead*/}
+            <Toolbar /> {/* rendered a second Toolbar to prevent other components from going behind navbar. Can also use position="sticky" instead */}
         </Box>
     );
 }

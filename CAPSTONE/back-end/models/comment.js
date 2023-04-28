@@ -22,8 +22,8 @@ Comment.init({
     postId: {
         type: DataTypes.INTEGER, allowNull: false, required: true,
         references: {
-            model: Post, // reference to another model
-            key: 'id' // column name of the referenced model
+            model: Post,
+            key: 'id'
         }
     },
     content: {

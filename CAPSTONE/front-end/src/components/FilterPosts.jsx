@@ -7,7 +7,6 @@ function FilterPosts(props) {
     const [courseFilter, setCourseFilter] = useState('');
     const [holeFilter, setHoleFilter] = useState('');
     const [typeFilter, setTypeFilter] = useState('');
-
     const longCourse = [];
 
     for (let i = 1; i <= 18; i++) {

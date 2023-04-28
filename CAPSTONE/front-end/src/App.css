@@ -19,15 +19,17 @@ body {
     background-attachment: fixed;
     height: 100vh;
 } */
- 
+
 /* adding background images to landing, login and sign up pages */
-.LandingPage, .LoginPage, .SignUpPage {
+.LandingPage,
+.LoginPage,
+.SignUpPage {
   background-image: url('images/discgolfnight.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50%;
   height: 100vh;
-}  
+}
 
 /* centering welcome text on landing page */
 .LandingPage {

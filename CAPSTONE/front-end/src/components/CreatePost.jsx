@@ -23,9 +23,8 @@ function CreatePost(props) {
     };
 
     const handleSubmit = (e) => {
-        // e.preventDefault()
 
-        let formData = new FormData()
+        let formData = new FormData(); // have to use FormData for uploading images with multer
         let userId = 1; // fix up once login works
 
         formData.append('image', image.data)
@@ -43,7 +42,6 @@ function CreatePost(props) {
             .catch(error => {
                 console.error(error);
             });
-            // setTimeout(window.location.reload(), 200)
     };
 
     const handleFileChange = e => {
@@ -85,7 +83,6 @@ function CreatePost(props) {
             <Modal open={showModal} onClose={handleCloseModal} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Box className="roboto-font" sx={{ p: 2, bgcolor: "background.paper", width: 400, borderRadius: 2 }}>
                     <form onSubmit={handleSubmit}>
-
                         <Typography className="roboto-font" variant="h5" gutterBottom>
                             Have you lost or found a disc?
                         </Typography>
@@ -134,7 +131,7 @@ function CreatePost(props) {
                         <Typography className="roboto-font" variant="h5" gutterBottom>
                             On what hole?
                         </Typography>
-                        {course === "Brooker Ave" || course === "Queenspark" ? // brooker-ave and queenspark only have 9 holes. Added a conditional that changes the select range to 1-9 if they are selected. 
+                        {course === "Brooker Ave" || course === "Queenspark" ? // brooker-ave and queenspark only have 9 holes. Added a conditional that changes the select range to 1-9 if they are selected
                             <FormControl fullWidth required sx={{ mb: 2 }}>
                                 <InputLabel className="roboto-font" id="hole-label">Hole</InputLabel>
                                 <Select

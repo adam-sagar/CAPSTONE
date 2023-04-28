@@ -25,6 +25,7 @@ function Login() {
             username: username,
             password: password
         };
+        
         console.log(loginDetails);
 
         axios.post('http://localhost:8001/api/login', loginDetails)

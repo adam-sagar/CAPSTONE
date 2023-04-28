@@ -9,14 +9,17 @@ app.use(cors());
 
 app.use("/", express.static("public"));
 
-let userRoutes = require('./routes/userRoutes')
-app.use('/api/users', userRoutes)
+let userRoutes = require('./routes/userRoutes');
+app.use('/api/users', userRoutes);
 
-let postRoutes = require('./routes/postRoutes')
-app.use('/api/posts', postRoutes)
+let postRoutes = require('./routes/postRoutes');
+app.use('/api/posts', postRoutes);
 
-let commentRoutes = require('./routes/commentRoutes')
-app.use('/api/comments', commentRoutes)
+let commentRoutes = require('./routes/commentRoutes');
+app.use('/api/comments', commentRoutes);
+
+let loginRoute = require('./routes/loginRoute');
+app.use('/api/login', loginRoute);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

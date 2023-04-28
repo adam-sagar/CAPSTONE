@@ -26,10 +26,10 @@ Comment.init({
             key: 'id'
         }
     },
-    content: {
+    comment: {
         type: DataTypes.STRING, allowNull: false, required: true
     },
-},
+}, 
     {
         sequelize: sequelizeInstance, modelName: 'comments', // use lowercase plural format
         timestamps: true, freezeTableName: true

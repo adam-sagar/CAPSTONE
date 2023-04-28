@@ -36,6 +36,7 @@ function SignUp() {
             email: email,
             password: password
         };
+        
         console.log(signUpDetails);
 
         axios.post('http://localhost:8001/api/users/create', signUpDetails)

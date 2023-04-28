@@ -6,18 +6,44 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Button, CardActions } from '@mui/material';
+import axios from 'axios';
 
 function CommentDialog() {
 
     const [open, setOpen] = useState(false);
+    const [comment, setComment] = useState('');
 
     const handleOpen = () => {
         setOpen(true);
     };
-
+ 
     const handleClose = () => {
         setOpen(false);
     };
+ 
+    const handleCommentChange = (e) => {
+        setComment(e.target.value);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        let commentDetails = {
+            userId: 1,
+            postId: 1,
+            comment: comment
+        };
+
+        console.log(commentDetails);
+
+        axios.post('http://localhost:8001/api/comments/create', commentDetails)
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
 
     return (
 
@@ -33,7 +59,7 @@ function CommentDialog() {
                 <DialogTitle className="roboto-font">Comments</DialogTitle>
                 <DialogContent>
                     <DialogContentText className="roboto-font">
-                        {/* comment goes here */}
+                        {/* comments go here */}
                     </DialogContentText>
                     <TextField
                         autoFocus
@@ -44,12 +70,28 @@ function CommentDialog() {
                         fullWidth
                         variant="standard"
                         InputLabelProps={{ style: { fontFamily: 'Roboto Condensed, sans-serif' } }}
-                        sx={{ input: { fontFamily: 'Roboto Condensed, sans-serif' }}}
+                        sx={{ input: { fontFamily: 'Roboto Condensed, sans-serif' } }}
+                        value={comment}
+                        onChange={handleCommentChange}
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button className="roboto-font" onClick={handleClose} variant="contained" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }, m: 0.5 }} >Add comment</Button>
-                    <Button className="roboto-font" onClick={handleClose} variant="contained" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }, m: 0.5 }} >Cancel</Button>
+                    <Button
+                        onClick={handleSubmit}
+                        className="roboto-font"
+                        variant="contained"
+                        sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }, m: 0.5 }}
+                    >
+                        Add comment
+                    </Button>
+                    <Button
+                        className="roboto-font"
+                        onClick={handleClose}
+                        variant="contained"
+                        sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }, m: 0.5 }}
+                    >
+                        Close
+                    </Button>
                 </DialogActions>
             </Dialog>
         </div>

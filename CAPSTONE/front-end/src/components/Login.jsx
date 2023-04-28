@@ -39,7 +39,7 @@ function Login() {
         <Box
             component="form"
             sx={{
-                '& > :not(style)': { m: 1, width: '25ch' },
+                '& > :not(style)': { m: 1, width: '50ch' },
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -77,9 +77,11 @@ function Login() {
                     label: { color: "white", fontFamily: 'Roboto Condensed, sans-serif' }
                 }}
             />
-            <Button type="submit" variant="outlined" sx={{ color: 'white', borderColor: 'white' }}>
-                <Typography className="roboto-font" variant="subtitle1">Login</Typography>
-            </Button>
+            <div style={{ width: "100px" }}>
+                <Button type="submit" variant="outlined" sx={{ color: 'white', borderColor: 'white', mt: 1 }}>
+                    <Typography className="roboto-font" variant="subtitle1">Login</Typography>
+                </Button>
+            </div>
         </Box>
     );
 }

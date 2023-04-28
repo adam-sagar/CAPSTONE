@@ -11,15 +11,6 @@ body {
   height: 100vh;
 }
 
-/* .DashboardPage {
-    background-image: url('images/discgolfaction.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50%;
-    background-attachment: fixed;
-    height: 100vh;
-} */
-
 /* adding background images to landing, login and sign up pages */
 .LandingPage,
 .LoginPage,
@@ -74,4 +65,10 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
   display: flex;
   justify-content: center;
+}
+
+.success-message {
+  font-family: "Roboto Condensed", sans-serif !important;
+  text-align: center;
+  color: white;
 }

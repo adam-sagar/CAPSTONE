@@ -5,13 +5,15 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function SignUp() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
-    const [errMsg, setErrMsg] = useState(''); //  was previously in use, but became unnecessary after making the form fields required. Will keep for potential future use
+    // const [errMsg, setErrMsg] = useState(''); was previously in use, but became unnecessary after making the form fields required. Will keep for potential future use
+    const [successMsg, setSuccessMsg] = useState('');
     const navigate = useNavigate();
 
     const handleUsernameChange = (e) => {
@@ -39,7 +41,15 @@ function SignUp() {
             .then(response => {
                 console.log(response.data);
                 if (response.data.status === 200) {
-                    navigate('/login')
+                    setSuccessMsg(
+                        <Typography variant="body1" sx={{ fontFamily: "Roboto Condensed, sans-serif", fontWeight: 300 }}>
+                            Successfully created account. Return to login page{" "}
+                            <Link className='link' to="/login" onClick={() => navigate("/login")}>
+                                here
+                            </Link>
+                            .
+                        </Typography>
+                    );
                 } else {
                     setErrMsg(response.data.error)
                 }
@@ -51,10 +61,11 @@ function SignUp() {
     }
 
     return (
+
         <Box
             component="form"
             sx={{
-                '& > :not(style)': { m: 1, width: '25ch' },
+                '& > :not(style)': { m: 1, width: '50ch' },
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -103,12 +114,14 @@ function SignUp() {
                 }}
             />
             {/* <div>{errMsg}</div> */}
-            <Button type="submit" variant="outlined" sx={{ color: 'white', borderColor: 'white' }}>
-                <Typography className="roboto-font" variant="subtitle1">Sign up</Typography>
-            </Button>
+            <div style={{ width: "100px" }}>
+                <Button type="submit" variant="outlined" sx={{ color: 'white', borderColor: 'white', mt: 1 }}>
+                    <Typography className="roboto-font" variant="subtitle1">Sign up</Typography>
+                </Button>
+            </div>
+            <div className="success-message">{successMsg}</div>
         </Box>
     );
-
 }
 
 

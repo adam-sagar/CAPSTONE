@@ -25,12 +25,11 @@ function CommentDialog() {
         setComment(e.target.value);
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = () => {
 
         let commentDetails = {
-            userId: 1,
-            postId: 1,
+            userId: 1, // these need to be made dynamic
+            postId: 1, 
             comment: comment
         };
 
@@ -39,6 +38,7 @@ function CommentDialog() {
         axios.post('http://localhost:8001/api/comments/create', commentDetails)
             .then(response => {
                 console.log(response.data);
+                setComment(''); // clears comment text after submitting
             })
             .catch(error => {
                 console.error(error);

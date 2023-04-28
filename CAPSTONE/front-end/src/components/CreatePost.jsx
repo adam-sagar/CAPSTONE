@@ -19,10 +19,19 @@ function CreatePost(props) {
     };
 
     const handleCloseModal = () => {
+        resetState();
         setShowModal(false);
     };
 
-    const handleSubmit = (e) => {
+    const resetState = () => {
+        setIsFound('');
+        setCourse('');
+        setHole('');
+        setType('');
+        setImage({ preview: '', data: '' });
+    }
+
+    const handleSubmit = () => {
 
         let formData = new FormData(); // have to use FormData for uploading images with multer
         let userId = 1; // fix up once login works

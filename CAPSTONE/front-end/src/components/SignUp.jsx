@@ -24,16 +24,16 @@ function SignUp() {
         if (e.target.value === '') {
             setUsernameError(false);
         } else if (e.target.validity.patternMismatch) {
-            setUsernameError("Username must only contain letters, numbers, hyphens, and underscores");
+            setUsernameError("Must only contain letters, numbers, hyphens, and underscores");
         } else if (e.target.validity.tooShort) {
-            setUsernameError("Username must be 3 or more characters long.");
+            setUsernameError("Must be 3 or more characters long.");
         } else {
             setUsernameError(false);
         }
     }
 
     const handlePasswordChange = (e) => {
-        
+
         setPassword(e.target.value);
         if (e.target.value === '') {
             setPasswordError(false);
@@ -92,7 +92,7 @@ function SignUp() {
         <Box
             component="form"
             sx={{
-                '& > :not(style)': { m: 1, width: '55ch' },
+                '& > :not(style)': { m: 1.5, width: '45ch' },
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -140,7 +140,7 @@ function SignUp() {
                 value={password}
                 onChange={handlePasswordChange}
                 inputProps={{ minLength: 6, maxLength: 30 }}
-                helperText={passwordError ? "Password must be at least 6 characters long" : " "}
+                helperText={passwordError ? "Must be at least 6 characters long" : " "}
                 error={passwordError}
                 sx={{
                     input: { color: "white", borderBottom: '1px solid white', fontFamily: 'Roboto Condensed, sans-serif' },
@@ -150,8 +150,8 @@ function SignUp() {
             {successMsg ? (
                 <div className="success-msg">{successMsg}</div>
             ) : (
-                <div>
-                    <div className="err-msg">{errMsg}</div>
+                <>
+                    {errMsg && <div className="err-msg">{errMsg}</div>}
                     <div style={{ width: "100px" }}>
                         <Button
                             type="submit"
@@ -163,7 +163,7 @@ function SignUp() {
                             </Typography>
                         </Button>
                     </div>
-                </div>
+                </>
             )}
         </Box>
     );

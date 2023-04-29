@@ -1,6 +1,7 @@
 "use strict";
 const Models = require("../models");
 const bcrypt = require('bcryptjs');
+const { Op } = require('sequelize');
 
 const getUsers = (res) => {
 
@@ -18,9 +19,20 @@ const createUsers = (data, res) => {
     if (!data.username || !data.email || !data.password) {
         return res.send({ status: 400, error: 'Please provide all required fields.' });
     } else {
-        Models.User.findOne({ where: { username: data.username } }).then(function (existingUser) {
+        Models.User.findOne({
+            where: {
+                [Op.or]: [
+                    { username: data.username },
+                    { email: data.email }
+                ]
+            }
+        }).then(function (existingUser) {
             if (existingUser) {
-                return res.send({ status: 400, error: 'Username already taken. Please choose a different username.' });
+                if (existingUser.username === data.username) {
+                    return res.send({ status: 400, error: 'Username already taken. Please choose a different username.' });
+                } else if (existingUser.email === data.email) {
+                    return res.send({ status: 400, error: 'There is already an account associated with this email.' });
+                }
             } else {
                 bcrypt.hash(data.password, 10, function (err, hash) {
                     if (err) {
@@ -39,13 +51,13 @@ const createUsers = (data, res) => {
                     }
                 });
             }
-        })
-            .catch(err => {
-                console.error(err);
-                res.status(500).send({ error: 'Unable to create user. Please try again later.' });
-            });
+        });
     }
-};
+}
+
+
+
+
 
 const updateUser = (req, res) => {
 

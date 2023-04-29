@@ -50,7 +50,7 @@ function Login() {
         <Box
             component="form"
             sx={{
-                '& > :not(style)': { m: 1, width: '55ch' },
+                '& > :not(style)': { m: 1.5, width: '45ch' },
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -87,12 +87,12 @@ function Login() {
                     label: { color: "white", fontFamily: 'Roboto Condensed, sans-serif' }
                 }}
             />
+            <div className="err-msg">{errMsg}</div>
             <div style={{ width: "100px" }}>
                 <Button type="submit" variant="outlined" sx={{ color: 'white', borderColor: 'white', mt: 1 }}>
                     <Typography className="roboto-font" variant="subtitle1">Login</Typography>
                 </Button>
             </div>
-            <div className="err-msg">{errMsg}</div>
         </Box>
     );
 }

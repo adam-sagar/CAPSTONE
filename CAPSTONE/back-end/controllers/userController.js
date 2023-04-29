@@ -16,29 +16,36 @@ const getUsers = (res) => {
 const createUsers = (data, res) => {
 
     if (!data.username || !data.email || !data.password) {
-        return res.send({ status: 400, error: 'Please provide all required fields' }); // error message unused in front-end as changed form fields to required, but will keep for potential future use
+        return res.send({ status: 400, error: 'Please provide all required fields.' });
     } else {
-        // hash password with bcrypt
-        bcrypt.hash(data.password, 10, function (err, hash) {
-            if (err) {
-                console.error(err);
-                res.send({ status: 500, error: 'Unable to create user. Please try again later.' });
+        Models.User.findOne({ where: { username: data.username } }).then(function (existingUser) {
+            if (existingUser) {
+                return res.send({ status: 400, error: 'Username already taken. Please choose a different username.' });
             } else {
-                // replace plain text password with hashed password
-                data.password = hash;
-                Models.User.create(data)
-                    .then(function (data) {
-                        res.send({ status: 200, data: data });
-                    })
-                    .catch(err => {
+                bcrypt.hash(data.password, 10, function (err, hash) {
+                    if (err) {
                         console.error(err);
                         res.send({ status: 500, error: 'Unable to create user. Please try again later.' });
-                    });
+                    } else {
+                        data.password = hash;
+                        Models.User.create(data)
+                            .then(function (data) {
+                                res.send({ status: 200, data: data });
+                            })
+                            .catch(err => {
+                                console.error(err);
+                                res.send({ status: 500, error: 'Unable to create user. Please try again later.' });
+                            });
+                    }
+                });
             }
-        });
+        })
+            .catch(err => {
+                console.error(err);
+                res.status(500).send({ error: 'Unable to create user. Please try again later.' });
+            });
     }
 };
-
 
 const updateUser = (req, res) => {
 

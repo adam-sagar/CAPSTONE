@@ -42,7 +42,7 @@ function Login() {
         <Box
             component="form"
             sx={{
-                '& > :not(style)': { m: 1, width: '50ch' },
+                '& > :not(style)': { m: 1, width: '55ch' },
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",

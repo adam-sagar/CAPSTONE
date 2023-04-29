@@ -7,10 +7,10 @@ const getPosts = (res) => {
     Models.Post.findAll({}).then(function (data) {
         res.send({ result: 200, data: data })
     })
-    .catch(err => {
-        console.error(err);
-        res.status(500).send({ error: 'Unable to get posts. Please try again later.' });
-    })
+        .catch(err => {
+            console.error(err);
+            res.status(500).send({ error: 'Unable to get posts. Please try again later.' });
+        })
 }
 
 const createPost = (req, res) => {
@@ -25,10 +25,10 @@ const createPost = (req, res) => {
     Models.Post.create(data).then(function (data) { // store post including image path and userId
         res.send({ result: 200, data: data })
     })
-    .catch(err => {
-        console.error(err);
-        res.status(500).send({ error: 'Unable to create post ('+err.message+'). Please try again later.' });
-    })
+        .catch(err => {
+            console.error(err);
+            res.status(500).send({ error: 'Unable to create post (' + err.message + '). Please try again later.' });
+        })
 }
 
 const updatePost = (req, res) => {
@@ -38,10 +38,10 @@ const updatePost = (req, res) => {
     }).then(function (data) {
         res.send({ result: 200, data: data })
     })
-    .catch(err => {
-        console.error(err);
-        res.status(500).send({ error: 'Unable to update post. Please try again later.' });
-    })
+        .catch(err => {
+            console.error(err);
+            res.status(500).send({ error: 'Unable to update post. Please try again later.' });
+        })
 }
 
 const deletePost = (req, res) => {
@@ -51,10 +51,10 @@ const deletePost = (req, res) => {
     }).then(function (data) {
         res.send({ result: 200, data: data })
     })
-    .catch(err => {
-        console.error(err);
-        res.status(500).send({ error: 'Unable to delete post. Please try again later.' });
-    })
+        .catch(err => {
+            console.error(err);
+            res.status(500).send({ error: 'Unable to delete post. Please try again later.' });
+        })
 }
 
 module.exports = {

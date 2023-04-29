@@ -67,8 +67,13 @@ body {
   justify-content: center;
 }
 
-.success-message {
+.err-msg {
   font-family: "Roboto Condensed", sans-serif !important;
+  text-align: center;
+  color: white;
+}
+
+.success-msg {
   text-align: center;
   color: white;
 }

@@ -3,12 +3,14 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 
 function Login() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [errMsg, setErrMsg] = useState('');
 
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);
@@ -25,12 +27,17 @@ function Login() {
             username: username,
             password: password
         };
-        
+
         console.log(loginDetails);
 
         axios.post('http://localhost:8001/api/login', loginDetails)
             .then(response => {
-                // handle response - similar to SignUp component
+                console.log(response.data);
+                if (response.data.status === 200) {
+                    Navigate("/dashboard")
+                } else {
+                    setErrMsg(response.data.error)
+                }
             })
             .catch(error => {
                 console.error(error);
@@ -84,6 +91,7 @@ function Login() {
                     <Typography className="roboto-font" variant="subtitle1">Login</Typography>
                 </Button>
             </div>
+            <div className="err-msg">{errMsg}</div>
         </Box>
     );
 }

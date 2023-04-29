@@ -150,7 +150,7 @@ function SignUp() {
             {successMsg ? (
                 <div className="success-msg">{successMsg}</div>
             ) : (
-                <>
+                <div>
                     <div className="err-msg">{errMsg}</div>
                     <div style={{ width: "100px" }}>
                         <Button
@@ -163,7 +163,7 @@ function SignUp() {
                             </Typography>
                         </Button>
                     </div>
-                </>
+                </div>
             )}
         </Box>
     );

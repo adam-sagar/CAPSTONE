@@ -2,7 +2,9 @@
 const Models = require("../models");
 const bcrypt = require("bcrypt");
 
-const validateLogin = async (data, res) => {
+const validateLogin = async (req, res) => {
+
+    const data = req.body;
 
     if (!data.username || !data.password) {
         return res.send({ status: 400, error: 'Please provide all required fields.' });

@@ -68,7 +68,7 @@ function SignUp() {
                 console.log(response.data);
                 if (response.data.status === 200) {
                     setSuccessMsg(
-                        <Typography variant="body1" sx={{ fontFamily: 'Roboto Condensed, sans-serif' }}>
+                        <Typography variant="body1" sx={{ fontFamily: 'Roboto Condensed, sans-serif', fontWeight: 300 }}>
                             Successfully created account. Return to login{" "}
                             <Link className='link' to="/login" onClick={() => navigate("/login")}>
                                 here
@@ -92,7 +92,7 @@ function SignUp() {
         <Box
             component="form"
             sx={{
-                '& > :not(style)': { m: 1.5, width: '45ch' },
+                '& > :not(style)': { mt: 1, width: '45ch' },
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -115,7 +115,8 @@ function SignUp() {
                 sx={{
                     input: { color: "white", borderBottom: '1px solid white', fontFamily: 'Roboto Condensed, sans-serif' },
                     label: { color: "white", fontFamily: 'Roboto Condensed, sans-serif' },
-                    height: "50px"
+                    height: "50px",
+                    mb: 1
                 }}
             />
             <TextField
@@ -128,7 +129,8 @@ function SignUp() {
                 onChange={handleEmailChange}
                 sx={{
                     input: { color: "white", borderBottom: '1px solid white', fontFamily: 'Roboto Condensed, sans-serif' },
-                    label: { color: "white", fontFamily: 'Roboto Condensed, sans-serif' }
+                    label: { color: "white", fontFamily: 'Roboto Condensed, sans-serif' },
+                    mb: 1
                 }}
             />
             <TextField
@@ -156,7 +158,7 @@ function SignUp() {
                         <Button
                             type="submit"
                             variant="outlined"
-                            sx={{ color: 'white', borderColor: 'white', mb: 1.5 }}
+                            sx={{ color: 'white', borderColor: 'white', mt: 4 }}
                         >
                             <Typography className="roboto-font" variant="subtitle1">
                                 Sign up

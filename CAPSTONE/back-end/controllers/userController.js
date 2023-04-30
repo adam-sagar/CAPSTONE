@@ -29,7 +29,7 @@ const createUsers = (data, res) => {
         }).then(function (existingUser) {
             if (existingUser) {
                 if (existingUser.username === data.username) {
-                    return res.send({ status: 400, error: 'Username already taken. Please choose a different username.' });
+                    return res.send({ status: 400, error: 'Username already taken. Please choose another.' });
                 } else if (existingUser.email === data.email) {
                     return res.send({ status: 400, error: 'There is already an account associated with this email.' });
                 }

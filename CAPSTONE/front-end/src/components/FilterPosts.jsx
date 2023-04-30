@@ -80,21 +80,28 @@ function FilterPosts(props) {
             </FormControl>
 
             <FormControl sx={{ width: 120, mt: 3, mb: 3, mr: 3 }}>
-                <InputLabel className="roboto-font" id="type-filter-label">Type</InputLabel>
-                <Select
-                    labelId="type-filter-label"
-                    id="type-filter"
-                    label="type-filter"
-                    value={typeFilter}
-                    onChange={e => { setTypeFilter(e.target.value); props.setFilters({ ...props.filters, type: e.target.value })}}
-                    className="roboto-font"            
-                >
-                    <MenuItem value="" className="roboto-font">All Types</MenuItem>
-                    <MenuItem value="Driver" className="roboto-font">Driver</MenuItem>
-                    <MenuItem value="Mid-range" className="roboto-font">Mid-range</MenuItem>
-                    <MenuItem value="Putter" className="roboto-font">Putter</MenuItem>
-                </Select>
-                <Button onClick={resetFilters} className="roboto-font" sx={{ mt: 1, color: "#6EA15E" }}>Reset</Button>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <InputLabel className="roboto-font" id="type-filter-label">Type</InputLabel>
+                        <Select
+                            labelId="type-filter-label"
+                            id="type-filter"
+                            label="type-filter"
+                            value={typeFilter}
+                            onChange={e => { setTypeFilter(e.target.value); props.setFilters({ ...props.filters, type: e.target.value }) }}
+                            className="roboto-font"
+                            style={{ flex: 1 }}
+                        >
+                            <MenuItem value="" className="roboto-font">All Types</MenuItem>
+                            <MenuItem value="Driver" className="roboto-font">Driver</MenuItem>
+                            <MenuItem value="Mid-range" className="roboto-font">Mid-range</MenuItem>
+                            <MenuItem value="Putter" className="roboto-font">Putter</MenuItem>
+                        </Select>
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '8px' }}>
+                        <Button onClick={resetFilters} className="roboto-font" variant="contained" size="small" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' } }}>Reset</Button>
+                    </div>
+                </div>
             </FormControl>
         </div>
     )

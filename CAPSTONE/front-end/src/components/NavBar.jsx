@@ -6,6 +6,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { Icon } from '@iconify/react';
 import discGolfBasket from '@iconify-icons/game-icons/disc-golf-basket';
 
@@ -17,10 +19,10 @@ function NavBar() {
     ];
 
     return (
-        
+
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-                <AppBar component="nav" sx={{ backgroundColor: '#484848' }}>
+            <AppBar component="nav" sx={{ backgroundColor: '#484848' }}>
                 <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <Typography
@@ -50,11 +52,11 @@ function NavBar() {
                             </Button>
                         ))}
                     </Box>
-                    <Box sx={{ marginLeft: 'auto' }}>
-                        <Button
+                    <Box sx={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
+                        {/* <Button
                             component={Link}
                             to="/"
-                            sx={{ 
+                            sx={{
                                 color: '#fff',
                                 fontFamily: 'Roboto Condensed, sans-serif',
                                 fontWeight: '300', fontSize: '1.5rem',
@@ -62,7 +64,17 @@ function NavBar() {
                             }}
                         >
                             Logout
-                        </Button>
+                        </Button> */}
+                        <IconButton
+                            component={Link}
+                            to="/"
+                            sx={{
+                                color: '#fff',
+                                '&:hover': { backgroundColor: 'transparent', color: '#535bf2' }
+                            }}
+                        >
+                            <LogoutIcon />
+                        </IconButton>
                     </Box>
                 </Toolbar>
             </AppBar>

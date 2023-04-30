@@ -14,6 +14,7 @@ import discGolfBasket from '@iconify-icons/game-icons/disc-golf-basket';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 function NavBar() {
+    
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const navItems = [{ label: 'Dashboard', path: '/dashboard' }, { label: 'Posts', path: '/posts' }];
 
@@ -152,6 +153,7 @@ function NavBar() {
                     </Box>
                 </Toolbar>
             </AppBar>
+            <Toolbar /> {/* rendered a second Toolbar to stop content from going behind the navbar */}
         </Box>
     )
 }

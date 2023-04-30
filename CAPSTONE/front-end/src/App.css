@@ -49,10 +49,35 @@ body {
   font-family: 'Roboto Condensed', sans-serif !important;
 }
 
-/* displaying CreatePost and FilterPosts components next to each other */
+/* displaying CreatePost and FilterPosts components next to each other on desktop */
 .posts-container {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+}
+
+/* change PostsPage to stack vertically on mobile */
+@media (max-width: 767px) {
+  .posts-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* change FilterPosts component to stack vertically on mobile */
+@media (max-width: 767px) {
+
+  .select-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .select-box {
+    flex-basis: calc(50% - 10px);
+    margin: 5px;
+  }
 }
 
 /* hide vertical scrollbar to prevent background image shifting when modal and dropdowns appear */
@@ -80,3 +105,4 @@ body {
   text-align: center;
   color: white;
 }
+

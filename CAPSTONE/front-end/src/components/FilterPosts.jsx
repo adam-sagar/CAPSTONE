@@ -28,8 +28,8 @@ function FilterPosts(props) {
 
     return (
 
-        <div>
-            <FormControl sx={{ width: 120, mt: 3, mb: 3, mr: 3 }}>
+        <div className="select-row">
+            <FormControl sx={{ width: 120, mt: 3, mb: 3, mr: 3 }} className="select-box">
                 <InputLabel className="roboto-font" id="course-filter-label">Lost/found</InputLabel>
                 <Select
                     labelId="course-filter-label"
@@ -45,7 +45,7 @@ function FilterPosts(props) {
                 </Select>
             </FormControl>
 
-            <FormControl sx={{ width: 120, mt: 3, mb:3, mr: 3 }}>
+            <FormControl sx={{ width: 120, mt: 3, mb: 3, mr: 3 }} className="select-box">
                 <InputLabel className="roboto-font" id="course-filter-label">Course</InputLabel>
                 <Select
                     labelId="course-filter-label"
@@ -64,7 +64,7 @@ function FilterPosts(props) {
                 </Select>
             </FormControl>
 
-            <FormControl sx={{ width: 120, mt: 3, mb:3, mr: 3 }}>
+            <FormControl sx={{ width: 120, mt: 3, mb: 3, mr: 3 }} className="select-box">
                 <InputLabel className="roboto-font" id="hole-filter-label">Hole</InputLabel>
                 <Select
                     labelId="hole-filter-label"
@@ -79,7 +79,7 @@ function FilterPosts(props) {
                 </Select>
             </FormControl>
 
-            <FormControl sx={{ width: 120, mt: 3, mb: 3, mr: 3 }}>
+            <FormControl sx={{ width: 120, mt: 3, mb: 3, mr: 3 }} className="select-box">
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         <InputLabel className="roboto-font" id="type-filter-label">Type</InputLabel>
@@ -98,7 +98,7 @@ function FilterPosts(props) {
                             <MenuItem value="Putter" className="roboto-font">Putter</MenuItem>
                         </Select>
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '8px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
                         <Button onClick={resetFilters} className="roboto-font" variant="contained" size="small" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' } }}>Reset</Button>
                     </div>
                 </div>

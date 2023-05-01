@@ -1,6 +1,6 @@
 "use strict";
 const Models = require("../models");
-const Sequelize = require("../dbConnect");
+const {Sequelize} = require("../dbConnect");
 
 const getComments = (res) => {
 
@@ -17,9 +17,10 @@ const getPostComments = (req, res) => {
 
     let postId = req.params.postId
 
-    Sequelize.query("SELECT c.*, u.username FROM comments c JOIN users u ON c.userId = u.id")
-        .then(function (data) {
-        res.send({ result: 200, data: data })
+    Sequelize.query("SELECT c.*, u.username FROM comments c JOIN users u ON c.userId = u.id WHERE postId="+postId)
+        .then(function ([results, metadata]) {
+            console.log(results)
+            res.send({ result: 200, data: results })
         })
         .catch(err => {
             console.error(err);

@@ -6,6 +6,11 @@ router.get('/', (req, res) => {
     Controllers.commentController.getComments(res);
 })
 
+router.get('/:postId', (req, res) => {
+    console.log(req.params.postId)
+    Controllers.commentController.getPostComments(req, res);
+})
+
 router.post('/create', (req, res) => {
     console.log(req.body.UserID)
     console.log('test')

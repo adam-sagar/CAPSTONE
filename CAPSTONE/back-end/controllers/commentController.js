@@ -1,11 +1,26 @@
 "use strict";
 const Models = require("../models");
+const Sequelize = require("../dbConnect");
 
 const getComments = (res) => {
 
     Models.Comment.findAll({}).then(function (data) {
         res.send({ result: 200, data: data })
     })
+        .catch(err => {
+            console.error(err);
+            res.status(500).send({ error: 'Unable to get comments. Please try again later.' });
+        })
+}
+
+const getPostComments = (req, res) => {
+
+    let postId = req.params.postId
+
+    Sequelize.query("SELECT c.*, u.username FROM comments c JOIN users u ON c.userId = u.id")
+        .then(function (data) {
+        res.send({ result: 200, data: data })
+        })
         .catch(err => {
             console.error(err);
             res.status(500).send({ error: 'Unable to get comments. Please try again later.' });
@@ -50,5 +65,5 @@ const deleteComment = (req, res) => {
 }
 
 module.exports = {
-    getComments, createComments, updateComment, deleteComment
+    getComments, createComments, updateComment, deleteComment, getPostComments
 }

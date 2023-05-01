@@ -37,8 +37,11 @@ function PostsPage() {
 
     function handleAddPost(newPost) {
 
-        setAllPosts([...allPosts, newPost]);
-        setFilteredPosts([...filteredPosts, newPost]);
+        console.log(newPost)
+        let newPostObject = Object.fromEntries(newPost.entries())
+        console.log(newPostObject)
+        setAllPosts([...allPosts, newPostObject]);
+        setFilteredPosts([...filteredPosts, newPostObject]);
     }
 
     return (

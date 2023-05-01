@@ -17,6 +17,10 @@ router.get('/', (req, res) => {
     Controllers.postController.getPosts(res);
 })
 
+router.get('/:userId', (req, res) => {
+    Controllers.postController.getUserPosts(req, res);
+})
+
 router.post('/create/:userId', upload, (req, res) => { // multer middleware function uploads file when post request sent
     Controllers.postController.createPost(req, res)
 })

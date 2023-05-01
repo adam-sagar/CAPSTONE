@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { UserContext } from '../context/UserContext';
 
 function Login() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errMsg, setErrMsg] = useState('');
+    const {setCurrentUser} = useContext(UserContext);
     const navigate = useNavigate();
 
     const handleUsernameChange = (e) => {
@@ -35,6 +37,7 @@ function Login() {
             .then(response => {
                 console.log(response.data);
                 if (response.data.status === 200) {
+                    setCurrentUser(response.data.user)
                     navigate("/dashboard")
                 } else {
                     setErrMsg(response.data.error)

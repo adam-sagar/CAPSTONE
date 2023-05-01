@@ -7,7 +7,6 @@ function LandingPage() {
 
         <div className="LandingPage">
             <div className="welcome-text">
-                <div>Welcome text</div>
                 <div>
                     <Link to="/login" className="link">Login</Link> or{" "}
                     <Link to="/signup" className="link">Sign up</Link> here

@@ -28,7 +28,7 @@ const validateLogin = async (req, res) => {
         }
 
         // return success message if everything is valid
-        return res.send({ status: 200, message: 'Login successful.' });
+        return res.send({ status: 200, message: 'Login successful.', user });
 
     } catch (error) {
         console.error(error);

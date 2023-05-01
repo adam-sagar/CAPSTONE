@@ -1,12 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Modal, Button, Select, MenuItem, RadioGroup, Radio, Box, Typography, FormControl, InputLabel } from "@mui/material";
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import axios from "axios";
-import { UserContext } from "../context/UserContext";
 
 
-function CreatePost(props) {
+function EditPost(props) {
 
     const [showModal, setShowModal] = useState(false);
     const [isFound, setIsFound] = useState('');
@@ -14,7 +13,6 @@ function CreatePost(props) {
     const [hole, setHole] = useState('');
     const [type, setType] = useState('');
     const [image, setImage] = useState({ preview: '', data: '' });
-    const { currentUser } = useContext(UserContext);
 
     const handleShowModal = () => {
         setShowModal(true);
@@ -33,10 +31,10 @@ function CreatePost(props) {
         setImage({ preview: '', data: '' });
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
+    const handleSubmit = () => {
 
-        let formData = new FormData(); // have to use FormData for uploading images with multer
+        let formData = new FormData();
+        let userId = 1; // fix up once login works
 
         formData.append('image', image.data)
         formData.append('isFound', isFound)
@@ -44,10 +42,10 @@ function CreatePost(props) {
         formData.append('hole', hole)
         formData.append('type', type)
 
-        axios.post(`http://localhost:8001/api/posts/create/${currentUser.id}`, formData)
+        axios.put(`http://localhost:8001/api/posts/create/${userId}`, formData)
             .then(response => {
                 console.log(response.data);
-                props.onAddPost(formData)
+                // props.onAddPost(formData)
                 handleCloseModal();
             })
             .catch(error => {
@@ -89,7 +87,7 @@ function CreatePost(props) {
 
         <div className="CreatePost">
             <Button className="roboto-font" variant="contained" sx={{ backgroundColor: '#6EA15E', m: 3, ':hover': { backgroundColor: '#4B784A' } }} onClick={handleShowModal}>
-                Create Post
+                Edit Post
             </Button>
             <Modal open={showModal} onClose={handleCloseModal} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Box className="roboto-font" sx={{ p: 2, bgcolor: "background.paper", width: 400, borderRadius: 2 }}>
@@ -217,7 +215,7 @@ function CreatePost(props) {
                             sx={{ backgroundColor: "#6EA15E", ":hover": { backgroundColor: "#4B784A" }, mt: 2 }}
                             type="submit"
                         >
-                            Create
+                            Edit
                         </Button>
                         <Button
                             className="roboto-font"
@@ -234,4 +232,4 @@ function CreatePost(props) {
     );
 }
 
-export default CreatePost;
+export default EditPost;

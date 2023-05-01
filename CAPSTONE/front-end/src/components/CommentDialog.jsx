@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -7,11 +7,14 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Button, CardActions } from '@mui/material';
 import axios from 'axios';
+import { UserContext } from '../context/UserContext';
 
-function CommentDialog() {
+function CommentDialog(props) {
 
     const [open, setOpen] = useState(false);
     const [comment, setComment] = useState('');
+    const [comments, setComments] = useState([]);
+    const { currentUser } = useContext(UserContext);
 
     const handleOpen = () => {
         setOpen(true);
@@ -28,8 +31,8 @@ function CommentDialog() {
     const handleSubmit = () => {
 
         let commentDetails = {
-            userId: 1, // these need to be made dynamic
-            postId: 1, 
+            userId: currentUser.id,
+            postId: props.postId,
             comment: comment
         };
 
@@ -45,6 +48,17 @@ function CommentDialog() {
             });
     }
 
+    useEffect(() => {
+
+        axios.get(`http://localhost:8001/api/comments/${props.postId}`)
+            .then(response => {
+                setComments(response.data.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
+
     return (
 
         <div>
@@ -58,9 +72,10 @@ function CommentDialog() {
             >
                 <DialogTitle className="roboto-font">Comments</DialogTitle>
                 <DialogContent>
-                    <DialogContentText className="roboto-font">
-                        {/* comments go here */}
-                    </DialogContentText>
+                    {comments.map((comment) => (
+                    <DialogContentText key={comment.id} className="roboto-font">
+                        { comment.username + comment.comment}
+                    </DialogContentText>))}
                     <TextField
                         autoFocus
                         margin="dense"

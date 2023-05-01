@@ -13,6 +13,19 @@ const getPosts = (res) => {
         })
 }
 
+const getUserPosts = (req, res) => {
+
+    let userId = req.params.userId
+
+    Models.Post.findAll({ where: { userId } }).then(function (data) {
+        res.send({ result: 200, data: data })
+    })
+        .catch(err => {
+            console.error(err);
+            res.status(500).send({ error: 'Unable to get posts. Please try again later.' });
+        })
+}
+
 const createPost = (req, res) => {
 
     const data = req.body
@@ -58,5 +71,5 @@ const deletePost = (req, res) => {
 }
 
 module.exports = {
-    getPosts, createPost, updatePost, deletePost
+    getPosts, createPost, updatePost, deletePost, getUserPosts
 }

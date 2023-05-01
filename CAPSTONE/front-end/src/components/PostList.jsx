@@ -8,6 +8,8 @@ import CommentDialog from './CommentDialog';
 
 function PostList(props) {
 
+    console.log(props.filteredPosts)
+
     return (
 
         <Container maxWidth="xl">
@@ -36,7 +38,7 @@ function PostList(props) {
                                     <Typography className="roboto-font" component="span" sx={{ fontWeight: 'bold' }}>Type:</Typography> {post.type}
                                 </Typography>}
                             </CardContent>
-                            <CommentDialog />
+                            <CommentDialog postId={post.id}/>
                         </Card>
                     </Grid>))}
             </Grid>

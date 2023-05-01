@@ -14,21 +14,21 @@ function SignUp() {
     const [email, setEmail] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [successMsg, setSuccessMsg] = useState('');
-    const [usernameError, setUsernameError] = useState(false);
-    const [passwordError, setPasswordError] = useState(false);
+    const [usernameError, setUsernameError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
     const navigate = useNavigate();
 
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);
 
         if (e.target.value === '') {
-            setUsernameError(false);
+            setUsernameError('');
         } else if (e.target.validity.patternMismatch) {
             setUsernameError("Must only contain letters, numbers, hyphens, and underscores");
         } else if (e.target.validity.tooShort) {
             setUsernameError("Must be 3 or more characters long.");
         } else {
-            setUsernameError(false);
+            setUsernameError('');
         }
     }
 
@@ -36,7 +36,7 @@ function SignUp() {
 
         setPassword(e.target.value);
         if (e.target.value === '') {
-            setPasswordError(false);
+            setPasswordError('');
         } else {
             setPasswordError(!e.target.validity.valid);
         }

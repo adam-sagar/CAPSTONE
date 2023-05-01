@@ -12,18 +12,19 @@ import { UserContext } from '../context/UserContext';
 function CommentDialog(props) {
 
     const [open, setOpen] = useState(false);
-    const [comment, setComment] = useState('');
-    const [comments, setComments] = useState([]);
+    const [comment, setComment] = useState(''); // adding a comment
+    const [comments, setComments] = useState([]); // displaying comments
+    const [currentUserComments, setCurrentUserComments] = useState([]); // comments made by currently signed in user
     const { currentUser } = useContext(UserContext);
 
     const handleOpen = () => {
         setOpen(true);
     };
- 
+
     const handleClose = () => {
         setOpen(false);
     };
- 
+
     const handleCommentChange = (e) => {
         setComment(e.target.value);
     }
@@ -48,11 +49,27 @@ function CommentDialog(props) {
             });
     }
 
+    const handleDelete = (commentId) => {
+
+        axios.delete(`http://localhost:8001/api/comments/${commentId}`)
+            .then(response => {
+                console.log(response.data);
+                // removing deleted comment from rendered list
+                setComments(comments.filter(comment => comment.id !== commentId));
+                setCurrentUserComments(currentUserComments.filter(comment => comment.id !== commentId));
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+
     useEffect(() => {
 
         axios.get(`http://localhost:8001/api/comments/${props.postId}`)
             .then(response => {
+                // setting initial comments from server
                 setComments(response.data.data);
+                setCurrentUserComments(response.data.data.filter(comment => comment.userId === currentUser.id));
             })
             .catch(error => {
                 console.error(error);
@@ -73,9 +90,32 @@ function CommentDialog(props) {
                 <DialogTitle className="roboto-font">Comments</DialogTitle>
                 <DialogContent>
                     {comments.map((comment) => (
-                    <DialogContentText key={comment.id} className="roboto-font">
-                        { comment.username + comment.comment}
-                    </DialogContentText>))}
+                        <div key={comment.id}>
+                            <DialogContentText  className="roboto-font">
+                                <b>{comment.username}</b>: {comment.comment}
+                            </DialogContentText>
+                            {currentUser.id === comment.userId && (
+                                <Button
+                                    className="roboto-font"
+                                    variant="outlined"
+                                    color="error"
+                                    size="small"
+                                    sx={{
+                                        borderColor: '#f44336',
+                                        color: '#f44336',
+                                        ':hover': {
+                                            backgroundColor: '#f44336',
+                                            color: '#ffffff',
+                                            borderColor: '#d32f2f',
+                                        }
+                                    }}
+                                    onClick={() => handleDelete(comment.id)}
+                                >
+                                    Delete
+                                </Button>
+                            )}
+                        </div>    
+                    ))}    
                     <TextField
                         autoFocus
                         margin="dense"

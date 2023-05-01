@@ -99,7 +99,7 @@ function FilterPosts(props) {
                         </Select>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-                        <Button onClick={resetFilters} className="roboto-font" variant="contained" size="small" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' } }}>Reset</Button>
+                        <Button onClick={resetFilters} className="roboto-font" variant="contained" size="small" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }, mb: 3 }}>Reset</Button>
                     </div>
                 </div>
             </FormControl>

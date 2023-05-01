@@ -24,10 +24,12 @@ function DashboardPage() {
 
     return (
 
-        <div> 
+        <div>
             <NavBar />
-            <p>Welcome {currentUser.username} </p>
-            <PostList filteredPosts={posts} />
+            <div className="dash-welcome">
+                {posts.length === 0 ? <p>Welcome, {currentUser.username}. You don't have any posts yet.</p> : <p>Welcome, {currentUser.username}. You can manage your posts here.</p>}
+            </div>
+            {posts.length > 0 && <PostList filteredPosts={posts} />}
         </div>
     )
 }

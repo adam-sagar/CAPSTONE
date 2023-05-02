@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,11 +12,13 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Icon } from '@iconify/react';
 import discGolfBasket from '@iconify-icons/game-icons/disc-golf-basket';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { UserContext } from '../context/UserContext';
 
 function NavBar() {
     
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const navItems = [{ label: 'Dashboard', path: '/dashboard' }, { label: 'Posts', path: '/posts' }];
+    const { setCurrentUser } = useContext(UserContext);
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -146,6 +148,7 @@ function NavBar() {
                                         marginRight: '0.5rem',
                                     },
                                 }}
+                                onClick={() => setCurrentUser('')} // remove current user from state
                             >
                                 Logout
                             </Button>

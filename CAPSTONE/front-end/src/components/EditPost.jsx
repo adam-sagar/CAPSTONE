@@ -1,22 +1,28 @@
-import React, { useState, useContext } from "react";
-import { Modal, Button, Select, MenuItem, RadioGroup, Radio, Box, Typography, FormControl, InputLabel } from "@mui/material";
+import React, { useState, useContext, useEffect } from 'react';
+import { Modal, Button, Select, MenuItem, RadioGroup, Radio, Box, Typography, FormControl, InputLabel, CardActions } from "@mui/material";
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
-import axios from "axios";
-import { UserContext } from "../context/UserContext";
+import axios from 'axios';
+import { UserContext } from '../context/UserContext';
 
-
-function CreatePost(props) {
+function EditPost(props) {
 
     const [showModal, setShowModal] = useState(false);
-    const [isFound, setIsFound] = useState('');
-    const [course, setCourse] = useState('');
-    const [hole, setHole] = useState('');
-    const [type, setType] = useState('');
     const [image, setImage] = useState({ preview: '', data: '' });
+    const [edit, setEdit] = useState({});
     const { currentUser } = useContext(UserContext);
 
-    console.log(props)
+    useEffect(() => {
+
+        axios.get(`http://localhost:8001/api/posts/${props.postId}`)
+            .then(response => {
+                setEdit(response.data.data);
+                console.log(response.data.data)
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
 
     const handleShowModal = () => {
         setShowModal(true);
@@ -28,10 +34,7 @@ function CreatePost(props) {
     };
 
     const resetState = () => {
-        setIsFound('');
-        setCourse('');
-        setHole('');
-        setType('');
+        setEdit({})
         setImage({ preview: '', data: '' });
     }
 
@@ -41,15 +44,17 @@ function CreatePost(props) {
         let formData = new FormData(); // have to use FormData for uploading images with multer
 
         formData.append('image', image.data)
-        formData.append('isFound', isFound)
-        formData.append('course', course)
-        formData.append('hole', hole)
-        formData.append('type', type)
+        formData.append('isFound', edit.isFound)
+        formData.append('course', edit.course)
+        formData.append('hole', edit.hole)
+        formData.append('type', edit.type)
+        formData.append('id', edit.id)
+        // let editObject = { 'type': type, 'isFound': isFound, 'course': course, 'hole': hole }
 
-        axios.post(`http://localhost:8001/api/posts/create/${currentUser.id}`, formData)
+        axios.put(`http://localhost:8001/api/posts/${props.postId}`, formData)
             .then(response => {
                 console.log(response.data);
-                props.onAddPost(formData)
+                props.onUpdatePost(formData)
                 handleCloseModal();
             })
             .catch(error => {
@@ -89,19 +94,19 @@ function CreatePost(props) {
 
     return (
 
-        <div className="CreatePost">
-            <Button className="roboto-font" variant="contained" sx={{ backgroundColor: '#6EA15E', m: 3, ':hover': { backgroundColor: '#4B784A' } }} onClick={handleShowModal}>
-                Create Post
-            </Button>
+        <div>
+            <CardActions>
+                <Button className="roboto-font" onClick={handleShowModal} size="small" sx={{ color: '#6EA15E' }}>Edit</Button>
+            </CardActions>
             <Modal open={showModal} onClose={handleCloseModal} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Box className="roboto-font" sx={{ p: 2, bgcolor: "background.paper", width: 400, borderRadius: 2 }}>
                     <form onSubmit={handleSubmit}>
                         <Typography className="roboto-font" variant="h5" gutterBottom>
                             Have you lost or found a disc?
                         </Typography>
-                        <RadioGroup name="isFound" value={isFound} onChange={e => setIsFound(e.target.value)}>
+                        <RadioGroup name="isFound" value={edit.isFound} onChange={e => setEdit({...edit, isFound: Boolean(e.target.value)})}>
                             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                <Radio required value="true" id="found" />
+                                <Radio value="true" id="found" />
                                 <label htmlFor="found">
                                     <Typography className="roboto-font" variant="body1" gutterBottom>
                                         Found
@@ -121,16 +126,16 @@ function CreatePost(props) {
                         <Typography className="roboto-font" variant="h5" gutterBottom>
                             On what course?
                         </Typography>
-                        <FormControl fullWidth required sx={{ mb: 2 }}>
+                        <FormControl  fullWidth sx={{ mb: 2 }}>
                             <InputLabel className="roboto-font" id="course-label">Course</InputLabel>
                             <Select
                                 name="course"
                                 label="Course"
-                                defaultValue=""
+                                // defaultValue={edit.course}
                                 sx={{ mb: 2 }}
                                 labelId="course-label"
-                                onChange={e => setCourse(e.target.value)}
-                                value={course}
+                                onChange={e => setEdit({ ...edit, course: e.target.value })}
+                                value={edit.course}
                                 className="roboto-font"
                             >
                                 <MenuItem value="Jellie Park" className="roboto-font">Jellie Park</MenuItem>
@@ -144,32 +149,32 @@ function CreatePost(props) {
                         <Typography className="roboto-font" variant="h5" gutterBottom>
                             On what hole?
                         </Typography>
-                        {course === "Brooker Ave" || course === "Queenspark" ? // brooker-ave and queenspark only have 9 holes. Added a conditional that changes the select range to 1-9 if they are selected
-                            <FormControl fullWidth required sx={{ mb: 2 }}>
+                        {edit.course === "Brooker Ave" || edit.course === "Queenspark" ? // brooker-ave and queenspark only have 9 holes. Added a conditional that changes the select range to 1-9 if they are selected
+                            <FormControl fullWidth sx={{ mb: 2 }}>
                                 <InputLabel className="roboto-font" id="hole-label">Hole</InputLabel>
                                 <Select
                                     name="hole"
                                     label="Hole"
-                                    defaultValue=""
+                                    // defaultValue={edit.hole}
                                     sx={{ mb: 2 }}
                                     labelId="course-label"
-                                    onChange={e => setHole(e.target.value)}
-                                    value={hole}
+                                    onChange={e => setEdit({ ...edit, hole: Number(e.target.value) })}
+                                    value={edit.hole}
                                     className="roboto-font"
                                 >
                                     {shortCourse}
                                 </Select>
                             </FormControl> :
-                            <FormControl fullWidth required sx={{ mb: 2 }}>
+                            <FormControl fullWidth sx={{ mb: 2 }}>
                                 <InputLabel className="roboto-font" id="hole-label">Hole</InputLabel>
                                 <Select
                                     name="hole"
                                     label="Hole"
-                                    defaultValue=""
+                                    // defaultValue={edit.hole}
                                     sx={{ mb: 2 }}
                                     labelId="course-label"
-                                    onChange={e => setHole(e.target.value)}
-                                    value={hole}
+                                    onChange={e => setEdit({ ...edit, hole: Number(e.target.value) })}
+                                    value={edit.hole}
                                     className="roboto-font"
                                 >
                                     {longCourse}
@@ -185,11 +190,11 @@ function CreatePost(props) {
                             <Select
                                 name="type"
                                 label="Type"
-                                defaultValue=""
+                                // defaultValue={edit.type}
                                 sx={{ mb: 2 }}
                                 labelId="type-label"
-                                onChange={e => setType(e.target.value)}
-                                value={type}
+                                onChange={e => setEdit({ ...edit, type: e.target.value })}
+                                value={edit.type}
                                 className="roboto-font"
                             >
                                 <MenuItem value="Driver" className="roboto-font">Driver</MenuItem>
@@ -219,7 +224,7 @@ function CreatePost(props) {
                             sx={{ backgroundColor: "#6EA15E", ":hover": { backgroundColor: "#4B784A" }, mt: 2 }}
                             type="submit"
                         >
-                            Create
+                            Update
                         </Button>
                         <Button
                             className="roboto-font"
@@ -233,7 +238,7 @@ function CreatePost(props) {
                 </Box>
             </Modal>
         </div>
-    );
+    )
 }
 
-export default CreatePost;
+export default EditPost;

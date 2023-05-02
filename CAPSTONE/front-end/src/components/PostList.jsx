@@ -5,10 +5,12 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Container, Grid } from '@mui/material';
 import CommentDialog from './CommentDialog';
+import EditPost from './EditPost';
 
 function PostList(props) {
 
     console.log(props.filteredPosts)
+    console.log(props.onUpdatePost)
 
     return (
 
@@ -39,6 +41,7 @@ function PostList(props) {
                                 </Typography>}
                             </CardContent>
                             <CommentDialog postId={post.id}/>
+                            {props.onUpdatePost && <EditPost postId={post.id} onUpdatePost={props.onUpdatePost} />}
                         </Card>
                     </Grid>))}
             </Grid>

@@ -26,6 +26,19 @@ const getUserPosts = (req, res) => {
         })
 }
 
+const getPost = (req, res) => { // get single post to edit
+
+    let id = req.params.id
+
+    Models.Post.findOne({ where: { id } }).then(function (data) {
+        res.send({ result: 200, data: data })
+    })
+        .catch(err => {
+            console.error(err);
+            res.status(500).send({ error: 'Unable to get post. Please try again later.' });
+        })
+}
+
 const createPost = (req, res) => {
 
     const data = req.body
@@ -45,6 +58,8 @@ const createPost = (req, res) => {
 }
 
 const updatePost = (req, res) => {
+
+    console.log(req.body)
 
     Models.Post.update(req.body, {
         where: { id: req.params.id }
@@ -71,5 +86,5 @@ const deletePost = (req, res) => {
 }
 
 module.exports = {
-    getPosts, createPost, updatePost, deletePost, getUserPosts
+    getPosts, createPost, updatePost, deletePost, getUserPosts, getPost
 }

@@ -11,7 +11,7 @@ function DashboardPage() {
 
     useEffect(() => {
 
-        axios.get(`http://localhost:8001/api/posts/${currentUser.id}`) 
+        axios.get(`http://localhost:8001/api/posts/userposts/${currentUser.id}`) 
             .then(response => {
                 setPosts(response.data.data);
             })
@@ -20,7 +20,28 @@ function DashboardPage() {
             });
     }, []);
 
-    console.log(currentUser)
+    const handleUpdatePost = (newPost) => {
+
+        console.log(newPost)
+        let newPostObject = Object.fromEntries(newPost.entries())
+        console.log(newPostObject)
+        setPosts((prevPosts) =>
+            prevPosts.map((post) => post.id !== Number(newPostObject.id) ? post : newPost)
+        );
+    }
+
+    const handleDelete = (postId) => {
+        
+        axios.delete(`http://localhost:8001/api/posts/${postId}`)
+            .then(() => {
+                // removes the deleted post
+                const updatedPosts = posts.filter(post => post.id !== postId);
+                setPosts(updatedPosts);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    };
 
     return (
 
@@ -29,7 +50,7 @@ function DashboardPage() {
             <div className="dash-welcome">
                 {posts.length === 0 ? <p>Welcome, {currentUser.username}. You don't have any posts yet.</p> : <p>Welcome, {currentUser.username}. You can manage your posts here.</p>}
             </div>
-            {posts.length > 0 && <PostList filteredPosts={posts} />}
+            {posts.length > 0 && <PostList filteredPosts={posts} onUpdatePost={handleUpdatePost} handleDelete={handleDelete} />}
         </div>
     )
 }

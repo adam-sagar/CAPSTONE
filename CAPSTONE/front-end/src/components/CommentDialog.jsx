@@ -17,6 +17,19 @@ function CommentDialog(props) {
     const [currentUserComments, setCurrentUserComments] = useState([]); // comments made by currently signed in user
     const { currentUser } = useContext(UserContext);
 
+    useEffect(() => {
+
+        axios.get(`http://localhost:8001/api/comments/${props.postId}`)
+            .then(response => {
+                // setting initial comments from server
+                setComments(response.data.data);
+                setCurrentUserComments(response.data.data.filter(comment => comment.userId === currentUser.id));
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
+
     const handleOpen = () => {
         setOpen(true);
     };
@@ -62,19 +75,6 @@ function CommentDialog(props) {
                 console.error(error);
             });
     }
-
-    useEffect(() => {
-
-        axios.get(`http://localhost:8001/api/comments/${props.postId}`)
-            .then(response => {
-                // setting initial comments from server
-                setComments(response.data.data);
-                setCurrentUserComments(response.data.data.filter(comment => comment.userId === currentUser.id));
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }, []);
 
     return (
 

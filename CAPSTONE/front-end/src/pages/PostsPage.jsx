@@ -35,7 +35,7 @@ function PostsPage() {
         console.log(filters)
     }, [filters])
 
-    function handleAddPost(newPost) {
+    const handleAddPost = (newPost) => {
 
         console.log(newPost)
         let newPostObject = Object.fromEntries(newPost.entries())

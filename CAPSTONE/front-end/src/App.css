@@ -65,18 +65,27 @@ body {
   }
 }
 
-/* change FilterPosts component to stack vertically on mobile */
-@media (max-width: 767px) {
+/* adding space between and around select dropdowns in FilterPosts component */
+.filter {
+  margin: 24px;
+}
 
-  .select-row {
+.select {
+  margin: 5px;
+}
+
+/* changing layout of FilterPosts component for mobile */
+@media only screen and (max-width: 767px) {
+  .filter {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
 
-  .select-box {
-    flex-basis: calc(50% - 10px);
-    margin: 5px;
+  .filter>div {
+    margin: 10px;
+    flex: 1 1 40%;
+    max-width: 40%;
   }
 }
 
@@ -115,5 +124,11 @@ body {
   margin-top: 50px;
   margin-bottom: 100px;
   text-align: center;
+}
+
+/* make Comments and Edit buttons display next to each other */
+.comment-edit-buttons {
+  display: flex;
+  flex-direction: row;
 }
 

@@ -10,6 +10,7 @@ function FilterPosts(props) {
     const longCourse = [];
 
     for (let i = 1; i <= 18; i++) {
+        
         longCourse.push(
             <MenuItem className="roboto-font" key={i} value={i}>
                 {i}
@@ -28,8 +29,8 @@ function FilterPosts(props) {
 
     return (
 
-        <div className="select-row">
-            <FormControl sx={{ width: 120, mt: 3, mb: 3, mr: 3 }} className="select-box">
+        <div className='filter'>
+            <FormControl sx={{ width: 120 }}>
                 <InputLabel className="roboto-font" id="course-filter-label">Lost/found</InputLabel>
                 <Select
                     labelId="course-filter-label"
@@ -37,7 +38,7 @@ function FilterPosts(props) {
                     label="course-filter"
                     value={lostFoundFilter}
                     onChange={e => { setLostFoundFilter(e.target.value); props.setFilters({ ...props.filters, isFound: e.target.value })}}
-                    className="roboto-font"         
+                    className="roboto-font select"         
                 >
                     <MenuItem value="" className="roboto-font">All Posts</MenuItem>
                     <MenuItem value={false} className="roboto-font">Lost</MenuItem>
@@ -45,7 +46,7 @@ function FilterPosts(props) {
                 </Select>
             </FormControl>
 
-            <FormControl sx={{ width: 120, mt: 3, mb: 3, mr: 3 }} className="select-box">
+            <FormControl sx={{ width: 120 }}>
                 <InputLabel className="roboto-font" id="course-filter-label">Course</InputLabel>
                 <Select
                     labelId="course-filter-label"
@@ -53,7 +54,7 @@ function FilterPosts(props) {
                     label="course-filter"
                     value={courseFilter}
                     onChange={e => { setCourseFilter(e.target.value); props.setFilters({ ...props.filters, course: e.target.value })}}
-                    className="roboto-font"            
+                    className="roboto-font select"            
                 >
                     <MenuItem value="" className="roboto-font">All Courses</MenuItem>
                     <MenuItem value="Jellie Park" className="roboto-font">Jellie Park</MenuItem>
@@ -64,7 +65,7 @@ function FilterPosts(props) {
                 </Select>
             </FormControl>
 
-            <FormControl sx={{ width: 120, mt: 3, mb: 3, mr: 3 }} className="select-box">
+            <FormControl sx={{ width: 120 }}>
                 <InputLabel className="roboto-font" id="hole-filter-label">Hole</InputLabel>
                 <Select
                     labelId="hole-filter-label"
@@ -72,16 +73,14 @@ function FilterPosts(props) {
                     label="hole-filter"
                     value={holeFilter}
                     onChange={e => { setHoleFilter(e.target.value); props.setFilters({ ...props.filters, hole: e.target.value })}}
-                    className="roboto-font"             
+                    className="roboto-font select"             
                 >
                     <MenuItem value="" className="roboto-font">All Holes</MenuItem>
                     {longCourse}
                 </Select>
             </FormControl>
 
-            <FormControl sx={{ width: 120, mt: 3, mb: 3, mr: 3 }} className="select-box">
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
+            <FormControl sx={{ width: 120 }}>
                         <InputLabel className="roboto-font" id="type-filter-label">Type</InputLabel>
                         <Select
                             labelId="type-filter-label"
@@ -89,7 +88,7 @@ function FilterPosts(props) {
                             label="type-filter"
                             value={typeFilter}
                             onChange={e => { setTypeFilter(e.target.value); props.setFilters({ ...props.filters, type: e.target.value }) }}
-                            className="roboto-font"
+                            className="roboto-font select"
                             style={{ flex: 1 }}
                         >
                             <MenuItem value="" className="roboto-font">All Types</MenuItem>
@@ -97,11 +96,18 @@ function FilterPosts(props) {
                             <MenuItem value="Mid-range" className="roboto-font">Mid-range</MenuItem>
                             <MenuItem value="Putter" className="roboto-font">Putter</MenuItem>
                         </Select>
-                    </div>
-                    <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-                        <Button onClick={resetFilters} className="roboto-font" variant="contained" size="small" sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }, mb: 3 }}>Reset</Button>
-                    </div>
-                </div>
+                        {/* adding div prevents Reset button from inheriting size and position of selects */}
+                        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
+                            <Button 
+                                onClick={resetFilters} 
+                                className="roboto-font" 
+                                variant="contained" 
+                                size="small" 
+                                sx={{ backgroundColor: '#6EA15E', ':hover': { backgroundColor: '#4B784A' }, mb: 10, mr: 0.75 }}
+                            >
+                                Reset
+                            </Button>
+                        </div>
             </FormControl>
         </div>
     )

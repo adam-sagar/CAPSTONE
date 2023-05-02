@@ -40,8 +40,10 @@ function PostList(props) {
                                     <Typography className="roboto-font" component="span" sx={{ fontWeight: 'bold' }}>Type:</Typography> {post.type}
                                 </Typography>}
                             </CardContent>
-                            <CommentDialog postId={post.id}/>
-                            {props.onUpdatePost && <EditPost postId={post.id} onUpdatePost={props.onUpdatePost} />}
+                            <div className="comment-edit-buttons">
+                                <CommentDialog postId={post.id}/>
+                                {props.onUpdatePost && <EditPost postId={post.id} onUpdatePost={props.onUpdatePost} />}
+                            </div>
                         </Card>
                     </Grid>))}
             </Grid>

@@ -88,7 +88,7 @@ function NavBar() {
                         <Button
                             component={Link}
                             to="/"
-                            endIcon={<LogoutIcon />}
+                            // endIcon={<LogoutIcon />}
                             sx={{
                                 color: '#fff',
                                 fontFamily: 'Roboto Condensed, sans-serif',
@@ -137,7 +137,7 @@ function NavBar() {
                             <Button
                                 component={Link}
                                 to="/"
-                                endIcon={<LogoutIcon />}
+                                // endIcon={<LogoutIcon />}
                                 sx={{
                                     color: '#fff',
                                     fontFamily: 'Roboto Condensed, sans-serif',

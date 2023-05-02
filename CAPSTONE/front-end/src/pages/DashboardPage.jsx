@@ -34,7 +34,7 @@ function DashboardPage() {
         
         axios.delete(`http://localhost:8001/api/posts/${postId}`)
             .then(() => {
-                // removes the deleted post
+                // removes the deleted post from rendered posts array
                 const updatedPosts = posts.filter(post => post.id !== postId);
                 setPosts(updatedPosts);
             })
@@ -50,7 +50,7 @@ function DashboardPage() {
             <div className="dash-welcome">
                 {posts.length === 0 ? <p>Welcome, {currentUser.username}. You don't have any posts yet.</p> : <p>Welcome, {currentUser.username}. You can manage your posts here.</p>}
             </div>
-            {posts.length > 0 && <PostList filteredPosts={posts} onUpdatePost={handleUpdatePost} handleDelete={handleDelete} />}
+            {posts.length > 0 && <PostList filteredPosts={posts} onUpdatePost={handleUpdatePost} onDeletePost={handleDelete} />}
         </div>
     )
 }

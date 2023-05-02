@@ -49,7 +49,7 @@ function CreatePost(props) {
         axios.post(`http://localhost:8001/api/posts/create/${currentUser.id}`, formData)
             .then(response => {
                 console.log(response.data);
-                props.onAddPost(formData)
+                props.onAddPost(response.data.data) // store newly created object in state
                 handleCloseModal();
             })
             .catch(error => {

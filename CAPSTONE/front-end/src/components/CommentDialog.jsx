@@ -14,7 +14,6 @@ function CommentDialog(props) {
     const [open, setOpen] = useState(false);
     const [comment, setComment] = useState(''); // adding a comment
     const [comments, setComments] = useState([]); // displaying comments
-    const [currentUserComments, setCurrentUserComments] = useState([]); // comments made by currently signed in user
     const { currentUser } = useContext(UserContext);
 
     useEffect(() => {
@@ -23,7 +22,6 @@ function CommentDialog(props) {
             .then(response => {
                 // setting initial comments from server
                 setComments(response.data.data);
-                setCurrentUserComments(response.data.data.filter(comment => comment.userId === currentUser.id));
             })
             .catch(error => {
                 console.error(error);
@@ -56,6 +54,7 @@ function CommentDialog(props) {
             .then(response => {
                 console.log(response.data);
                 setComment(''); // clears comment text after submitting
+                setComments([...comments, {...response.data.data, username: currentUser.username}]) //adds new comment to state so it shows on screen
             })
             .catch(error => {
                 console.error(error);

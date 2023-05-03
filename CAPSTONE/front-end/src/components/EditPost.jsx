@@ -52,16 +52,14 @@ function EditPost(props) {
         formData.append('hole', edit.hole)
         formData.append('type', edit.type)
         formData.append('id', edit.id)
-        let newPostObject = Object.fromEntries(formData.entries())
-        console.log(newPostObject)
+        //let newPostObject = Object.fromEntries(formData.entries()) // can't do this as it converts everything to a string
 
         axios.put(`http://localhost:8001/api/posts/${props.postId}/${currentUser.id}`, formData) // needs to send userId in params for file naming
             .then(response => {
                 console.log(response.data);
-                const updatedPost = { ...edit, ...newPostObject}; // updated post has all previous details plus newly changed ones
-                if (response.data.data && response.data.data.image) updatedPost.image = response.data.data.image; //include new image name if set
-                console.log(updatedPost)
-                props.onUpdatePost(updatedPost)
+                if (response.data.data && response.data.data.image) edit.image = response.data.data.image; //include new image name if set
+                console.log(edit)
+                props.onUpdatePost(edit)
                 handleCloseModal();
             })
             .catch(error => {
@@ -111,7 +109,7 @@ function EditPost(props) {
                         <Typography className="roboto-font" variant="h5" gutterBottom>
                             Have you lost or found a disc?
                         </Typography>
-                        <RadioGroup name="isFound" value={edit.isFound} onChange={e => setEdit({...edit, isFound: Boolean(e.target.value)})}>
+                        <RadioGroup name="isFound" value={edit.isFound} onChange={e => setEdit({...edit, isFound: e.target.value === 'true'})}>
                             <Box sx={{ display: 'flex', alignItems: 'center' }}>
                                 <Radio value="true" id="found" />
                                 <label htmlFor="found">

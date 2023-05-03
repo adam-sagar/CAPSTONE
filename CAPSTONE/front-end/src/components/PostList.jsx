@@ -3,9 +3,10 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Container, Grid } from '@mui/material';
+import { Container, Grid, CardActions } from '@mui/material';
 import CommentDialog from './CommentDialog';
 import EditPost from './EditPost';
+import Button from '@mui/material/Button';
 
 function PostList(props) {
 
@@ -40,14 +41,15 @@ function PostList(props) {
                                     <Typography className="roboto-font" component="span" sx={{ fontWeight: 'bold' }}>Type:</Typography> {post.type}
                                 </Typography>}
                             </CardContent>
-                            <div className="comment-edit-buttons">
-                                <CommentDialog postId={post.id}/>
+                            <CardActions className="comment-edit-buttons">
+                                <CommentDialog postId={post.id} />
                                 {props.onUpdatePost && <EditPost postId={post.id} onUpdatePost={props.onUpdatePost} />}
-                            </div>
+                                {props.onDeletePost && <Button postId={post.id} onClick={() => props.onDeletePost(post.id)} className="roboto-font" size="small" sx={{ color: '#6EA15E' }} >Delete</Button>}
+                            </CardActions>
                         </Card>
                     </Grid>))}
             </Grid>
-        </Container> 
+        </Container>
     )
 }
 

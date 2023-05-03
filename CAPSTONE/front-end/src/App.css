@@ -88,12 +88,6 @@ body {
   }
 }
 
-
-
-
-
-
-
 /* overriding mui MenuItem font */
 .roboto-font {
   font-family: 'Roboto Condensed', sans-serif !important;
@@ -176,7 +170,7 @@ body {
   text-align: center;
 }
 
-/* make Comments and Edit buttons display next to each other */
+/* make Comments, Edit and Delete buttons display next to each other */
 .comment-edit-buttons {
   display: flex;
   flex-direction: row;

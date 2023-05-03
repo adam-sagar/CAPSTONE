@@ -79,7 +79,7 @@ function CommentDialog(props) {
 
         <div>
             <CardActions>
-                <Button className="roboto-font" onClick={handleOpen} size="small" sx={{ color: '#6EA15E' }}>Comments</Button>
+                <Button className="roboto-font" onClick={handleOpen} size="small" sx={{ color: '#6EA15E' }} >Comments</Button>
             </CardActions>
             <Dialog
                 open={open}

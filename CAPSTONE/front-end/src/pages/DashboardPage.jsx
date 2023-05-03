@@ -11,7 +11,7 @@ function DashboardPage() {
 
     useEffect(() => {
 
-        axios.get(`http://localhost:8001/api/posts/userposts/${currentUser.id}`) 
+        axios.get(`http://localhost:8001/api/posts/userposts/${currentUser.id}`)
             .then(response => {
                 setPosts(response.data.data);
             })
@@ -34,7 +34,6 @@ function DashboardPage() {
         
         axios.delete(`http://localhost:8001/api/posts/${postId}`)
             .then(() => {
-                // removes the deleted post from rendered posts array
                 const updatedPosts = posts.filter(post => post.id !== postId);
                 setPosts(updatedPosts);
             })

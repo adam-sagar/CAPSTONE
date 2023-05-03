@@ -37,7 +37,7 @@ function EditPost(props) {
         setEdit({})
         setImage({ preview: '', data: '' });
     }
-
+ 
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -49,7 +49,6 @@ function EditPost(props) {
         formData.append('hole', edit.hole)
         formData.append('type', edit.type)
         formData.append('id', edit.id)
-        // let editObject = { 'type': type, 'isFound': isFound, 'course': course, 'hole': hole }
 
         axios.put(`http://localhost:8001/api/posts/${props.postId}`, formData)
             .then(response => {

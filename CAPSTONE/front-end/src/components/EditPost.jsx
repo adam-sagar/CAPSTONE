@@ -17,12 +17,13 @@ function EditPost(props) {
         axios.get(`http://localhost:8001/api/posts/${props.postId}`)
             .then(response => {
                 setEdit(response.data.data);
+                setImage({ preview: 'http://localhost:8001/' + response.data.data.image, data: '' })
                 console.log(response.data.data)
             })
             .catch(error => {
                 console.error(error);
             });
-    }, []);
+    }, [showModal]);
 
     const handleShowModal = () => {
         setShowModal(true);
@@ -43,17 +44,22 @@ function EditPost(props) {
 
         let formData = new FormData(); // have to use FormData for uploading images with multer
 
-        formData.append('image', image.data)
+        console.log(image)
+        if (image.data) { 
+        formData.append('image', image.data)}
         formData.append('isFound', edit.isFound)
         formData.append('course', edit.course)
         formData.append('hole', edit.hole)
         formData.append('type', edit.type)
         formData.append('id', edit.id)
+        let newPostObject = Object.fromEntries(formData.entries())
+        console.log(newPostObject)
 
         axios.put(`http://localhost:8001/api/posts/${props.postId}`, formData)
             .then(response => {
                 console.log(response.data);
-                props.onUpdatePost(formData)
+                console.log({ ...edit, ...newPostObject,  })
+                props.onUpdatePost({ ...edit, ...newPostObject })
                 handleCloseModal();
             })
             .catch(error => {

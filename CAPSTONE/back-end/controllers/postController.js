@@ -64,6 +64,7 @@ const updatePost = (req, res) => {
     Models.Post.update(req.body, {
         where: { id: req.params.id }
     }).then(function (data) {
+        console.log(data)
         res.send({ result: 200, data: data })
     })
         .catch(err => {

@@ -23,15 +23,15 @@ function DashboardPage() {
     const handleUpdatePost = (newPost) => {
 
         console.log(newPost)
-        let newPostObject = Object.fromEntries(newPost.entries())
-        console.log(newPostObject)
+        // let newPostObject = Object.fromEntries(newPost.entries())
+        // console.log(newPostObject)
         setPosts((prevPosts) =>
-            prevPosts.map((post) => post.id !== Number(newPostObject.id) ? post : newPost)
+            prevPosts.map((post) => post.id !== Number(newPost.id) ? post : newPost)
         );
     }
 
     const handleDelete = (postId) => {
-        
+
         axios.delete(`http://localhost:8001/api/posts/${postId}`)
             .then(() => {
                 const updatedPosts = posts.filter(post => post.id !== postId);

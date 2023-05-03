@@ -6,7 +6,6 @@ const multer = require('multer');
 const storage = multer.diskStorage({
     destination: 'public/images', // saves all uploaded images into public/images in back-end
     filename: (req, file, cb) => {
-        console.log(req.body)
         cb(null, req.params.userId + '-' + file.originalname) // filename uses the user id and the original filename
     }, 
 })
@@ -29,7 +28,7 @@ router.post('/create/:userId', upload, (req, res) => { // multer middleware func
     Controllers.postController.createPost(req, res)
 })
 
-router.put('/:id', upload, (req, res) => {
+router.put('/:id/:userId', upload, (req, res) => {
     Controllers.postController.updatePost(req, res)
 })
 router.delete('/:id', (req, res) => {

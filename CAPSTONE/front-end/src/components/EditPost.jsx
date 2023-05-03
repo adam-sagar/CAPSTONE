@@ -55,11 +55,13 @@ function EditPost(props) {
         let newPostObject = Object.fromEntries(formData.entries())
         console.log(newPostObject)
 
-        axios.put(`http://localhost:8001/api/posts/${props.postId}`, formData)
+        axios.put(`http://localhost:8001/api/posts/${props.postId}/${currentUser.id}`, formData) // needs to send userId in params for file naming
             .then(response => {
                 console.log(response.data);
-                console.log({ ...edit, ...newPostObject,  })
-                props.onUpdatePost({ ...edit, ...newPostObject })
+                const updatedPost = { ...edit, ...newPostObject}; // updated post has all previous details plus newly changed ones
+                if (response.data.data && response.data.data.image) updatedPost.image = response.data.data.image; //include new image name if set
+                console.log(updatedPost)
+                props.onUpdatePost(updatedPost)
                 handleCloseModal();
             })
             .catch(error => {

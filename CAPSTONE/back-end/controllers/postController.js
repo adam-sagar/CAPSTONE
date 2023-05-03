@@ -60,12 +60,16 @@ const createPost = (req, res) => {
 const updatePost = (req, res) => {
 
     console.log(req.body)
+    const updatedPost = req.body;
+    updatedPost.userId = req.params.userId // userId is sent in params so we can use it in the filename
 
-    Models.Post.update(req.body, {
+    if (req.file) {
+        updatedPost.image = '/images/' + updatedPost.userId + '-' + req.file.originalname // multer middleware saves uploaded file into req.file
+    }
+    Models.Post.update(updatedPost, {
         where: { id: req.params.id }
     }).then(function (data) {
-        console.log(data)
-        res.send({ result: 200, data: data })
+        res.send({ result: 200, data: updatedPost }) // send back updated info including new image name
     })
         .catch(err => {
             console.error(err);

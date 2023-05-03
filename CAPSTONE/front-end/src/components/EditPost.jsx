@@ -59,7 +59,7 @@ function EditPost(props) {
             .then(response => {
                 console.log(response.data);
                 const updatedPost = { ...edit, ...newPostObject}; // updated post has all previous details plus newly changed ones
-                if (response.data.data && response.data.data.image) updatedPost.image = response.data.data.image; //include new image name if set
+                if (response.data.data && response.data.data.image) updatedPost.image = response.data.data.image; // include new image name if set
                 console.log(updatedPost)
                 props.onUpdatePost(updatedPost)
                 handleCloseModal();
@@ -223,7 +223,7 @@ function EditPost(props) {
                             </IconButton>
                         </Box>
                         <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
-                            {image.preview && <img src={image.preview} width="75" height="75" />}
+                            {image.preview && <img src={image.preview} width="100" height="75" />}
                         </Box>
                         <Button
                             className="roboto-font"

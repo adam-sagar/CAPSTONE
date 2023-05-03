@@ -211,7 +211,7 @@ function CreatePost(props) {
                             </IconButton>
                         </Box>
                         <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
-                            {image.preview && <img src={image.preview} width="75" height="75" />}
+                            {image.preview && <img src={image.preview} width="100" height="75" />}
                         </Box>
                         <Button
                             className="roboto-font"

@@ -57,10 +57,9 @@ function EditPost(props) {
         axios.put(`http://localhost:8001/api/posts/${props.postId}/${currentUser.id}`, formData) // needs to send userId in params for file naming
             .then(response => {
                 console.log(response.data);
-                const updatedPost = { ...edit, ...newPostObject}; // updated post has all previous details plus newly changed ones
-                if (response.data.data && response.data.data.image) updatedPost.image = response.data.data.image; //include new image name if set
-                console.log(updatedPost)
-                props.onUpdatePost(updatedPost)
+                if (response.data.data && response.data.data.image) edit.image = response.data.data.image; //include new image name if set
+                console.log(edit)
+                props.onUpdatePost(edit)
                 handleCloseModal();
             })
             .catch(error => {
@@ -222,7 +221,7 @@ function EditPost(props) {
                             </IconButton>
                         </Box>
                         <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
-                            {image.preview && <img src={image.preview} width="100" height="75" />}
+                            {image.preview && <img src={image.preview} width="75" height="75" />}
                         </Box>
                         <Button
                             className="roboto-font"

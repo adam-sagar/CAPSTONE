@@ -44,7 +44,7 @@ function PostList(props) {
                             <CardActions className="comment-edit-buttons">
                                 <CommentDialog postId={post.id} />
                                 {props.onUpdatePost && <EditPost postId={post.id} onUpdatePost={props.onUpdatePost} />}
-                                {props.onDeletePost && <Button postId={post.id} onClick={() => props.onDeletePost(post.id)} className="roboto-font" size="small" sx={{ color: '#6EA15E' }} >Delete</Button>}
+                                {props.onDeletePost && <Button onClick={() => props.onDeletePost(post.id)} className="roboto-font" size="small" sx={{ color: '#6EA15E' }} >Delete</Button>}
                             </CardActions>
                         </Card>
                     </Grid>))}

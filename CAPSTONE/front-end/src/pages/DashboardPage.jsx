@@ -9,6 +9,7 @@ function DashboardPage() {
     const [posts, setPosts] = useState([]);
     const { currentUser } = useContext(UserContext);
 
+    // gets the posts of the currently logged in user
     useEffect(() => {
 
         axios.get(`http://localhost:8001/api/posts/userposts/${currentUser.id}`)
@@ -20,6 +21,7 @@ function DashboardPage() {
             });
     }, []);
 
+    // logic for editing a user's post
     const handleUpdatePost = (newPost) => {
 
         console.log(newPost)
@@ -30,6 +32,7 @@ function DashboardPage() {
         );
     }
 
+    // logic for deleting a user's post
     const handleDelete = (postId) => {
 
         axios.delete(`http://localhost:8001/api/posts/${postId}`)
@@ -47,8 +50,10 @@ function DashboardPage() {
         <div>
             <NavBar />
             <div className="dash-welcome">
+                {/* the welcome message that is displayed depends on whether the user has any posts or not */}
                 {posts.length === 0 ? <p>Welcome, {currentUser.username}. You don't have any posts yet.</p> : <p>Welcome, {currentUser.username}. You can manage your posts here.</p>}
             </div>
+            {/* if they do have posts they are displayed */}
             {posts.length > 0 && <PostList filteredPosts={posts} onUpdatePost={handleUpdatePost} onDeletePost={handleDelete} />}
         </div>
     )

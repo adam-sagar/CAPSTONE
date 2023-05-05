@@ -16,12 +16,14 @@ function PostsPage() {
         type: ''
     });
 
+    // gets all the posts from the databse
     useEffect(() => {
 
         axios.get(`http://localhost:8001/api/posts`)
             .then(response => { setAllPosts(response.data.data); setFilteredPosts(response.data.data)})
     }, [])
-
+    
+    // logic for filtering the posts
     useEffect(() => {
 
         let updatedPosts =
@@ -35,6 +37,7 @@ function PostsPage() {
         console.log(filters)
     }, [filters])
 
+    // adds any new posts to the list of filtered posts
     const handleAddPost = (newPost) => {
 
         console.log(newPost)

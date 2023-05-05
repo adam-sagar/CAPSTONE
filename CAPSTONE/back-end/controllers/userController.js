@@ -16,6 +16,7 @@ const getUsers = (res) => {
 
 const createUsers = (data, res) => {
 
+    // checks user has entered all the required fields
     if (!data.username || !data.email || !data.password) {
         return res.send({ status: 400, error: 'Please provide all required fields.' });
     } else {
@@ -28,17 +29,21 @@ const createUsers = (data, res) => {
             }
         }).then(function (existingUser) {
             if (existingUser) {
+                // checks if username is available
                 if (existingUser.username === data.username) {
                     return res.send({ status: 400, error: 'Username already taken. Please choose another.' });
                 } else if (existingUser.email === data.email) {
+                    // checks if their email has already been used
                     return res.send({ status: 400, error: 'There is already an account associated with this email.' });
                 }
             } else {
+                // encrypts password if checks are successful
                 bcrypt.hash(data.password, 10, function (err, hash) {
                     if (err) {
                         console.error(err);
                         res.send({ status: 500, error: 'Unable to create user. Please try again later.' });
                     } else {
+                        // adds user to database
                         data.password = hash;
                         Models.User.create(data)
                             .then(function (data) {

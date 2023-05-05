@@ -27,6 +27,7 @@ function CreatePost(props) {
         setShowModal(false);
     };
 
+    // clears the form if cancelled before submitting
     const resetState = () => {
         setIsFound('');
         setCourse('');
@@ -35,6 +36,7 @@ function CreatePost(props) {
         setImage({ preview: '', data: '' });
     }
 
+    // logic for sending the FormData to the back-end
     const handleSubmit = (e) => {
         e.preventDefault()
 

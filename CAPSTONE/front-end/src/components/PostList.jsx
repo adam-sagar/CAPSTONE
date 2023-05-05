@@ -15,6 +15,7 @@ function PostList(props) {
 
     return (
 
+        // maps the filtered posts and displays them in cards
         <Container maxWidth="xl">
             <Grid container spacing={4} sx={{ paddingBottom: 3 }}>
                 {props.filteredPosts.map((post) => (

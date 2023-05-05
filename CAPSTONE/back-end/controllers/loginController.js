@@ -6,6 +6,7 @@ const validateLogin = async (req, res) => {
 
     const data = req.body;
 
+    // checks user has entered all the required fields
     if (!data.username || !data.password) {
         return res.send({ status: 400, error: 'Please provide all required fields.' });
     }

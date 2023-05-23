@@ -1,3 +1,4 @@
+=====CAPSTONE PROJECT=====
 
 Hello there,
 
@@ -19,7 +20,7 @@ To try it out you will need Visual Studio Code, Node.js and MySQL.
 
 
 
-----------SETUP INSTRUCTIONS----------
+-----SETUP INSTRUCTIONS-----
 
 
 
@@ -73,11 +74,11 @@ RUNNING THE APP:
 
 That's it! 
 
-I hope you enjoy using DISC DETECTIVE.
+Thank you for using DISC DETECTIVE!
 
-Hope to see you on a course one day.
+Keep an eye out for me — I'll be the one wading around in ponds or up trees.
 
-I'll be the guy wading around in a pond or up a tree.
+Adam
 
 
 

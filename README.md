@@ -1,4 +1,4 @@
-=====CAPSTONE PROJECT=====
+===== CAPSTONE PROJECT =====
 
 Hello there,
 
@@ -19,57 +19,55 @@ At present, DISC DETECTIVE is only available in my hometown of Christchurch, New
 To try it out you will need Visual Studio Code, Node.js and MySQL.
 
 
-
------SETUP INSTRUCTIONS-----
-
+----- DEPLOYMENT -----
 
 
 APPLICATION SETUP:
 
 
-1   Clone the repo in VS Code
+        1   Clone the repo in VS Code
 
-2   Open up a terminal and type
+        2   Open up a terminal and type
 
-        cd CAPSTONE
-        cd front-end
-        npm install
+                cd CAPSTONE
+                cd front-end
+                npm install
 
-	This will install all the dependencies for the front-end
+                This will install all the dependencies for the front-end
 
-3   Open up another terminal and type
+        3   Open up another terminal and type
 
-        cd CAPSTONE
-        cd back-end
-        npm install
+                cd CAPSTONE
+                cd back-end
+                npm install
 
-	This will install all the dependencies for the back-end
+                This will install all the dependencies for the back-end
 
 
 DATABASE SETUP:
 
-1   Create a .env file in CAPSTONE/back-end and add the following:
+        1   Create a .env file in CAPSTONE/back-end and add the following:
 
-    DB_NAME=capstonedb
-    DB_USER= *your MySQL user goes here*
-    DB_PASSWORD= *your MySQL password goes here*
-    DB_HOST=localhost
-    DB_PORT=3307
+                DB_NAME=capstonedb
+                DB_USER= *your MySQL user goes here*
+                DB_PASSWORD= *your MySQL password goes here*
+                DB_HOST=localhost
+                DB_PORT=3307
 
-    PORT=8001
+                PORT=8001
 
-2   Open MySQL Workbench and create a new schema called capstonedb. You can change the name but make sure to update your .env file.
+        2   Open MySQL Workbench and create a new schema called capstonedb. You can change the name but make sure to update your .env file.
 
 
 RUNNING THE APP:
 
-1   Go back to your terminals in VS Code
+        1   Go back to your terminals in VS Code
 
-2   Type npm start in CAPSTONE/back-end
+        2   Type npm start in CAPSTONE/back-end
 
-3   Type npm run dev in CAPSTONE/front-end
+        3   Type npm run dev in CAPSTONE/front-end
 
-4   Hold ctrl and click   ➜  Local:   http://localhost:5173/ to launch the app
+        4   Hold ctrl and click   ➜  Local:   http://localhost:5173/ to launch the app
 
 
 That's it! 

@@ -1,4 +1,4 @@
-===== CAPSTONE PROJECT =====
+===== CAPSTONE PROJECT README =====
 
 Hello there,
 

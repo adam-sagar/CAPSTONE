@@ -55,7 +55,7 @@ DATABASE SETUP:
 
                 PORT=8001
 
-        2   Open MySQL Workbench and create a new schema called capstonedb. You can change the name but make sure to update your .env file.
+        2   Open MySQL Workbench and create a new schema called capstonedb.
 
 
 RUNNING THE APP:
@@ -72,7 +72,6 @@ RUNNING THE APP:
 -----PROJECT PRESENTATION VIDEO-----
 
 You can find a comprehensive presentation of this project in the repository. In the video, I discuss its features, functionalities, and the thought process behind its development. It provides valuable insights into the project's goals and highlights its key aspects.
-
 
 Thank you for using DISC DETECTIVE! Keep an eye out for me — I'll be the one wading around in ponds or up trees.
 

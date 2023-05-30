@@ -155,6 +155,7 @@ body {
   margin-top: 5px;
   background-color: aliceblue;
   height: auto;
+  border-radius: 5px;
 }
 
 
@@ -163,6 +164,7 @@ body {
   color: limegreen;
   background-color: aliceblue;
   height: auto;
+  border-radius: 5px;
 }
 
 .dash-welcome {

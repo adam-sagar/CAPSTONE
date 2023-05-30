@@ -21,7 +21,6 @@ To try it out you will need Visual Studio Code, Node.js and MySQL.
 
 ----- DEPLOYMENT -----
 
-
 APPLICATION SETUP:
 
 
@@ -70,16 +69,11 @@ RUNNING THE APP:
         4   Hold ctrl and click   ➜  Local:   http://localhost:5173/ to launch the app
 
 
-That's it! 
+-----PROJECT PRESENTATION VIDEO-----
 
-Thank you for using DISC DETECTIVE!
+You can find a comprehensive presentation of this project in the repository. In the video, I discuss its features, functionalities, and the thought process behind its development. It provides valuable insights into the project's goals and highlights its key aspects.
 
-Keep an eye out for me — I'll be the one wading around in ponds or up trees.
+
+Thank you for using DISC DETECTIVE! Keep an eye out for me — I'll be the one wading around in ponds or up trees.
 
 Adam
-
-
-
-
-
-
